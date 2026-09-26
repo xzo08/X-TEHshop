@@ -82,12 +82,11 @@
         .intro-text h1 { font-size: 2.8rem; font-weight: 900; line-height: 1.2; margin-bottom: 15px; text-transform: uppercase; }
         .intro-text p { color: #d4d4d8; font-size: 1.1rem; line-height: 1.6; }
 
-        /* Радар, который крутится целиком силами CSS */
+        /* Внешняя оболочка радара (стоит на месте) */
         .radar-box {
             width: 250px;
             height: 250px;
             border-radius: 50%;
-            background: padding-box, conic-gradient(#facc15 0% 75%, #18181b 75% 100%);
             border: 6px solid rgba(250, 204, 21, 0.15);
             display: flex;
             align-items: center;
@@ -95,9 +94,19 @@
             box-shadow: 0 0 60px rgba(250, 204, 21, 0.1);
             position: relative;
             transition: all 0.6s ease;
+            overflow: hidden;
         }
 
-        /* Анимация полного вращения всего круга радара */
+        /* Жёлтое кольцо фона, которое БУДЕТ крутиться вместо текста */
+        .radar-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: conic-gradient(#facc15 0% 75%, #18181b 75% 100%);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        /* Анимация кручения ТОЛЬКО заднего жёлтого фона */
         .radar-spin {
             animation: spinCircle 2.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
@@ -107,6 +116,7 @@
             100% { transform: rotate(1440deg); }
         }
 
+        /* Кнопка с текстом поверх крутящегося фона (стоит мёртво) */
         .btn-repair {
             width: 200px;
             height: 200px;
@@ -122,6 +132,7 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
+            z-index: 5; /* Поверх фона */
         }
         
         .btn-repair:hover:not(:disabled) {
@@ -164,26 +175,20 @@
             transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* Начальные позиции скрытых вкладок по бокам */
         .block-left {
             background: #141413;
             border-right: 1px solid rgba(250, 204, 21, 0.1);
-            left: -60vw; /* Спрятана далеко слева */
+            left: -60vw;
             width: 50%;
         }
         .block-right {
             background: #1c1a14;
-            right: -60vw; /* Спрятана далеко справа */
+            right: -60vw;
             width: 50%;
         }
 
-        /* Классы для стакания блоков по центру экрана */
-        .block-left.active {
-            left: 0;
-        }
-        .block-right.active {
-            right: 0;
-        }
+        .block-left.active { left: 0; }
+        .block-right.active { right: 0; }
 
         .stack-block h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; color: #facc15; }
         .stack-block p { font-size: 1.2rem; color: #e4e4e7; line-height: 1.7; }
@@ -210,6 +215,7 @@
             </div>
             
             <div class="radar-box" id="main-radar">
+                <div class="radar-bg" id="radar-bg-layer"></div>
                 <button class="btn-repair" id="launch-btn">РЕМОНТ</button>
             </div>
         </div>
@@ -234,10 +240,10 @@
         </div>
     </section>
 
-    <!-- Скрипт логики анимаций -->
     <script>
         const btn = document.getElementById('launch-btn');
         const radar = document.getElementById('main-radar');
+        const radarBg = document.getElementById('radar-bg-layer');
         const rightCard = document.getElementById('right-card');
         const rightIcon = document.getElementById('right-icon');
         const slideLeft = document.getElementById('slide-left');
@@ -246,27 +252,27 @@
         btn.addEventListener('click', () => {
             btn.disabled = true;
             
-            // Крутим ВЕСЬ круг радара, слово «РЕМОНТ» остается статичным внутри
-            radar.classList.add('radar-spin');
+            // Крутим ТОЛЬКО задний фон круга. Текст стоит на месте!
+            radarBg.classList.add('radar-spin');
 
             setTimeout(() => {
-                // Включаем сочный жёлтый неон обводок
+                // Желтый неон
                 radar.style.borderColor = '#facc15';
                 radar.style.boxShadow = '0 0 60px rgba(250, 204, 21, 0.6)';
                 
                 btn.style.color = '#facc15';
                 btn.style.textShadow = '0 0 15px rgba(250, 204, 21, 0.8)';
-                btn.innerText = 'УДАЧНО';
+                btn.innerText = 'УСПЕШНО';
 
                 rightCard.style.borderColor = '#facc15';
                 rightCard.style.boxShadow = '0 0 50px rgba(250, 204, 21, 0.4), 0 40px 80px rgba(0,0,0,0.7)';
                 rightIcon.style.filter = 'drop-shadow(0 0 25px rgba(250, 204, 21, 0.8))';
 
-                // Через полсекунды плавно съезжаем вниз
+                // Скролл вниз
                 setTimeout(() => {
                     document.getElementById('scroll-zone').scrollIntoView({ behavior: 'smooth' });
                     
-                    // Как только страница прокрутится, табы мощно вылетают с боков и стакаются
+                    // Вылет боковых панелей
                     setTimeout(() => {
                         slideLeft.classList.add('active');
                         slideRight.classList.add('active');
