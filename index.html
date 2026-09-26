@@ -85,12 +85,7 @@
             box-shadow: 0 40px 80px rgba(0,0,0,0.7); transition: all 0.6s ease;
         }
 
-        /* Заряженные огромные иконки-смайлики с неоновым свечением */
-        .hardware-icon {
-            font-size: 4.8rem;
-            margin-bottom: 25px;
-            transition: all 0.6s ease;
-        }
+        .hardware-icon { font-size: 4.8rem; margin-bottom: 25px; transition: all 0.6s ease; }
         .left-glow { filter: drop-shadow(0 0 20px rgba(239, 68, 68, 0.5)); }
         .right-glow { filter: drop-shadow(0 0 25px rgba(250, 204, 21, 0.6)); }
 
@@ -160,7 +155,7 @@
         .price-section h2 { font-size: 3rem; font-weight: 900; text-transform: uppercase; margin-bottom: 50px; letter-spacing: 2px; }
         .price-section h2 span { color: #facc15; }
 
-        .inventory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; width: 100%; max-width: 1200px; margin-bottom: 40px; }
+        .inventory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; width: 100%; max-width: 1200px; }
         .item-card { background: #131314; border: 1px solid rgba(255,255,255,0.03); border-radius: 16px; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; height: 230px; box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
         
         .rarity-mil-spec { border-bottom: 5px solid #3b82f6; } 
@@ -179,13 +174,32 @@
         .rarity-covert .item-emoji { filter: saturate(1.6) drop-shadow(0 0 10px #ef4444); }
         .item-card .item-price { font-size: 1.4rem; font-weight: 900; color: #facc15; }
 
-        /* ЧЕТВЕРТЫЙ ЭКРАН — ИНТЕРАКТИВНЫЙ FAQ */
-        .faq-section {
-            width: 100vw; min-height: 100vh; background: #0c0c0d; padding: 120px 80px;
+        /* НОВЫЙ ЧЕТВЕРТЫЙ ЭКРАН — СИСТЕМА ЗАЩИТЫ (STEAM GUARD СТИЛЬ) */
+        .shield-section {
+            width: 100vw; min-height: 100vh; background: #0b0b0c; padding: 120px 80px;
             display: flex; flex-direction: column; align-items: center;
             border-top: 2px solid rgba(250, 204, 21, 0.05);
         }
+        .shield-section h2 { font-size: 3rem; font-weight: 900; text-transform: uppercase; margin-bottom: 50px; letter-spacing: 2px; }
+        .shield-section h2 span { color: #facc15; }
 
+        .shield-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; width: 100%; max-width: 1100px; }
+        
+        .shield-card {
+            background: #141416; border: 1px solid rgba(255,255,255,0.02); border-radius: 20px;
+            padding: 40px 30px; display: flex; flex-direction: column; align-items: center; text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6); position: relative;
+        }
+        .shield-icon { font-size: 3.5rem; margin-bottom: 20px; }
+        .shield-card h3 { font-size: 1.4rem; font-weight: 900; text-transform: uppercase; margin-bottom: 15px; color: #fff; letter-spacing: 0.5px; }
+        .shield-card p { color: #a1a1aa; font-size: 1rem; line-height: 1.6; }
+
+        /* ЧЕТВЕРТЫЙ ЭКРАН — ИНТЕРАКТИВНЫЙ FAQ */
+        .faq-section {
+            width: 100vw; min-height: 100vh; background: #080809; padding: 120px 80px;
+            display: flex; flex-direction: column; align-items: center;
+            border-top: 2px solid rgba(250, 204, 21, 0.05);
+        }
         .chat-container { width: 100%; max-width: 900px; display: flex; flex-direction: column; gap: 25px; margin-top: 30px; }
         .chat-msg { max-width: 75%; padding: 20px 25px; border-radius: 20px; line-height: 1.6; font-size: 1.1rem; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.4); }
         .msg-client { background: #19191b; border: 1px solid rgba(255,255,255,0.03); align-self: flex-start; border-bottom-left-radius: 4px; color: #e4e4e7; }
@@ -212,7 +226,7 @@
         </div>
     </div>
 
-    <!-- Раздел 1 — ВОЗВРАЩАЕМ ВЫСОКОКАЧЕСТВЕННЫЕ НЕОНОВЫЕ СМАЙЛИКИ -->
+    <!-- Раздел 1 -->
     <section class="screen-one">
         <div class="panel" id="left-card">
             <div class="hardware-icon left-glow">📉</div>
@@ -253,7 +267,7 @@
         </div>
     </section>
 
-    <!-- Раздел 3 (Прайс-инвентарь) -->
+    <!-- Раздел 3 (Прайс) -->
     <section class="price-section">
         <h2>Наш <span>Инвентарь</span> Услуг</h2>
         <div class="inventory-grid">
@@ -275,7 +289,29 @@
             <div class="item-card rarity-covert"><div class="item-title">Замена корпуса</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">🧰</span><div class="item-price">2 500 ₽</div></div></div>
         </div>
     </section>
-    <!-- Раздел 4 (Интерактивный FAQ) -->
+    <!-- Раздел 4 (Система Защиты Steam Guard Style) -->
+    <section class="shield-section">
+        <h2>Система <span>Защиты</span> X-Tehnik</h2>
+        <div class="shield-grid">
+            <div class="shield-card rarity-mil-spec">
+                <div class="shield-icon">🛡️</div>
+                <h3>Премиум-детали</h3>
+                <p>Мы закупаем только проверенные, надежные комплектующие класса оригинал. Никакого дешевого китая, который сдохнет через неделю.</p>
+            </div>
+            <div class="shield-card rarity-classified">
+                <div class="shield-icon">📝</div>
+                <h3>Честная гарантия</h3>
+                <p>Вы получаете стопроцентную железную гарантию на выполненную работу. Если что-то пойдет не так — исправим бесплатно и без лишних вопросов.</p>
+            </div>
+            <div class="shield-card rarity-covert">
+                <div class="shield-icon">🚀</div>
+                <h3>Фаст-сервис</h3>
+                <p>Большинство модульных ремонтов делаются прямо при вас за 30–60 минут. Никакого затягивания сроков и ожидания девайса неделями.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Раздел 5 (Интерактивный FAQ) -->
     <section class="faq-section">
         <h2>Вопросы и <span>Ответы</span></h2>
         <div class="chat-container">
