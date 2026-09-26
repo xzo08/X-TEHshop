@@ -115,20 +115,14 @@
             box-shadow: inset 0 0 35px rgba(250, 204, 21, 0.25);
             transform: scale(1.02);
         }
-        /* Второй экран - стабильный информационный блок */
+        /* Второй экран - четкий сдвоенный блок */
         .scroll-section {
             width: 100vw;
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
-
-        /* Контейнер становится видимым после клика */
-        .scroll-section.show {
-            opacity: 1;
+            background: #0d0d0c;
         }
 
         .stack-container {
@@ -169,6 +163,7 @@
         <div style="color: #a1a1aa; font-weight: 600; letter-spacing: 1px; font-size: 0.9rem; text-transform: uppercase;">Купино</div>
     </header>
 
+    <!-- Первый экран -->
     <section class="screen-one">
         <div class="panel" id="left-card">
             <div class="hardware-icon">📉</div>
@@ -194,7 +189,8 @@
         </div>
     </section>
 
-    <section class="scroll-section" id="scroll-zone">
+    <!-- Второй экран -->
+    <section class="scroll-section">
         <div class="stack-container">
             <div class="stack-block block-left">
                 <h2>Любая сложность</h2>
@@ -207,50 +203,43 @@
         </div>
     </section>
 
-    <!-- Подключаем чистую анимацию вращения -->
+    <!-- Простой и надежный скрипт крутилки -->
     <script src="https://cloudflare.com"></script>
     <script>
         const btn = document.getElementById('launch-btn');
         const radar = document.getElementById('main-radar');
         const rightCard = document.getElementById('right-card');
         const rightIcon = document.getElementById('right-icon');
-        const scrollZone = document.getElementById('scroll-zone');
-
-        // При первой загрузке принудительно возвращаем наверх страницы
-        window.scrollTo(0, 0);
 
         btn.addEventListener('click', () => {
             btn.disabled = true;
 
-            // Крутим круг радара
+            // Крутим радар чисто и без багов
             gsap.to(radar, {
                 rotation: 1440,
                 duration: 2.2,
                 ease: "power4.inOut",
                 onComplete: () => {
-                    // Красим радар и правое окно в зеленый цвет «УДАЧНО»
+                    // Подсвечиваем всё зеленым
                     radar.style.background = 'padding-box, conic-gradient(#22c55e 0% 100%)';
                     radar.style.borderColor = 'rgba(34, 197, 94, 0.5)';
                     radar.style.boxShadow = '0 0 60px rgba(34, 197, 94, 0.4)';
                     
                     btn.style.color = '#22c55e';
-                    btn.innerText = 'УДАЧНО';
+                    btn.innerText = 'УСПЕШНО';
 
                     rightCard.style.borderColor = 'rgba(34, 197, 94, 0.5)';
                     rightCard.style.boxShadow = '0 0 50px rgba(34, 197, 94, 0.2)';
                     rightIcon.style.filter = 'drop-shadow(0 0 25px rgba(34, 197, 94, 0.6))';
                     document.querySelector('.logo span').style.color = '#22c55e';
 
-                    // Проявляем нижний инфо-блок
-                    scrollZone.classList.add('show');
-
-                    // Автоматически плавно перемещаем экран вниз, показывая информацию
+                    // Через полсекунды плавно перематываем страницу к инфо-блоку
                     setTimeout(() => {
                         window.scrollTo({
                             top: window.innerHeight,
                             behavior: 'smooth'
                         });
-                    }, 400);
+                    }, 500);
                 }
             });
         });
