@@ -10,7 +10,7 @@
             background: #0d0d0c;
             color: #fff;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            overflow: hidden; /* Полностью блокируем ручной скролл */
+            overflow-x: hidden;
         }
 
         /* Шапка */
@@ -109,33 +109,32 @@
             color: #fff; font-size: 1.4rem; font-weight: 900; letter-spacing: 3px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; z-index: 5;
         }
 
-        /* ТЕКСТ ЖМИ ЖМИ ПОД КРУГОМ */
+        /* ТЕКСТ ЖМИ ЖМИ */
         .click-prompt {
             font-size: 1.3rem; font-weight: 900; text-transform: uppercase; letter-spacing: 4px; color: #facc15;
-            text-shadow: 0 0 10px rgba(250, 204, 21, 0.6); animation: pulseText 1.5s infinite ease-in-out; margin-top: 10px; cursor: pointer;
+            text-shadow: 0 0 10px rgba(250, 204, 21, 0.6); animation: pulseText 1.5s infinite ease-in-out; margin-top: 10px;
         }
         @keyframes pulseText {
             0%, 100% { opacity: 0.4; transform: scale(0.96); }
             50% { opacity: 1; transform: scale(1.04); text-shadow: 0 0 20px rgba(250, 204, 21, 0.9); }
         }
-        /* ВТОРОЙ ЛИСТ НА ВЕСЬ ЭКРАН (ТЕПЕРЬ ЭТО ОВЕРЛЕЙ ПОВЕРХ 1 СТР) */
-        .fullscreen-overlay {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            display: flex; z-index: 150; pointer-events: none; overflow: hidden;
+        /* ВТОРОЙ ЭКРАН НА ВЕСЬ ВЫСОТУ (СВОБОДНЫЙ СКРОЛЛ) */
+        .scroll-section {
+            width: 100vw; height: 100vh; display: flex; background: #0d0d0c; position: relative; overflow: hidden;
         }
         
         .stack-block {
             width: 50%; height: 100%; padding: 0 8%; display: flex; flex-direction: column; justify-content: center;
-            position: absolute; top: 0; bottom: 0; transition: all 0.9s cubic-bezier(0.25, 1, 0.5, 1); pointer-events: auto;
+            position: absolute; top: 0; bottom: 0; transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* Изначально раздвинуты за границы экрана */
+        /* Изначально раздвинуты влево и вправо за границы */
         .block-left { background: #131312; border-right: 2px solid rgba(250, 204, 21, 0.1); left: -50vw; }
         .block-right { background: #1c1913; right: -50vw; }
         
-        /* Схлопывание стен на весь экран */
-        .fullscreen-overlay.active .block-left { left: 0; }
-        .fullscreen-overlay.active .block-right { right: 0; }
+        /* Классы автоматического смыкания при прокрутке */
+        .block-left.active { left: 0; }
+        .block-right.active { right: 0; }
 
         .stack-block h2 { font-size: 3.5rem; font-weight: 900; margin-bottom: 25px; text-transform: uppercase; color: #facc15; }
         .stack-block p { font-size: 1.3rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 35px; }
@@ -145,56 +144,36 @@
             font-size: 1.1rem; font-weight: 800; text-transform: uppercase; text-decoration: none; letter-spacing: 1px; transition: all 0.3s ease;
         }
         .tg-color { background: #22c55e; color: #000; box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3); }
-        .tg-color:hover { background: #4ade80; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(34, 197, 94, 0.5); }
+        .tg-color:hover { background: #4ade80; transform: translateY(-3px); }
         
         .vk-color { background: #facc15; color: #000; box-shadow: 0 10px 25px rgba(250, 204, 21, 0.3); }
-        .vk-color:hover { background: #fde047; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(250, 204, 21, 0.5); }
+        .vk-color:hover { background: #fde047; transform: translateY(-3px); }
 
-        /* Кнопка закрытия стен и возврата назад */
-        .back-to-repair-btn {
-            position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%);
-            padding: 15px 40px; background: #111; border: 2px solid #facc15; color: #facc15;
-            font-size: 1.1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;
-            border-radius: 14px; cursor: pointer; transition: all 0.3s ease;
-            box-shadow: 0 0 20px rgba(250, 204, 21, 0.1); z-index: 160; opacity: 0; pointer-events: none;
+        /* ТРЕТИЙ ЭКРАН — ПРАЙС-ЛИСТ */
+        .price-section {
+            width: 100vw; min-height: 100vh; padding: 120px 80px; background: #090909;
+            display: flex; flex-direction: column; align-items: center;
         }
-        .fullscreen-overlay.active .back-to-repair-btn { opacity: 1; pointer-events: auto; }
-        .back-to-repair-btn:hover { background: #facc15; color: #000; box-shadow: 0 0 30px rgba(250, 204, 21, 0.4); }
-
-        /* ОТДЕЛЬНАЯ КНОПКА ОТКРЫТИЯ ПРАЙСА НА 1 ЭКРАНЕ */
-        .open-price-trigger {
-            margin-top: 25px; padding: 12px 30px; background: transparent; border: 1px solid rgba(255,255,255,0.2);
-            color: #a1a1aa; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; border-radius: 8px;
-            cursor: pointer; transition: all 0.3s;
-        }
-        .open-price-trigger:hover { border-color: #facc15; color: #fff; }
-
-        /* СЕКЦИЯ ПРАЙС-ЛИСТА (ПОВЕРХ ВСЕГО ПО КЛИКУ) */
-        .price-overlay {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #090909;
-            z-index: 250; padding: 120px 80px; overflow-y: auto; display: flex; flex-direction: column; align-items: center;
-            opacity: 0; pointer-events: none; transition: opacity 0.5s ease;
-        }
-        .price-overlay.active { opacity: 1; pointer-events: auto; }
-        .price-overlay h2 { font-size: 3rem; font-weight: 900; text-transform: uppercase; margin-bottom: 50px; letter-spacing: 2px; }
-        .price-overlay h2 span { color: #facc15; }
+        .price-section h2 { font-size: 3rem; font-weight: 900; text-transform: uppercase; margin-bottom: 50px; letter-spacing: 2px; }
+        .price-section h2 span { color: #facc15; }
 
         .inventory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; width: 100%; max-width: 1200px; }
         .item-card { background: #131314; border: 1px solid rgba(255,255,255,0.03); border-radius: 16px; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; height: 230px; box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
-        .rarity-mil-spec { border-bottom: 5px solid #3b82f6; } .rarity-classified { border-bottom: 5px solid #d946ef; } .rarity-covert { border-bottom: 5px solid #ef4444; } 
+        
+        .rarity-mil-spec { border-bottom: 5px solid #3b82f6; } 
+        .rarity-classified { border-bottom: 5px solid #d946ef; } 
+        .rarity-covert { border-bottom: 5px solid #ef4444; } 
+
         .item-card .item-title { font-size: 1.1rem; font-weight: 800; text-transform: uppercase; color: #fff; line-height: 1.4; }
         .item-card .item-type { font-size: 0.8rem; color: #71717a; text-transform: uppercase; margin-top: 5px; letter-spacing: 0.5px; }
-        .price-wrapper { display: flex; align-items: center; justify-content: flex-end; margin-top: auto; gap: 10px; }
         
-        /* Светимость смайликов под редкость карты */
+        .price-wrapper { display: flex; align-items: center; justify-content: flex-end; margin-top: auto; gap: 10px; }
         .price-wrapper .item-emoji { font-size: 1.6rem; }
+        
         .rarity-mil-spec .item-emoji { filter: saturate(1.6) drop-shadow(0 0 8px #3b82f6); }
         .rarity-classified .item-emoji { filter: saturate(1.6) drop-shadow(0 0 8px #d946ef); }
         .rarity-covert .item-emoji { filter: saturate(1.6) drop-shadow(0 0 10px #ef4444); }
         .item-card .item-price { font-size: 1.4rem; font-weight: 900; color: #facc15; }
-        
-        .close-price-btn { position: absolute; top: 40px; right: 60px; padding: 12px 30px; background: #111; border: 1px solid #71717a; color: #fff; font-weight: bold; text-transform: uppercase; border-radius: 8px; cursor: pointer; }
-        .close-price-btn:hover { border-color: #fff; }
     </style>
 </head>
 <body>
@@ -204,7 +183,7 @@
         <div class="city-select-btn" id="cityBtn">Купино</div>
     </header>
 
-    <!-- Выбор города -->
+    <!-- Окно выбора города -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-card">
             <div class="close-modal" id="closeModal">✕</div>
@@ -216,7 +195,7 @@
         </div>
     </div>
 
-    <!-- Главный 1 экран -->
+    <!-- Страница 1 (Ремонт) -->
     <section class="screen-one">
         <div class="panel" id="left-card">
             <div class="hardware-icon">📉</div>
@@ -233,8 +212,7 @@
                 <div class="pointer-axis" id="arrow-axis"><div class="radar-pointer" id="pointer"></div></div>
                 <div class="radar-box" id="main-radar"><button class="btn-repair" id="launch-btn">РЕМОНТ</button></div>
             </div>
-            <div class="click-prompt" id="prompt-txt">жми жми</div>
-            <button class="open-price-trigger" id="openPriceBtn">Посмотреть прайс</button>
+            <div class="click-prompt">жми жми</div>
         </div>
 
         <div class="panel" id="right-card">
@@ -244,8 +222,8 @@
         </div>
     </section>
 
-    <!-- Полноэкранный вылет 2 листа без ручного скролла -->
-    <div class="fullscreen-overlay" id="scroll-zone">
+    <!-- Страница 2 (Стены, которые вылетают при скролле) -->
+    <section class="scroll-section" id="scroll-zone">
         <div class="stack-block block-left" id="slide-left">
             <h2>Любая сложность</h2>
             <p>Мы работаем абсолютно со всеми видами сложностей. От быстрой замены разбитого экрана до полной подетальной пересборки твоего телефона или ПК.</p>
@@ -256,12 +234,10 @@
             <p>Мы находимся в городе Купино. Работаем в максимально удобном для тебя формате: на дому или оперативно приедем по вызову в любую точку.</p>
             <a href="https://vk.com" target="_blank" class="link-btn vk-color">Связаться в VK</a>
         </div>
-        <button class="back-to-repair-btn" id="backBtn">Вернуться к ремонту</button>
-    </div>
+    </section>
 
-    <!-- Полноэкранный Прайс-лист -->
-    <div class="price-overlay" id="priceOverlay">
-        <button class="close-price-btn" id="closePriceBtn">Назад</button>
+    <!-- Страница 3 (Инвентарь цен) -->
+    <section class="price-section">
         <h2>Наш <span>Инвентарь</span> Услуг</h2>
         <div class="inventory-grid">
             <div class="item-card rarity-mil-spec"><div class="item-title">Замена разъема зарядки</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔌</span><div class="item-price">от 1 800 ₽</div></div></div>
@@ -273,9 +249,9 @@
             <div class="item-card rarity-covert"><div class="item-title">Чистка после воды</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">💧</span><div class="item-price">от 2 500 ₽</div></div></div>
             <div class="item-card rarity-covert"><div class="item-title">Разблокировка устройства</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">🔓</span><div class="item-price">от 3 000 ₽</div></div></div>
         </div>
-    </div>
+    </section>
     <script>
-        // ИНТЕРАКТИВ ПОПАПА ГОРОДА
+        // ПОПАП ГОРОДА
         const cityBtn = document.getElementById('cityBtn');
         const modal = document.getElementById('modalOverlay');
         const closeModal = document.getElementById('closeModal');
@@ -283,14 +259,7 @@
         closeModal.addEventListener('click', () => modal.classList.remove('active'));
         modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('active'); });
 
-        // ИНТЕРАКТИВ ПРАЙСА
-        const openPriceBtn = document.getElementById('openPriceBtn');
-        const priceOverlay = document.getElementById('priceOverlay');
-        const closePriceBtn = document.getElementById('closePriceBtn');
-        openPriceBtn.addEventListener('click', () => priceOverlay.classList.add('active'));
-        closePriceBtn.addEventListener('click', () => priceOverlay.classList.remove('active'));
-
-        // ПОДКЛЮЧЕНИЕ ЗВУКОВ РЕАЛЬНОЙ ИГРОВОЙ ТРЕЩОТКИ
+        // ЗВУКИ
         const spinAudio = new Audio('https://mixkit.co'); 
         const winAudio = new Audio('https://mixkit.co');   
         spinAudio.volume = 0.4; winAudio.volume = 0.5;
@@ -309,17 +278,13 @@
             run();
         }
 
-        // ЛОГИКА АНИМАЦИИ РЕМОНТА И ВЫЛЕТА СТЕН
+        // КНОПКА РЕМОНТ
         const btn = document.getElementById('launch-btn');
         const axis = document.getElementById('arrow-axis');
         const radar = document.getElementById('main-radar');
         const pointer = document.getElementById('pointer');
         const rightCard = document.getElementById('right-card');
         const rightIcon = document.getElementById('right-icon');
-        const scrollZone = document.getElementById('scroll-zone');
-        const slideLeft = document.getElementById('slide-left');
-        const slideRight = document.getElementById('slide-right');
-        const backBtn = document.getElementById('backBtn');
 
         btn.addEventListener('click', () => {
             btn.disabled = true;
@@ -338,39 +303,27 @@
                 rightCard.style.borderColor = '#facc15';
                 rightCard.style.boxShadow = '0 0 50px rgba(250, 204, 21, 0.4), 0 40px 80px rgba(0,0,0,0.7)';
                 rightIcon.style.filter = 'drop-shadow(0 0 25px rgba(250, 204, 21, 0.8))';
-
-                // Вылет стен на весь экран
-                setTimeout(() => {
-                    scrollZone.classList.add('active');
-                    slideLeft.classList.add('active');
-                    slideRight.classList.add('active');
-                }, 700);
             }, 2200);
         });
 
-        // Функция возврата назад к ремонту
-        backBtn.addEventListener('click', () => {
-            slideLeft.classList.remove('active');
-            slideRight.classList.remove('active');
-            scrollZone.classList.remove('active');
+        // АВТОМАТИЧЕСКИЙ ВЫЛЕТ СТЕН ПРИ СКРОЛЛЕ
+        const slideLeft = document.getElementById('slide-left');
+        const slideRight = document.getElementById('slide-right');
+        const scrollZone = document.getElementById('scroll-zone');
 
-            setTimeout(() => {
-                btn.disabled = false;
-                btn.innerText = 'РЕМОНТ';
-                btn.style.color = '#fff';
-                btn.style.textShadow = 'none';
-                axis.style.transition = 'none';
-                axis.style.transform = 'rotate(0deg)';
-                setTimeout(() => { axis.style.transition = 'transform 2.2s cubic-bezier(0.25, 1, 0.5, 1)'; }, 50);
-                
-                radar.style.borderColor = 'rgba(250, 204, 21, 0.3)';
-                radar.style.boxShadow = '0 0 50px rgba(250, 204, 21, 0.15), inset 0 0 25px rgba(0, 0, 0, 0.8)';
-                pointer.style.borderTopColor = '#facc15';
-                pointer.style.filter = 'drop-shadow(0 0 10px #facc15)';
-                rightCard.style.borderColor = 'rgba(250, 204, 21, 0.1)';
-                rightCard.style.boxShadow = '0 40px 80px rgba(0,0,0,0.7)';
-                rightIcon.style.filter = 'drop-shadow(0 0 25px rgba(250, 204, 21, 0.25))';
-            }, 900);
+        window.addEventListener('scroll', () => {
+            // Получаем координаты второго экрана относительно окна
+            const rect = scrollZone.getBoundingClientRect();
+            
+            // Если мы прокрутили сайт до начала второго экрана
+            if (rect.top <= window.innerHeight * 0.7) {
+                slideLeft.classList.add('active');
+                slideRight.classList.add('active');
+            } else {
+                // Если крутим обратно наверх — стены разъезжаются назад!
+                slideLeft.classList.remove('active');
+                slideRight.classList.remove('active');
+            }
         });
     </script>
 </body>
