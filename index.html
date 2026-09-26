@@ -11,7 +11,6 @@
             color: #fff;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             overflow-x: hidden;
-            background-attachment: fixed;
         }
 
         /* Шапка */
@@ -34,7 +33,7 @@
         }
         .logo span { color: #facc15; transition: color 0.5s; }
 
-        /* Первый экран (Интерактивная зона ремонта) */
+        /* Первый экран */
         .screen-one {
             width: 100vw;
             height: 100vh;
@@ -58,14 +57,14 @@
             justify-content: center;
             padding: 40px 30px;
             box-shadow: 0 40px 80px rgba(0,0,0,0.7);
-            transition: border-color 0.6s, box-shadow 0.6s;
+            transition: all 0.6s ease;
         }
 
         .hardware-icon {
             font-size: 4.5rem;
             margin-bottom: 25px;
             filter: drop-shadow(0 0 25px rgba(250, 204, 21, 0.25));
-            transition: filter 0.6s;
+            transition: all 0.6s ease;
         }
 
         .panel h3 { font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; font-weight: 800; }
@@ -95,7 +94,7 @@
             justify-content: center;
             box-shadow: 0 0 60px rgba(250, 204, 21, 0.1);
             position: relative;
-            transition: border-color 0.6s, box-shadow 0.6s, background 0.6s;
+            transition: all 0.6s ease;
         }
 
         .btn-repair {
@@ -117,47 +116,60 @@
             transform: scale(1.02);
         }
 
-        /* ВТОРОЙ ЭКРАН (Скролл-зона для стакающихся окон) */
+        /* Второй экран - стакающиеся блоки */
         .scroll-section {
             width: 100vw;
-            height: 120vh;
-            position: relative;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            visibility: hidden;
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* Общий контейнер, где склеятся окна */
+        .scroll-section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .stack-container {
             display: flex;
-            width: 70vw;
+            width: 75vw;
             height: 55vh;
             border-radius: 32px;
             overflow: hidden;
             box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+            border: 1px solid rgba(250, 204, 21, 0.1);
         }
 
         .stack-block {
             width: 50%;
             height: 100%;
-            padding: 50px;
+            padding: 60px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            will-change: transform;
+            opacity: 0;
+            transition: all 1s ease;
         }
 
-        /* Разные цвета отделов */
+        .stack-block.fly-in {
+            opacity: 1;
+            transform: translateX(0) !important;
+        }
+
         .block-left {
-            background: #161615;
-            border-right: 1px solid rgba(250, 204, 21, 0.1);
+            background: #141413;
+            border-right: 1px solid rgba(250, 204, 21, 0.05);
+            transform: translateX(-100px);
         }
         .block-right {
-            background: #201d12;
+            background: #1c1a14;
+            transform: translateX(100px);
         }
 
-        .stack-block h2 { font-size: 2rem; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; color: #facc15; }
+        .stack-block h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; color: #facc15; }
         .stack-block p { font-size: 1.2rem; color: #e4e4e7; line-height: 1.7; }
     </style>
 </head>
@@ -205,61 +217,60 @@
         </div>
     </section>
 
-    <!-- Подключаем библиотеки GSAP -->
-    <script src="https://cloudflare.com"></script>
+    <!-- Подключаем чистый GSAP (без забагованных скролл-плагинов) -->
     <script src="https://cloudflare.com"></script>
     <script>
-        gsap.registerPlugin(ScrollTrigger);
-
         const btn = document.getElementById('launch-btn');
         const radar = document.getElementById('main-radar');
         const rightCard = document.getElementById('right-card');
         const rightIcon = document.getElementById('right-icon');
-
-        // Блокируем скролл принудительно при старте
-        window.scrollTo(0, 0);
-        document.body.style.overflow = 'hidden';
+        const scrollZone = document.getElementById('scroll-zone');
+        const slideLeft = document.getElementById('slide-left');
+        const slideRight = document.getElementById('slide-right');
 
         btn.addEventListener('click', () => {
+            // Кнопка точно сработает и отключится, чтобы не спамили
             btn.disabled = true;
 
-            // Анимация бешеного вращения радара
+            // Крутим радар чисто через GSAP
             gsap.to(radar, {
                 rotation: 1440,
-                duration: 2.5,
+                duration: 2.2,
                 ease: "power4.inOut",
                 onComplete: () => {
-                    // Переход в зеленый статус
+                    // Эффект «УДАЧНО» и зеленый неон
                     radar.style.background = 'padding-box, conic-gradient(#22c55e 0% 100%)';
-                    radar.style.borderColor = 'rgba(34, 197, 94, 0.4)';
-                    radar.style.boxShadow = '0 0 60px rgba(34, 197, 94, 0.3)';
+                    radar.style.borderColor = 'rgba(34, 197, 94, 0.5)';
+                    radar.style.boxShadow = '0 0 60px rgba(34, 197, 94, 0.4)';
                     
                     btn.style.color = '#22c55e';
                     btn.innerText = 'УДАЧНО';
 
                     rightCard.style.borderColor = 'rgba(34, 197, 94, 0.4)';
-                    rightCard.style.boxShadow = '0 0 50px rgba(34, 197, 94, 0.15), 0 40px 80px rgba(0,0,0,0.7)';
+                    rightCard.style.boxShadow = '0 0 50px rgba(34, 197, 94, 0.2)';
                     rightIcon.style.filter = 'drop-shadow(0 0 25px rgba(34, 197, 94, 0.6))';
                     document.querySelector('.logo span').style.color = '#22c55e';
 
-                    // Разрешаем скролл и делаем видимой вторую секцию
-                    document.body.style.overflow = 'auto';
-                    document.getElementById('scroll-zone').style.visibility = 'visible';
+                    // Через секунду после успеха мягко выкатываем второй экран снизу
+                    setTimeout(() => {
+                        scrollZone.classList.add('show');
+                        
+                        // Плавный скролл всей страницы вниз к инфе
+                        window.scrollTo({
+                            top: window.innerHeight,
+                            behavior: 'smooth'
+                        });
+
+                        // Еще через полсекунды окна слева и справа стакаются в центр
+                        setTimeout(() => {
+                            slideLeft.classList.add('fly-in');
+                            slideRight.classList.add('fly-in');
+                        }, 400);
+
+                    }, 600);
                 }
             });
         });
-
-        // Скролл-анимация: окна вылетают по бокам и стакаются в один блок
-        gsap.timeline({
-            scrollTrigger: {
-                trigger: "#scroll-zone",
-                start: "top bottom",
-                end: "center center",
-                scrub: 1
-            }
-        })
-        .from("#slide-left", { x: "-100%", opacity: 0, ease: "power2.out" }, 0)
-        .from("#slide-right", { x: "100%", opacity: 0, ease: "power2.out" }, 0);
     </script>
 </body>
 </html>
