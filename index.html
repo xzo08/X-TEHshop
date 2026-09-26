@@ -154,6 +154,8 @@
         .item-card .item-title { font-size: 1.1rem; font-weight: 800; text-transform: uppercase; color: #fff; line-height: 1.4; }
         .item-card .item-type { font-size: 0.8rem; color: #71717a; text-transform: uppercase; margin-top: 5px; letter-spacing: 0.5px; }
         
+        .item-card .item-subtitle-small { font-size: 0.75rem; color: #a1a1aa; text-transform: none; margin-top: 3px; font-weight: normal; }
+
         .price-wrapper { display: flex; align-items: center; justify-content: flex-end; margin-top: auto; gap: 10px; }
         .price-wrapper .item-emoji { font-size: 1.6rem; }
         
@@ -236,7 +238,7 @@
         </div>
 
         <div class="panel" id="right-card">
-            <div class="hardware-icon" id="right-icon">⚡</div>
+            <div class="hardware-icon">⚡</div>
             <h3>Заряженный монстр</h3>
             <p>Стабильный FPS, идеальный отклик, чистая система без мусора и кастомный апгрейд лично под твои задачи.</p>
         </div>
@@ -254,33 +256,43 @@
         </div>
     </section>
 
-    <!-- Раздел 3 (Обновлённый прайс-инвентарь с твоими ценами) -->
+    <!-- Раздел 3 (Прайс-инвентарь) -->
     <section class="price-section">
         <h2>Наш <span>Инвентарь</span> Услуг</h2>
         <div class="inventory-grid">
-            <div class="item-card rarity-mil-spec"><div class="item-title">Замена разъема зарядки</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔌</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card rarity-mil-spec"><div class="item-title">Замена динамика</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔊</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card rarity-mil-spec"><div class="item-title">Замена микрофона</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🎙️</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card rarity-mil-spec"><div class="item-title">Замена стекла камеры</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">💎</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card rarity-mil-spec"><div class="item-title">Замена передней камеры</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">📸</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card rarity-mil-spec"><div class="item-title">Замена кнопок громкости</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔉</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card rarity-mil-spec"><div class="item-title">Замена кнопки включения</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔘</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card rarity-mil-spec"><div class="item-title">Замена кнопки вибро</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔕</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card rarity-mil-spec"><div class="item-title">Замена вибромотора</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">📳</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card rarity-mil-spec"><div class="item-title">Сброс экранного пароля</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔓</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card rarity-mil-spec"><div class="item-title">Замена разъема зарядки</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔌</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card rarity-mil-spec"><div class="item-title">Замена динамика</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔊</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card rarity-mil-spec"><div class="item-title">Замена микрофона</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🎙️</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card rarity-mil-spec"><div class="item-title">Замена стекла камеры</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">💎</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card rarity-mil-spec"><div class="item-title">Замена передней камеры</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">📸</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card rarity-mil-spec"><div class="item-title">Замена кнопок громкости</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔉</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card rarity-mil-spec"><div class="item-title">Замена кноп. включения</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔘</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card rarity-mil-spec"><div class="item-title">Замена кнопки вибро</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔕</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card rarity-mil-spec"><div class="item-title">Замена вибромотора</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">📳</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card rarity-mil-spec"><div class="item-title">Сброс экранного пароля</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔓</span><div class="item-price">1 000 ₽</div></div></div>
             <div class="item-card rarity-classified"><div class="item-title">Замена аккумулятора</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">🔋</span><div class="item-price">1 100 ₽</div></div></div>
+            
+            <div class="item-card rarity-classified">
+                <div>
+                    <div class="item-title">Обновление ПО и сброс</div>
+                    <div class="item-subtitle-small">с учетом айклауда</div>
+                </div>
+                <div class="item-type">Засекреченное</div>
+                <div class="price-wrapper"><span class="item-emoji">📲</span><div class="item-price">1 200 ₽</div></div>
+            </div>
+            
             <div class="item-card rarity-classified"><div class="item-title">Замена задней крышки</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">📱</span><div class="item-price">1 500 ₽</div></div></div>
             <div class="item-card rarity-classified"><div class="item-title">Замена задней камеры</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">📷</span><div class="item-price">1 500 ₽</div></div></div>
             <div class="item-card rarity-covert"><div class="item-title">Замена экрана</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">🖥️</span><div class="item-price">2 000 ₽</div></div></div>
             <div class="item-card rarity-covert"><div class="item-title">Замена корпуса</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">🧰</span><div class="item-price">2 500 ₽</div></div></div>
         </div>
     </section>
-    <!-- Раздел 4 (Интерактивный FAQ) -->
+    <!-- Раздел 4 (Интерактивный FAQ со строго исправленным текстом) -->
     <section class="faq-section">
         <h2>Вопросы и <span>Ответы</span></h2>
         <div class="chat-container">
             <div class="chat-msg msg-client">А если вы приедете делать ремонт на дому в Купино, это платно?</div>
-            <div class="chat-msg msg-master">По всему городу Купино выезд нашего мастера абсолютно бесплатный. Вы оплачиваете строго только стоимость самого ремонта или заменяемых запчастей.</div>
+            <div class="chat-msg msg-master">По всему городу Купино наш выезд абсолютно бесплатный. Вы оплачиваете строго только стоимость самого ремонта и заменяемых запчастей.</div>
             
             <div class="chat-msg msg-client">Сколько обычно по времени занимает замена экрана на телефоне?</div>
             <div class="chat-msg msg-master">Большинство модульных ремонтов (экраны, аккумуляторы, шлейфы) мы делаем в течение 30-60 минут прямо при вас. Успеете только кофе выпить!</div>
@@ -328,7 +340,6 @@
 
             const randomYellowDegrees = Math.floor(Math.random() * 270);
             const totalDegrees = 1440 + randomYellowDegrees;
-            
             axis.style.transform = `rotate(${totalDegrees}deg)`;
 
             setTimeout(() => {
