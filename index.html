@@ -143,27 +143,71 @@
         .intro-text h1 { font-size: 2.8rem; font-weight: 900; line-height: 1.2; margin-bottom: 15px; text-transform: uppercase; }
         .intro-text p { color: #d4d4d8; font-size: 1.1rem; line-height: 1.6; }
 
-        .radar-wrapper { position: relative; width: 260px; height: 260px; display: flex; align-items: center; justify-content: center; }
-        
-        .pointer-axis { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 20; pointer-events: none; display: flex; justify-content: center; }
-        .radar-pointer { position: absolute; top: -12px; width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-top: 24px solid #facc15; filter: drop-shadow(0 0 10px #facc15); }
+        /* Исправленный контейнер для радара */
+        .radar-wrapper {
+            position: relative;
+            width: 260px;
+            height: 260px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-        .radar-spin { animation: spinArrow 2.2s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
-        @keyframes spinArrow { 0% { transform: rotate(0deg); } 100% { transform: rotate(1440deg); } }
+        /* Ось, которая крутит стрелку */
+        .pointer-axis {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0; left: 0;
+            z-index: 20;
+            pointer-events: none;
+            display: flex;
+            justify-content: center;
+            transition: transform 2.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .radar-pointer {
+            position: absolute;
+            top: -12px;
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-top: 24px solid #facc15;
+            filter: drop-shadow(0 0 10px #facc15);
+        }
 
         .radar-box {
-            width: 250px; height: 250px; border-radius: 50%;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
             background: padding-box, conic-gradient(#facc15 0% 75%, #1c1913 75% 100%);
             border: 4px solid rgba(250, 204, 21, 0.3);
-            display: flex; align-items: center; justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             box-shadow: 0 0 50px rgba(250, 204, 21, 0.15), inset 0 0 25px rgba(0, 0, 0, 0.8);
-            position: relative; transition: all 0.6s ease;
+            position: relative;
+            transition: all 0.6s ease;
         }
 
         .btn-repair {
-            width: 190px; height: 190px; border-radius: 50%; background: #111110; border: 2px solid rgba(255, 255, 255, 0.03);
-            color: #fff; font-size: 1.4rem; font-weight: 900; letter-spacing: 3px; cursor: pointer;
-            display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; z-index: 5;
+            width: 190px;
+            height: 190px;
+            border-radius: 50%;
+            background: #111110;
+            border: 2px solid rgba(255, 255, 255, 0.03);
+            color: #fff;
+            font-size: 1.4rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 10px 30px rgba(0,0,0,0.6);
+            z-index: 5;
         }
         .btn-repair:hover:not(:disabled) { color: #facc15; box-shadow: inset 0 0 35px rgba(250, 204, 21, 0.2); }
         /* ВТОРОЙ ЛИСТ НА ВЕСЬ ЭКРАН */
@@ -183,7 +227,6 @@
         .stack-block h2 { font-size: 3.5rem; font-weight: 900; margin-bottom: 25px; text-transform: uppercase; color: #facc15; }
         .stack-block p { font-size: 1.3rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 35px; }
 
-        /* Кнопки связи */
         .link-btn {
             display: inline-block; align-self: flex-start; padding: 16px 35px; border-radius: 12px;
             font-size: 1.1rem; font-weight: 800; text-transform: uppercase; text-decoration: none;
@@ -203,21 +246,17 @@
         .price-section h2 { font-size: 3rem; font-weight: 900; text-transform: uppercase; margin-bottom: 50px; letter-spacing: 2px; }
         .price-section h2 span { color: #facc15; }
 
-        .inventory-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; width: 100%; max-width: 1200px;
-        }
+        .inventory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; width: 100%; max-width: 1200px; }
 
-        /* Карточка скина/услуги */
         .item-card {
             background: #131314; border: 1px solid rgba(255,255,255,0.03); border-radius: 16px;
             padding: 25px; display: flex; flex-direction: column; justify-content: space-between;
             position: relative; overflow: hidden; height: 230px; box-shadow: 0 15px 30px rgba(0,0,0,0.5);
         }
 
-        /* Цвета редкости (неоновая полоска внизу и свечение) */
-        .rarity-mil-spec { border-bottom: 5px solid #3b82f6; box-shadow: inset 0 -20px 30px rgba(59, 130, 246, 0.05); } /* Синий - Армейское */
-        .rarity-classified { border-bottom: 5px solid #d946ef; box-shadow: inset 0 -20px 30px rgba(217, 70, 239, 0.05); } /* Розовый - Засекреченное */
-        .rarity-covert { border-bottom: 5px solid #ef4444; box-shadow: inset 0 -20px 30px rgba(239, 68, 68, 0.05); } /* Красный - Тайное */
+        .rarity-mil-spec { border-bottom: 5px solid #3b82f6; box-shadow: inset 0 -20px 30px rgba(59, 130, 246, 0.05); } 
+        .rarity-classified { border-bottom: 5px solid #d946ef; box-shadow: inset 0 -20px 30px rgba(217, 70, 239, 0.05); } 
+        .rarity-covert { border-bottom: 5px solid #ef4444; box-shadow: inset 0 -20px 30px rgba(239, 68, 68, 0.05); } 
 
         .item-card .item-title { font-size: 1.1rem; font-weight: 800; text-transform: uppercase; color: #fff; line-height: 1.4; }
         .item-card .item-type { font-size: 0.8rem; color: #71717a; text-transform: uppercase; margin-top: 5px; letter-spacing: 0.5px; }
@@ -231,7 +270,6 @@
         <div class="city-select-btn" id="cityBtn">Купино</div>
     </header>
 
-    <!-- Попап выбора города -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-card">
             <div class="close-modal" id="closeModal">✕</div>
@@ -243,14 +281,12 @@
         </div>
     </div>
 
-    <!-- Экран 1 -->
     <section class="screen-one">
         <div class="panel" id="left-card">
             <div class="hardware-icon">📉</div>
             <h3>Твое старое железо</h3>
             <p>Греется, жутко лагает, выдает синий экран или намертво зависает в самый неподходящий момент?</p>
         </div>
-
         <div class="center-area">
             <div class="intro-text">
                 <h1>Мы лучший выбор.</h1>
@@ -268,7 +304,7 @@
             <p>Стабильный FPS, идеальный отклик, чистая система без мусора и кастомный апгрейд лично под твои задачи.</p>
         </div>
     </section>
-    <!-- Экран 2 (Стены) -->
+
     <section class="scroll-section" id="scroll-zone">
         <div class="stack-block block-left" id="slide-left">
             <h2>Любая сложность</h2>
@@ -282,7 +318,6 @@
         </div>
     </section>
 
-    <!-- Экран 3 (Прайс-инвентарь) -->
     <section class="price-section">
         <h2>Наш <span>Инвентарь</span> Услуг</h2>
         <div class="inventory-grid">
@@ -307,60 +342,40 @@
         closeModal.addEventListener('click', () => modal.classList.remove('active'));
         modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('active'); });
 
-        // СИСТЕМА ДИНАМИЧЕСКИХ ЗВУКОВ «ТРЕЩОТКИ» БЕЗ ФАЙЛОВ
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        
-        function playTick(vol = 0.1, freq = 600, duration = 0.03) {
-            if (audioCtx.state === 'suspended') audioCtx.resume();
-            const osc = audioCtx.createOscillator();
-            const gainNode = audioCtx.createGain();
-            osc.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-            osc.type = 'triangle';
-            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-            gainNode.gain.setValueAtTime(vol, audioCtx.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + duration);
-            osc.start();
-            osc.stop(audioCtx.currentTime + duration);
-        }
+        // ПОДКЛЮЧЕНИЕ РЕАЛЬНЫХ ПЛОТНЫХ АУДИОФАЙЛОВ ИГРОВОЙ ТРЕЩОТКИ
+        const spinAudio = new Audio('https://mixkit.co'); // Механические щелчки колеса
+        const winAudio = new Audio('https://mixkit.co');   // Басовый киберпанк взрыв победы
+        spinAudio.volume = 0.4;
+        winAudio.volume = 0.5;
 
-        function playWinBlast() {
-            if (audioCtx.state === 'suspended') audioCtx.resume();
-            const osc = audioCtx.createOscillator();
-            const gainNode = audioCtx.createGain();
-            osc.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(120, audioCtx.currentTime);
-            osc.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + 0.6);
-            gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.6);
-            osc.start();
-            osc.stop(audioCtx.currentTime + 0.6);
-        }
-
-        function triggerTickSequence() {
-            let currentDelay = 30; // Скорость щелчков на старте
+        // Логика зацикливания трещотки с замедлением под анимацию
+        let tickInterval;
+        function startRealTicks() {
+            spinAudio.currentTime = 0;
+            spinAudio.play();
+            
+            let speed = 60; // Начальная частота звука в мс
             let elapsed = 0;
-            const duration = 2200;
 
-            function scheduleNext() {
-                if (elapsed >= duration) return;
-                playTick(0.08, 500 - (elapsed / 6), 0.02);
-                
-                // Прогрессия замедления трещотки к концу колеса
-                let progress = elapsed / duration;
-                if (progress < 0.5) currentDelay = 30;
-                else if (progress < 0.8) currentDelay = 30 + (progress - 0.5) * 400;
-                else currentDelay = 150 + (progress - 0.8) * 1200;
+            function run() {
+                if (elapsed >= 2200) {
+                    clearInterval(tickInterval);
+                    return;
+                }
+                spinAudio.currentTime = 0;
+                spinAudio.play();
 
-                elapsed += currentDelay;
-                setTimeout(scheduleNext, currentDelay);
+                // Постепенное замедление частоты звуков трещотки к финалу
+                if (elapsed > 1200) speed = 140;
+                if (elapsed > 1800) speed = 300;
+
+                elapsed += speed;
+                setTimeout(run, speed);
             }
-            scheduleNext();
+            run();
         }
 
-        // ЛОГИКА КНОПКИ РЕМОНТ
+        // ЛОГИКА АНИМАЦИИ КНОПКИ РЕМОНТ
         const btn = document.getElementById('launch-btn');
         const axis = document.getElementById('arrow-axis');
         const radar = document.getElementById('main-radar');
@@ -372,11 +387,13 @@
 
         btn.addEventListener('click', () => {
             btn.disabled = true;
-            axis.classList.add('arrow-spin');
-            triggerTickSequence(); // Запуск трещотки
+            
+            // Запуск звука и крутилки стрелки через JS (на 1440 градусов)
+            startRealTicks();
+            axis.style.transform = 'rotate(1440deg)';
 
             setTimeout(() => {
-                playWinBlast(); // Звук победы
+                winAudio.play(); // Сочный звук финала
 
                 radar.style.borderColor = '#facc15';
                 radar.style.boxShadow = '0 0 60px rgba(250, 204, 21, 0.6), inset 0 0 25px rgba(0, 0, 0, 0.8)';
@@ -391,7 +408,7 @@
                 rightCard.style.boxShadow = '0 0 50px rgba(250, 204, 21, 0.4), 0 40px 80px rgba(0,0,0,0.7)';
                 rightIcon.style.filter = 'drop-shadow(0 0 25px rgba(250, 204, 21, 0.8))';
 
-                // Скролл вниз к стенам
+                // Скролл ко второму экрану
                 setTimeout(() => {
                     document.getElementById('scroll-zone').scrollIntoView({ behavior: 'smooth' });
                     setTimeout(() => {
