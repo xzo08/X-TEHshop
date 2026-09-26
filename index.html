@@ -144,7 +144,7 @@
         .price-section h2 { font-size: 3rem; font-weight: 900; text-transform: uppercase; margin-bottom: 50px; letter-spacing: 2px; }
         .price-section h2 span { color: #facc15; }
 
-        .inventory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; width: 100%; max-width: 1200px; margin-bottom: 80px; }
+        .inventory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; width: 100%; max-width: 1200px; margin-bottom: 40px; }
         .item-card { background: #131314; border: 1px solid rgba(255,255,255,0.03); border-radius: 16px; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; height: 230px; box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
         
         .rarity-mil-spec { border-bottom: 5px solid #3b82f6; } 
@@ -162,51 +162,39 @@
         .rarity-covert .item-emoji { filter: saturate(1.6) drop-shadow(0 0 10px #ef4444); }
         .item-card .item-price { font-size: 1.4rem; font-weight: 900; color: #facc15; }
 
-        /* ФИНАЛЬНЫЙ ЭКРАН — ПРОФИЛЬ МАСТЕРА (STEAM STYLE) */
-        .profile-section {
-            width: 100vw; height: 100vh; background: #0c0c0d; display: flex; align-items: center; justify-content: center; padding: 0 80px;
+        /* ЧЕТВЕРТЫЙ ЭКРАН — ИНТЕРАКТИВНЫЙ FAQ */
+        .faq-section {
+            width: 100vw; min-height: 100vh; background: #0c0c0d; padding: 120px 80px;
+            display: flex; flex-direction: column; align-items: center;
             border-top: 2px solid rgba(250, 204, 21, 0.05);
         }
 
-        .steam-profile-card {
-            background: rgba(20, 20, 22, 0.7); border: 1px solid rgba(250, 204, 21, 0.15); border-radius: 24px;
-            width: 100%; max-width: 1100px; padding: 50px; display: flex; justify-content: space-between; gap: 40px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+        .chat-container {
+            width: 100%; max-width: 900px; display: flex; flex-direction: column; gap: 25px; margin-top: 30px;
         }
 
-        /* Блок Аватарки */
-        .profile-avatar-block { display: flex; flex-direction: column; align-items: center; width: 250px; text-align: center; }
-        
-        .avatar-border {
-            width: 160px; height: 160px; border-radius: 24px; border: 3px solid #facc15;
-            display: flex; align-items: center; justify-content: center; font-size: 5rem;
-            box-shadow: 0 0 30px rgba(250, 204, 21, 0.3); background: #171719; margin-bottom: 20px;
+        .chat-msg {
+            max-width: 75%; padding: 20px 25px; border-radius: 20px; line-height: 1.6; font-size: 1.1rem;
+            position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.4);
         }
-        
-        .status-online { font-size: 1.1rem; font-weight: 800; color: #facc15; text-shadow: 0 0 10px rgba(250, 204, 21, 0.5); letter-spacing: 1px; }
 
-        /* Блок Информации */
-        .profile-info-block { flex: 1; display: flex; flex-direction: column; justify-content: center; }
-        .profile-name { font-size: 2.5rem; font-weight: 900; text-transform: uppercase; margin-bottom: 10px; }
-        .profile-bio { color: #a1a1aa; font-size: 1.1rem; line-height: 1.7; margin-bottom: 30px; }
-        
-        .profile-stats { display: flex; gap: 40px; }
-        .stat-box { display: flex; flex-direction: column; }
-        .stat-num { font-size: 2rem; font-weight: 900; color: #facc15; }
-        .stat-label { color: #71717a; font-size: 0.9rem; text-transform: uppercase; margin-top: 5px; }
-
-        /* Блок Кнопок Связи */
-        .profile-links-block { display: flex; flex-direction: column; justify-content: center; gap: 20px; width: 300px; }
-        
-        .link-btn {
-            display: flex; align-items: center; justify-content: center; padding: 20px; border-radius: 14px;
-            font-size: 1.1rem; font-weight: 800; text-transform: uppercase; text-decoration: none; letter-spacing: 1px; transition: all 0.3s ease;
+        .msg-client {
+            background: #19191b; border: 1px solid rgba(255,255,255,0.03); align-self: flex-start;
+            border-bottom-left-radius: 4px; color: #e4e4e7;
         }
-        .tg-color { background: #22c55e; color: #000; box-shadow: 0 10px 25px rgba(34, 197, 94, 0.2); }
-        .tg-color:hover { background: #4ade80; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(34, 197, 94, 0.4); }
-        
-        .vk-color { background: #facc15; color: #000; box-shadow: 0 10px 25px rgba(250, 204, 21, 0.2); }
-        .vk-color:hover { background: #fde047; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(250, 204, 21, 0.4); }
+        .msg-client::before {
+            content: 'Пользователь:'; display: block; font-size: 0.85rem; font-weight: bold; color: #71717a;
+            text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px;
+        }
+
+        .msg-master {
+            background: #1c1a14; border: 1px solid rgba(250, 204, 21, 0.2); align-self: flex-end;
+            border-bottom-right-radius: 4px; color: #fff; box-shadow: 0 0 25px rgba(250, 204, 21, 0.03);
+        }
+        .msg-master::before {
+            content: '⚡ X-TEHNIK:'; display: block; font-size: 0.85rem; font-weight: 900; color: #facc15;
+            text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(250, 204, 21, 0.4);
+        }
     </style>
 </head>
 <body>
@@ -266,43 +254,39 @@
         </div>
     </section>
 
-    <!-- Раздел 3 (Прайс) -->
+    <!-- Раздел 3 (Обновлённый прайс-инвентарь с твоими ценами) -->
     <section class="price-section">
         <h2>Наш <span>Инвентарь</span> Услуг</h2>
         <div class="inventory-grid">
-            <div class="item-card rarity-mil-spec"><div class="item-title">Замена разъема зарядки</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔌</span><div class="item-price">от 1 800 ₽</div></div></div>
-            <div class="item-card rarity-mil-spec"><div class="item-title">Замена динамика</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔊</span><div class="item-price">от 1 800 ₽</div></div></div>
-            <div class="item-card rarity-classified"><div class="item-title">Замена дисплея</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">📱</span><div class="item-price">от 2 000 ₽</div></div></div>
-            <div class="item-card rarity-classified"><div class="item-title">Замена аккумулятора</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">🔋</span><div class="item-price">от 2 000 ₽</div></div></div>
-            <div class="item-card rarity-classified"><div class="item-title">Замена микрофона</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">🎙️</span><div class="item-price">от 2 000 ₽</div></div></div>
-            <div class="item-card rarity-classified"><div class="item-title">Восстановление ПО</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">📲</span><div class="item-price">от 2 000 ₽</div></div></div>
-            <div class="item-card rarity-covert"><div class="item-title">Чистка после воды</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">💧</span><div class="item-price">от 2 500 ₽</div></div></div>
-            <div class="item-card rarity-covert"><div class="item-title">Разблокировка устройства</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">🔓</span><div class="item-price">от 3 000 ₽</div></div></div>
+            <div class="item-card rarity-mil-spec"><div class="item-title">Замена разъема зарядки</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔌</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card rarity-mil-spec"><div class="item-title">Замена динамика</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔊</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card rarity-mil-spec"><div class="item-title">Замена микрофона</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🎙️</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card rarity-mil-spec"><div class="item-title">Замена стекла камеры</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">💎</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card rarity-mil-spec"><div class="item-title">Замена передней камеры</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">📸</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card rarity-mil-spec"><div class="item-title">Замена кнопок громкости</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔉</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card rarity-mil-spec"><div class="item-title">Замена кнопки включения</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔘</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card rarity-mil-spec"><div class="item-title">Замена кнопки вибро</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔕</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card rarity-mil-spec"><div class="item-title">Замена вибромотора</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">📳</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card rarity-mil-spec"><div class="item-title">Сброс экранного пароля</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔓</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card rarity-classified"><div class="item-title">Замена аккумулятора</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">🔋</span><div class="item-price">1 100 ₽</div></div></div>
+            <div class="item-card rarity-classified"><div class="item-title">Замена задней крышки</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">📱</span><div class="item-price">1 500 ₽</div></div></div>
+            <div class="item-card rarity-classified"><div class="item-title">Замена задней камеры</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">📷</span><div class="item-price">1 500 ₽</div></div></div>
+            <div class="item-card rarity-covert"><div class="item-title">Замена экрана</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">🖥️</span><div class="item-price">2 000 ₽</div></div></div>
+            <div class="item-card rarity-covert"><div class="item-title">Замена корпуса</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">🧰</span><div class="item-price">2 500 ₽</div></div></div>
+        </div>
+    </section>
+    <!-- Раздел 4 (Интерактивный FAQ) -->
+    <section class="faq-section">
+        <h2>Вопросы и <span>Ответы</span></h2>
+        <div class="chat-container">
+            <div class="chat-msg msg-client">А если вы приедете делать ремонт на дому в Купино, это платно?</div>
+            <div class="chat-msg msg-master">По всему городу Купино выезд нашего мастера абсолютно бесплатный. Вы оплачиваете строго только стоимость самого ремонта или заменяемых запчастей.</div>
+            
+            <div class="chat-msg msg-client">Сколько обычно по времени занимает замена экрана на телефоне?</div>
+            <div class="chat-msg msg-master">Большинство модульных ремонтов (экраны, аккумуляторы, шлейфы) мы делаем в течение 30-60 минут прямо при вас. Успеете только кофе выпить!</div>
         </div>
     </section>
 
-    <!-- Раздел 4 (Финальный Профиль Мастера) -->
-    <section class="price-section" style="background:#0c0c0d; min-height:80vh; padding-top:40px;">
-        <h2>Профиль <span>Мастера</span></h2>
-        <div class="steam-profile-card">
-            <div class="profile-avatar-block">
-                <div class="avatar-border">⚡</div>
-                <div class="status-online">● В СЕТИ</div>
-            </div>
-            <div class="profile-info-block">
-                <div class="profile-name">X-Tehnik Service</div>
-                <p class="profile-bio">Элитный ремонтный отряд из города Купино. Воскрешаем девайсы любой сложности, собираем лютые игровые сетапы и наводим идеальный порядок в софте. Твоё железо в надёжных руках.</p>
-                <div class="profile-stats">
-                    <div class="stat-box"><span class="stat-num">999+</span><span class="stat-label">Живых ПК</span></div>
-                    <div class="stat-box"><span class="stat-num">100 lvl</span><span class="stat-label">Прокачки железа</span></div>
-                </div>
-            </div>
-            <div class="profile-links-block">
-                <a href="https://t.me" target="_blank" class="link-btn tg-color">Написать в Telegram</a>
-                <a href="https://vk.com" target="_blank" class="link-btn vk-color">Связаться в VK</a>
-            </div>
-        </div>
-    </section>
     <script>
         // ПОПАП ГОРОДА
         const cityBtn = document.getElementById('cityBtn');
@@ -380,7 +364,7 @@
             }, 2200);
         });
 
-        // АВТОМАТИЧЕСКИЙ ВЫЛЕТ СТЕН
+        // АВТОМАТИЧЕСКИЙ ВЫЛЕТ СТЕН ПРИ СКРОЛЛЕ
         const slideLeft = document.getElementById('slide-left');
         const slideRight = document.getElementById('slide-right');
         const scrollZone = document.getElementById('scroll-zone');
