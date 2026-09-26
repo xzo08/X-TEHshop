@@ -85,7 +85,17 @@
             box-shadow: 0 40px 80px rgba(0,0,0,0.7); transition: all 0.6s ease;
         }
 
-        .hardware-icon { font-size: 4.5rem; margin-bottom: 25px; filter: drop-shadow(0 0 25px rgba(250, 204, 21, 0.25)); transition: all 0.6s ease; }
+        /* Новые стили для неоновых картинок железа */
+        .hardware-img {
+            width: 140px;
+            height: 140px;
+            object-fit: contain;
+            margin-bottom: 25px;
+            transition: all 0.6s ease;
+        }
+        .left-glow { filter: drop-shadow(0 0 20px rgba(239, 68, 68, 0.4)); }
+        .right-glow { filter: drop-shadow(0 0 25px rgba(250, 204, 21, 0.35)); }
+
         .panel h3 { font-size: 1.3rem; text-transform: uppercase; margin-bottom: 15px; font-weight: 800; }
         .panel p { color: #a1a1aa; text-align: center; font-size: 1rem; line-height: 1.6; }
 
@@ -136,6 +146,14 @@
         .stack-block h2 { font-size: 3.5rem; font-weight: 900; margin-bottom: 25px; text-transform: uppercase; color: #facc15; }
         .stack-block p { font-size: 1.3rem; color: #e4e4e7; line-height: 1.8; }
 
+        .link-btn {
+            display: inline-block; align-self: flex-start; padding: 18px 45px; border-radius: 14px;
+            font-size: 1.2rem; font-weight: 900; text-transform: uppercase; text-decoration: none;
+            letter-spacing: 1px; transition: all 0.3s ease; margin-top: 30px;
+            background: #facc15; color: #000; box-shadow: 0 10px 25px rgba(250, 204, 21, 0.3);
+        }
+        .link-btn:hover { background: #fde047; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(250, 204, 21, 0.5); }
+
         /* ТРЕТИЙ ЭКРАН — ПРАЙС-ЛИСТ */
         .price-section {
             width: 100vw; min-height: 100vh; padding: 120px 80px; background: #090909;
@@ -153,7 +171,6 @@
 
         .item-card .item-title { font-size: 1.1rem; font-weight: 800; text-transform: uppercase; color: #fff; line-height: 1.4; }
         .item-card .item-type { font-size: 0.8rem; color: #71717a; text-transform: uppercase; margin-top: 5px; letter-spacing: 0.5px; }
-        
         .item-card .item-subtitle-small { font-size: 0.75rem; color: #a1a1aa; text-transform: none; margin-top: 3px; font-weight: normal; }
 
         .price-wrapper { display: flex; align-items: center; justify-content: flex-end; margin-top: auto; gap: 10px; }
@@ -171,32 +188,12 @@
             border-top: 2px solid rgba(250, 204, 21, 0.05);
         }
 
-        .chat-container {
-            width: 100%; max-width: 900px; display: flex; flex-direction: column; gap: 25px; margin-top: 30px;
-        }
-
-        .chat-msg {
-            max-width: 75%; padding: 20px 25px; border-radius: 20px; line-height: 1.6; font-size: 1.1rem;
-            position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-        }
-
-        .msg-client {
-            background: #19191b; border: 1px solid rgba(255,255,255,0.03); align-self: flex-start;
-            border-bottom-left-radius: 4px; color: #e4e4e7;
-        }
-        .msg-client::before {
-            content: 'Пользователь:'; display: block; font-size: 0.85rem; font-weight: bold; color: #71717a;
-            text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px;
-        }
-
-        .msg-master {
-            background: #1c1a14; border: 1px solid rgba(250, 204, 21, 0.2); align-self: flex-end;
-            border-bottom-right-radius: 4px; color: #fff; box-shadow: 0 0 25px rgba(250, 204, 21, 0.03);
-        }
-        .msg-master::before {
-            content: '⚡ X-TEHNIK:'; display: block; font-size: 0.85rem; font-weight: 900; color: #facc15;
-            text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(250, 204, 21, 0.4);
-        }
+        .chat-container { width: 100%; max-width: 900px; display: flex; flex-direction: column; gap: 25px; margin-top: 30px; }
+        .chat-msg { max-width: 75%; padding: 20px 25px; border-radius: 20px; line-height: 1.6; font-size: 1.1rem; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.4); }
+        .msg-client { background: #19191b; border: 1px solid rgba(255,255,255,0.03); align-self: flex-start; border-bottom-left-radius: 4px; color: #e4e4e7; }
+        .msg-client::before { content: 'Пользователь:'; display: block; font-size: 0.85rem; font-weight: bold; color: #71717a; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }
+        .msg-master { background: #1c1a14; border: 1px solid rgba(250, 204, 21, 0.2); align-self: flex-end; border-bottom-right-radius: 4px; color: #fff; box-shadow: 0 0 25px rgba(250, 204, 21, 0.03); }
+        .msg-master::before { content: '⚡ X-TEHNIK:'; display: block; font-size: 0.85rem; font-weight: 900; color: #facc15; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(250, 204, 21, 0.4); }
     </style>
 </head>
 <body>
@@ -217,10 +214,10 @@
         </div>
     </div>
 
-    <!-- Раздел 1 -->
+    <!-- Раздел 1 — ТЕПЕРЬ С НЕОНОВЫМИ КАРТИНКАМИ ЖЕЛЕЗА ВМЕСТО СМАЙЛИКОВ -->
     <section class="screen-one">
         <div class="panel" id="left-card">
-            <div class="hardware-icon">📉</div>
+            <img src="https://icons8.com" class="hardware-img left-glow" id="left-img" alt="Старое железо">
             <h3>Твое старое железо</h3>
             <p>Греется, жутко лагает, выдает синий экран или намертво зависает в самый неподходящий момент?</p>
         </div>
@@ -238,7 +235,7 @@
         </div>
 
         <div class="panel" id="right-card">
-            <div class="hardware-icon">⚡</div>
+            <img src="https://icons8.com" class="hardware-img right-glow" id="right-img" alt="Заряженный монстр">
             <h3>Заряженный монстр</h3>
             <p>Стабильный FPS, идеальный отклик, чистая система без мусора и кастомный апгрейд лично под твои задачи.</p>
         </div>
@@ -248,11 +245,13 @@
     <section class="scroll-section" id="scroll-zone">
         <div class="stack-block block-left" id="slide-left">
             <h2>Любая сложность</h2>
-            <p>Мы работаем абсолютно со всеми видами сложностей. От быстрой замены разбитого экрана до полной подетальной пересборки твоего телефона или ПК.</p>
+            <p>Мы работаем абсолютно со всеми видами сложностей. От быстрой замены разбитого экрана до полной работы с вашим телефоном или ПК.</p>
+            <a href="https://t.me" target="_blank" class="link-btn">Сдать в Telegram</a>
         </div>
         <div class="stack-block block-right" id="slide-right">
             <h2>Всегда рядом</h2>
-            <p>Мы находимся в городе Купино. Работаем в максимально удобном для тебя формате: на дому или оперативно приедем по вызову в любую точку.</p>
+            <p>Мы находимся в городе Купино. Работаем в максимально удобном для вас формате: на дому или оперативно приедем по вызову в любую точку.</p>
+            <a href="https://t.me" target="_blank" class="link-btn">Вызвать мастера</a>
         </div>
     </section>
 
@@ -271,23 +270,14 @@
             <div class="item-card rarity-mil-spec"><div class="item-title">Замена вибромотора</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">📳</span><div class="item-price">1 000 ₽</div></div></div>
             <div class="item-card rarity-mil-spec"><div class="item-title">Сброс экранного пароля</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔓</span><div class="item-price">1 000 ₽</div></div></div>
             <div class="item-card rarity-classified"><div class="item-title">Замена аккумулятора</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">🔋</span><div class="item-price">1 100 ₽</div></div></div>
-            
-            <div class="item-card rarity-classified">
-                <div>
-                    <div class="item-title">Обновление ПО и сброс</div>
-                    <div class="item-subtitle-small">с учетом айклауда</div>
-                </div>
-                <div class="item-type">Засекреченное</div>
-                <div class="price-wrapper"><span class="item-emoji">📲</span><div class="item-price">1 200 ₽</div></div>
-            </div>
-            
+            <div class="item-card rarity-classified"><div><div class="item-title">Обновление ПО и сброс</div><div class="item-subtitle-small">с учетом айклауда</div></div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">📲</span><div class="item-price">1 200 ₽</div></div></div>
             <div class="item-card rarity-classified"><div class="item-title">Замена задней крышки</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">📱</span><div class="item-price">1 500 ₽</div></div></div>
             <div class="item-card rarity-classified"><div class="item-title">Замена задней камеры</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">📷</span><div class="item-price">1 500 ₽</div></div></div>
             <div class="item-card rarity-covert"><div class="item-title">Замена экрана</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">🖥️</span><div class="item-price">2 000 ₽</div></div></div>
             <div class="item-card rarity-covert"><div class="item-title">Замена корпуса</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">🧰</span><div class="item-price">2 500 ₽</div></div></div>
         </div>
     </section>
-    <!-- Раздел 4 (Интерактивный FAQ со строго исправленным текстом) -->
+    <!-- Раздел 4 (Интерактивный FAQ) -->
     <section class="faq-section">
         <h2>Вопросы и <span>Ответы</span></h2>
         <div class="chat-container">
@@ -306,6 +296,7 @@
         const closeModal = document.getElementById('closeModal');
         cityBtn.addEventListener('click', () => modal.classList.add('active'));
         closeModal.addEventListener('click', () => modal.classList.remove('active'));
+        modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('active'); });
 
         // ЗВУКИ
         const spinAudio = new Audio('https://mixkit.co'); 
@@ -332,7 +323,7 @@
         const radar = document.getElementById('main-radar');
         const pointer = document.getElementById('pointer');
         const rightCard = document.getElementById('right-card');
-        const rightIcon = document.getElementById('right-icon');
+        const rightIcon = document.getElementById('right-img');
 
         btn.addEventListener('click', () => {
             btn.disabled = true;
