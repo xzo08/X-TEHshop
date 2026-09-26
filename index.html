@@ -11,6 +11,7 @@
             color: #fff;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             overflow-x: hidden;
+            scroll-behavior: smooth; /* Плавный скролл встроен силами браузера */
         }
 
         /* Шапка */
@@ -31,7 +32,7 @@
             letter-spacing: 1px;
             text-transform: uppercase;
         }
-        .logo span { color: #facc15; transition: color 0.5s; }
+        .logo span { color: #facc15; transition: color 0.5s ease; }
 
         /* Первый экран */
         .screen-one {
@@ -82,7 +83,7 @@
         .intro-text h1 { font-size: 2.8rem; font-weight: 900; line-height: 1.2; margin-bottom: 15px; text-transform: uppercase; }
         .intro-text p { color: #d4d4d8; font-size: 1.1rem; line-height: 1.6; }
 
-        /* Радар */
+        /* Радар с чистой CSS анимацией вращения */
         .radar-box {
             width: 250px;
             height: 250px;
@@ -95,6 +96,16 @@
             box-shadow: 0 0 60px rgba(250, 204, 21, 0.1);
             position: relative;
             transition: all 0.6s ease;
+        }
+
+        /* Класс запуска вращения круга */
+        .radar-spin {
+            animation: spinCircle 2.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        @keyframes spinCircle {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(1440deg); }
         }
 
         .btn-repair {
@@ -115,7 +126,7 @@
             box-shadow: inset 0 0 35px rgba(250, 204, 21, 0.25);
             transform: scale(1.02);
         }
-        /* Второй экран - четкий сдвоенный блок */
+        /* Второй экран - стабильный двухсекционный блок */
         .scroll-section {
             width: 100vw;
             height: 100vh;
@@ -149,7 +160,7 @@
             border-right: 1px solid rgba(250, 204, 21, 0.1);
         }
         .block-right {
-            background: #1c1a14; /* Золотисто-тёмный оттенок */
+            background: #1c1a14;
         }
 
         .stack-block h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; color: #facc15; }
@@ -163,7 +174,6 @@
         <div style="color: #a1a1aa; font-weight: 600; letter-spacing: 1px; font-size: 0.9rem; text-transform: uppercase;">Купино</div>
     </header>
 
-    <!-- Первый экран -->
     <section class="screen-one">
         <div class="panel" id="left-card">
             <div class="hardware-icon">📉</div>
@@ -189,8 +199,7 @@
         </div>
     </section>
 
-    <!-- Второй экран -->
-    <section class="scroll-section">
+    <section class="scroll-section" id="scroll-zone">
         <div class="stack-container">
             <div class="stack-block block-left">
                 <h2>Любая сложность</h2>
@@ -203,8 +212,6 @@
         </div>
     </section>
 
-    <!-- Простой и надежный скрипт крутилки -->
-    <script src="https://cloudflare.com"></script>
     <script>
         const btn = document.getElementById('launch-btn');
         const radar = document.getElementById('main-radar');
@@ -213,35 +220,33 @@
 
         btn.addEventListener('click', () => {
             btn.disabled = true;
+            
+            // Добавляем класс анимации крутилки через стандартный CSS
+            radar.classList.add('radar-spin');
 
-            // Крутим радар чисто и без багов
-            gsap.to(radar, {
-                rotation: 1440,
-                duration: 2.2,
-                ease: "power4.inOut",
-                onComplete: () => {
-                    // Подсвечиваем всё зеленым
-                    radar.style.background = 'padding-box, conic-gradient(#22c55e 0% 100%)';
-                    radar.style.borderColor = 'rgba(34, 197, 94, 0.5)';
-                    radar.style.boxShadow = '0 0 60px rgba(34, 197, 94, 0.4)';
-                    
-                    btn.style.color = '#22c55e';
-                    btn.innerText = 'УСПЕШНО';
+            // Ровно через 2.2 секунды (когда анимация закончится) красим всё в зелёный
+            setTimeout(() => {
+                radar.style.background = 'padding-box, conic-gradient(#22c55e 0% 100%)';
+                radar.style.borderColor = 'rgba(34, 197, 94, 0.5)';
+                radar.style.boxShadow = '0 0 60px rgba(34, 197, 94, 0.4)';
+                
+                btn.style.color = '#22c55e';
+                btn.innerText = 'УСПЕШНО';
 
-                    rightCard.style.borderColor = 'rgba(34, 197, 94, 0.5)';
-                    rightCard.style.boxShadow = '0 0 50px rgba(34, 197, 94, 0.2)';
-                    rightIcon.style.filter = 'drop-shadow(0 0 25px rgba(34, 197, 94, 0.6))';
-                    document.querySelector('.logo span').style.color = '#22c55e';
+                rightCard.style.borderColor = 'rgba(34, 197, 94, 0.5)';
+                rightCard.style.boxShadow = '0 0 50px rgba(34, 197, 94, 0.2)';
+                rightIcon.style.filter = 'drop-shadow(0 0 25px rgba(34, 197, 94, 0.6))';
+                document.querySelector('.logo span').style.color = '#22c55e';
 
-                    // Через полсекунды плавно перематываем страницу к инфо-блоку
-                    setTimeout(() => {
-                        window.scrollTo({
-                            top: window.innerHeight,
-                            behavior: 'smooth'
-                        });
-                    }, 500);
-                }
-            });
+                // Ещё через полсекунды плавно листаем страницу вниз с помощью стандартного метода окна
+                setTimeout(() => {
+                    window.scrollTo({
+                        top: window.innerHeight,
+                        behavior: 'smooth'
+                    });
+                }, 500);
+
+            }, 2200);
         });
     </script>
 </body>
