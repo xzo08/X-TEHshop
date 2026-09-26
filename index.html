@@ -85,18 +85,16 @@
             box-shadow: 0 40px 80px rgba(0,0,0,0.7); transition: all 0.6s ease;
         }
 
-        /* Новые стили для неоновых картинок железа */
-        .hardware-img {
-            width: 140px;
-            height: 140px;
-            object-fit: contain;
+        /* Заряженные огромные иконки-смайлики с неоновым свечением */
+        .hardware-icon {
+            font-size: 4.8rem;
             margin-bottom: 25px;
             transition: all 0.6s ease;
         }
-        .left-glow { filter: drop-shadow(0 0 20px rgba(239, 68, 68, 0.4)); }
-        .right-glow { filter: drop-shadow(0 0 25px rgba(250, 204, 21, 0.35)); }
+        .left-glow { filter: drop-shadow(0 0 20px rgba(239, 68, 68, 0.5)); }
+        .right-glow { filter: drop-shadow(0 0 25px rgba(250, 204, 21, 0.6)); }
 
-        .panel h3 { font-size: 1.3rem; text-transform: uppercase; margin-bottom: 15px; font-weight: 800; }
+        .panel h3 { font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; font-weight: 800; }
         .panel p { color: #a1a1aa; text-align: center; font-size: 1rem; line-height: 1.6; }
 
         .center-area { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 35vw; position: relative; }
@@ -214,10 +212,10 @@
         </div>
     </div>
 
-    <!-- Раздел 1 — ТЕПЕРЬ С НЕОНОВЫМИ КАРТИНКАМИ ЖЕЛЕЗА ВМЕСТО СМАЙЛИКОВ -->
+    <!-- Раздел 1 — ВОЗВРАЩАЕМ ВЫСОКОКАЧЕСТВЕННЫЕ НЕОНОВЫЕ СМАЙЛИКИ -->
     <section class="screen-one">
         <div class="panel" id="left-card">
-            <img src="https://icons8.com" class="hardware-img left-glow" id="left-img" alt="Старое железо">
+            <div class="hardware-icon left-glow">📉</div>
             <h3>Твое старое железо</h3>
             <p>Греется, жутко лагает, выдает синий экран или намертво зависает в самый неподходящий момент?</p>
         </div>
@@ -235,7 +233,7 @@
         </div>
 
         <div class="panel" id="right-card">
-            <img src="https://icons8.com" class="hardware-img right-glow" id="right-img" alt="Заряженный монстр">
+            <div class="hardware-icon right-glow">⚡</div>
             <h3>Заряженный монстр</h3>
             <p>Стабильный FPS, идеальный отклик, чистая система без мусора и кастомный апгрейд лично под твои задачи.</p>
         </div>
@@ -323,7 +321,6 @@
         const radar = document.getElementById('main-radar');
         const pointer = document.getElementById('pointer');
         const rightCard = document.getElementById('right-card');
-        const rightIcon = document.getElementById('right-img');
 
         btn.addEventListener('click', () => {
             btn.disabled = true;
@@ -344,7 +341,6 @@
                 btn.innerText = 'УСПЕШНО';
                 rightCard.style.borderColor = '#facc15';
                 rightCard.style.boxShadow = '0 0 50px rgba(250, 204, 21, 0.4), 0 40px 80px rgba(0,0,0,0.7)';
-                rightIcon.style.filter = 'drop-shadow(0 0 25px rgba(250, 204, 21, 0.8))';
 
                 // Сброс КД
                 setTimeout(() => {
@@ -360,7 +356,6 @@
                     pointer.style.filter = 'drop-shadow(0 0 10px #facc15)';
                     rightCard.style.borderColor = 'rgba(250, 204, 21, 0.1)';
                     rightCard.style.boxShadow = '0 40px 80px rgba(0,0,0,0.7)';
-                    rightIcon.style.filter = 'drop-shadow(0 0 25px rgba(250, 204, 21, 0.25))';
                 }, 6000);
 
             }, 2200);
