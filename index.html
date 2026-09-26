@@ -134,17 +134,7 @@
         .block-right.active { right: 0; }
 
         .stack-block h2 { font-size: 3.5rem; font-weight: 900; margin-bottom: 25px; text-transform: uppercase; color: #facc15; }
-        .stack-block p { font-size: 1.3rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 35px; }
-
-        .link-btn {
-            display: inline-block; align-self: flex-start; padding: 16px 35px; border-radius: 12px;
-            font-size: 1.1rem; font-weight: 800; text-transform: uppercase; text-decoration: none; letter-spacing: 1px; transition: all 0.3s ease;
-        }
-        .tg-color { background: #22c55e; color: #000; box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3); }
-        .tg-color:hover { background: #4ade80; transform: translateY(-3px); }
-        
-        .vk-color { background: #facc15; color: #000; box-shadow: 0 10px 25px rgba(250, 204, 21, 0.3); }
-        .vk-color:hover { background: #fde047; transform: translateY(-3px); }
+        .stack-block p { font-size: 1.3rem; color: #e4e4e7; line-height: 1.8; }
 
         /* ТРЕТИЙ ЭКРАН — ПРАЙС-ЛИСТ */
         .price-section {
@@ -154,7 +144,7 @@
         .price-section h2 { font-size: 3rem; font-weight: 900; text-transform: uppercase; margin-bottom: 50px; letter-spacing: 2px; }
         .price-section h2 span { color: #facc15; }
 
-        .inventory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; width: 100%; max-width: 1200px; }
+        .inventory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; width: 100%; max-width: 1200px; margin-bottom: 80px; }
         .item-card { background: #131314; border: 1px solid rgba(255,255,255,0.03); border-radius: 16px; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; height: 230px; box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
         
         .rarity-mil-spec { border-bottom: 5px solid #3b82f6; } 
@@ -171,6 +161,52 @@
         .rarity-classified .item-emoji { filter: saturate(1.6) drop-shadow(0 0 8px #d946ef); }
         .rarity-covert .item-emoji { filter: saturate(1.6) drop-shadow(0 0 10px #ef4444); }
         .item-card .item-price { font-size: 1.4rem; font-weight: 900; color: #facc15; }
+
+        /* ФИНАЛЬНЫЙ ЭКРАН — ПРОФИЛЬ МАСТЕРА (STEAM STYLE) */
+        .profile-section {
+            width: 100vw; height: 100vh; background: #0c0c0d; display: flex; align-items: center; justify-content: center; padding: 0 80px;
+            border-top: 2px solid rgba(250, 204, 21, 0.05);
+        }
+
+        .steam-profile-card {
+            background: rgba(20, 20, 22, 0.7); border: 1px solid rgba(250, 204, 21, 0.15); border-radius: 24px;
+            width: 100%; max-width: 1100px; padding: 50px; display: flex; justify-content: space-between; gap: 40px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+        }
+
+        /* Блок Аватарки */
+        .profile-avatar-block { display: flex; flex-direction: column; align-items: center; width: 250px; text-align: center; }
+        
+        .avatar-border {
+            width: 160px; height: 160px; border-radius: 24px; border: 3px solid #facc15;
+            display: flex; align-items: center; justify-content: center; font-size: 5rem;
+            box-shadow: 0 0 30px rgba(250, 204, 21, 0.3); background: #171719; margin-bottom: 20px;
+        }
+        
+        .status-online { font-size: 1.1rem; font-weight: 800; color: #facc15; text-shadow: 0 0 10px rgba(250, 204, 21, 0.5); letter-spacing: 1px; }
+
+        /* Блок Информации */
+        .profile-info-block { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+        .profile-name { font-size: 2.5rem; font-weight: 900; text-transform: uppercase; margin-bottom: 10px; }
+        .profile-bio { color: #a1a1aa; font-size: 1.1rem; line-height: 1.7; margin-bottom: 30px; }
+        
+        .profile-stats { display: flex; gap: 40px; }
+        .stat-box { display: flex; flex-direction: column; }
+        .stat-num { font-size: 2rem; font-weight: 900; color: #facc15; }
+        .stat-label { color: #71717a; font-size: 0.9rem; text-transform: uppercase; margin-top: 5px; }
+
+        /* Блок Кнопок Связи */
+        .profile-links-block { display: flex; flex-direction: column; justify-content: center; gap: 20px; width: 300px; }
+        
+        .link-btn {
+            display: flex; align-items: center; justify-content: center; padding: 20px; border-radius: 14px;
+            font-size: 1.1rem; font-weight: 800; text-transform: uppercase; text-decoration: none; letter-spacing: 1px; transition: all 0.3s ease;
+        }
+        .tg-color { background: #22c55e; color: #000; box-shadow: 0 10px 25px rgba(34, 197, 94, 0.2); }
+        .tg-color:hover { background: #4ade80; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(34, 197, 94, 0.4); }
+        
+        .vk-color { background: #facc15; color: #000; box-shadow: 0 10px 25px rgba(250, 204, 21, 0.2); }
+        .vk-color:hover { background: #fde047; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(250, 204, 21, 0.4); }
     </style>
 </head>
 <body>
@@ -218,21 +254,19 @@
         </div>
     </section>
 
-    <!-- Раздел 2 -->
+    <!-- Раздел 2 (Вылет стен) -->
     <section class="scroll-section" id="scroll-zone">
         <div class="stack-block block-left" id="slide-left">
             <h2>Любая сложность</h2>
             <p>Мы работаем абсолютно со всеми видами сложностей. От быстрой замены разбитого экрана до полной подетальной пересборки твоего телефона или ПК.</p>
-            <a href="https://t.me" target="_blank" class="link-btn tg-color">Написать в Telegram</a>
         </div>
         <div class="stack-block block-right" id="slide-right">
             <h2>Всегда рядом</h2>
             <p>Мы находимся в городе Купино. Работаем в максимально удобном для тебя формате: на дому или оперативно приедем по вызову в любую точку.</p>
-            <a href="https://vk.com" target="_blank" class="link-btn vk-color">Связаться в VK</a>
         </div>
     </section>
 
-    <!-- Раздел 3 -->
+    <!-- Раздел 3 (Прайс) -->
     <section class="price-section">
         <h2>Наш <span>Инвентарь</span> Услуг</h2>
         <div class="inventory-grid">
@@ -244,6 +278,29 @@
             <div class="item-card rarity-classified"><div class="item-title">Восстановление ПО</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">📲</span><div class="item-price">от 2 000 ₽</div></div></div>
             <div class="item-card rarity-covert"><div class="item-title">Чистка после воды</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">💧</span><div class="item-price">от 2 500 ₽</div></div></div>
             <div class="item-card rarity-covert"><div class="item-title">Разблокировка устройства</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">🔓</span><div class="item-price">от 3 000 ₽</div></div></div>
+        </div>
+    </section>
+
+    <!-- Раздел 4 (Финальный Профиль Мастера) -->
+    <section class="price-section" style="background:#0c0c0d; min-height:80vh; padding-top:40px;">
+        <h2>Профиль <span>Мастера</span></h2>
+        <div class="steam-profile-card">
+            <div class="profile-avatar-block">
+                <div class="avatar-border">⚡</div>
+                <div class="status-online">● В СЕТИ</div>
+            </div>
+            <div class="profile-info-block">
+                <div class="profile-name">X-Tehnik Service</div>
+                <p class="profile-bio">Элитный ремонтный отряд из города Купино. Воскрешаем девайсы любой сложности, собираем лютые игровые сетапы и наводим идеальный порядок в софте. Твоё железо в надёжных руках.</p>
+                <div class="profile-stats">
+                    <div class="stat-box"><span class="stat-num">999+</span><span class="stat-label">Живых ПК</span></div>
+                    <div class="stat-box"><span class="stat-num">100 lvl</span><span class="stat-label">Прокачки железа</span></div>
+                </div>
+            </div>
+            <div class="profile-links-block">
+                <a href="https://t.me" target="_blank" class="link-btn tg-color">Написать в Telegram</a>
+                <a href="https://vk.com" target="_blank" class="link-btn vk-color">Связаться в VK</a>
+            </div>
         </div>
     </section>
     <script>
@@ -273,7 +330,7 @@
             run();
         }
 
-        // ЛОГИКА КНОПКИ РЕМОНТ С РАНДОМОМ И КД
+        // КНОПКА РЕМОНТ
         const btn = document.getElementById('launch-btn');
         const axis = document.getElementById('arrow-axis');
         const radar = document.getElementById('main-radar');
@@ -285,7 +342,6 @@
             btn.disabled = true;
             startRealTicks();
 
-            // ЧЕСТНЫЙ РАНДОМ: 4 полных оборота (1440 град) + случайный угол строго внутри жёлтого сектора (от 0 до 270 градусов)
             const randomYellowDegrees = Math.floor(Math.random() * 270);
             const totalDegrees = 1440 + randomYellowDegrees;
             
@@ -304,17 +360,14 @@
                 rightCard.style.boxShadow = '0 0 50px rgba(250, 204, 21, 0.4), 0 40px 80px rgba(0,0,0,0.7)';
                 rightIcon.style.filter = 'drop-shadow(0 0 25px rgba(250, 204, 21, 0.8))';
 
-                // СИСТЕМА ПЕРЕЗАРЯДКИ (КД): Сбрасываем кнопку через 6 секунд, чтобы можно было крутить заново
+                // Сброс КД
                 setTimeout(() => {
                     btn.disabled = false;
                     btn.innerText = 'РЕМОНТ';
                     btn.style.color = '#fff';
                     btn.style.textShadow = 'none';
-                    
-                    // Плавно возвращаем стрелку на исходную позицию 0 градусов
                     axis.style.transform = 'rotate(0deg)';
                     
-                    // Тушим все неоновые подсветки
                     radar.style.borderColor = 'rgba(250, 204, 21, 0.3)';
                     radar.style.boxShadow = '0 0 50px rgba(250, 204, 21, 0.15), inset 0 0 25px rgba(0, 0, 0, 0.8)';
                     pointer.style.borderTopColor = '#facc15';
@@ -322,12 +375,12 @@
                     rightCard.style.borderColor = 'rgba(250, 204, 21, 0.1)';
                     rightCard.style.boxShadow = '0 40px 80px rgba(0,0,0,0.7)';
                     rightIcon.style.filter = 'drop-shadow(0 0 25px rgba(250, 204, 21, 0.25))';
-                }, 6000); // 6 секунд удержания перед КД
+                }, 6000);
 
             }, 2200);
         });
 
-        // АВТОМАТИЧЕСКИЙ ВЫЛЕТ СТЕН ПРИ СКРОЛЛЕ
+        // АВТОМАТИЧЕСКИЙ ВЫЛЕТ СТЕН
         const slideLeft = document.getElementById('slide-left');
         const slideRight = document.getElementById('slide-right');
         const scrollZone = document.getElementById('scroll-zone');
