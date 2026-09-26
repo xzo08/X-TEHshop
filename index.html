@@ -143,71 +143,24 @@
         .intro-text h1 { font-size: 2.8rem; font-weight: 900; line-height: 1.2; margin-bottom: 15px; text-transform: uppercase; }
         .intro-text p { color: #d4d4d8; font-size: 1.1rem; line-height: 1.6; }
 
-        /* Исправленный контейнер для радара */
-        .radar-wrapper {
-            position: relative;
-            width: 260px;
-            height: 260px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Ось, которая крутит стрелку */
-        .pointer-axis {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0; left: 0;
-            z-index: 20;
-            pointer-events: none;
-            display: flex;
-            justify-content: center;
-            transition: transform 2.2s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .radar-pointer {
-            position: absolute;
-            top: -12px;
-            width: 0;
-            height: 0;
-            border-left: 12px solid transparent;
-            border-right: 12px solid transparent;
-            border-top: 24px solid #facc15;
-            filter: drop-shadow(0 0 10px #facc15);
-        }
+        .radar-wrapper { position: relative; width: 260px; height: 260px; display: flex; align-items: center; justify-content: center; }
+        
+        .pointer-axis { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 20; pointer-events: none; display: flex; justify-content: center; transition: transform 2.2s cubic-bezier(0.25, 1, 0.5, 1); }
+        .radar-pointer { position: absolute; top: -12px; width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-top: 24px solid #facc15; filter: drop-shadow(0 0 10px #facc15); }
 
         .radar-box {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
+            width: 250px; height: 250px; border-radius: 50%;
             background: padding-box, conic-gradient(#facc15 0% 75%, #1c1913 75% 100%);
             border: 4px solid rgba(250, 204, 21, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
             box-shadow: 0 0 50px rgba(250, 204, 21, 0.15), inset 0 0 25px rgba(0, 0, 0, 0.8);
-            position: relative;
-            transition: all 0.6s ease;
+            position: relative; transition: all 0.6s ease;
         }
 
         .btn-repair {
-            width: 190px;
-            height: 190px;
-            border-radius: 50%;
-            background: #111110;
-            border: 2px solid rgba(255, 255, 255, 0.03);
-            color: #fff;
-            font-size: 1.4rem;
-            font-weight: 900;
-            letter-spacing: 3px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 10px 30px rgba(0,0,0,0.6);
-            z-index: 5;
+            width: 190px; height: 190px; border-radius: 50%; background: #111110; border: 2px solid rgba(255, 255, 255, 0.03);
+            color: #fff; font-size: 1.4rem; font-weight: 900; letter-spacing: 3px; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; z-index: 5;
         }
         .btn-repair:hover:not(:disabled) { color: #facc15; box-shadow: inset 0 0 35px rgba(250, 204, 21, 0.2); }
         /* ВТОРОЙ ЛИСТ НА ВЕСЬ ЭКРАН */
@@ -238,7 +191,7 @@
         .vk-color { background: #facc15; color: #000; box-shadow: 0 10px 25px rgba(250, 204, 21, 0.3); }
         .vk-color:hover { background: #fde047; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(250, 204, 21, 0.5); }
 
-        /* ТРЕТИЙ ЭКРАН — ПРАЙС-ЛИСТ (ИГРОВОЙ ИНВЕНТАРЬ) */
+        /* ТРЕТИЙ ЭКРАН — ПРАЙС-ЛИСТ */
         .price-section {
             width: 100vw; min-height: 100vh; padding: 120px 80px; background: #090909;
             display: flex; flex-direction: column; align-items: center;
@@ -254,13 +207,34 @@
             position: relative; overflow: hidden; height: 230px; box-shadow: 0 15px 30px rgba(0,0,0,0.5);
         }
 
-        .rarity-mil-spec { border-bottom: 5px solid #3b82f6; box-shadow: inset 0 -20px 30px rgba(59, 130, 246, 0.05); } 
-        .rarity-classified { border-bottom: 5px solid #d946ef; box-shadow: inset 0 -20px 30px rgba(217, 70, 239, 0.05); } 
-        .rarity-covert { border-bottom: 5px solid #ef4444; box-shadow: inset 0 -20px 30px rgba(239, 68, 68, 0.05); } 
+        .rarity-mil-spec { border-bottom: 5px solid #3b82f6; } 
+        .rarity-classified { border-bottom: 5px solid #d946ef; } 
+        .rarity-covert { border-bottom: 5px solid #ef4444; } 
 
         .item-card .item-title { font-size: 1.1rem; font-weight: 800; text-transform: uppercase; color: #fff; line-height: 1.4; }
         .item-card .item-type { font-size: 0.8rem; color: #71717a; text-transform: uppercase; margin-top: 5px; letter-spacing: 0.5px; }
-        .item-card .item-price { font-size: 1.4rem; font-weight: 900; color: #facc15; align-self: flex-end; margin-top: auto; }
+        
+        /* Контейнер цены и смайлика */
+        .price-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-top: auto;
+            gap: 10px;
+        }
+
+        /* Настройка сочных смайликов */
+        .price-wrapper .item-emoji {
+            font-size: 1.6rem;
+            filter: saturate(1.5) drop-shadow(0 0 8px rgba(250, 204, 21, 0.5));
+        }
+
+        /* Кастомный цвет свечения смайликов под редкость карты */
+        .rarity-mil-spec .item-emoji { filter: saturate(1.6) drop-shadow(0 0 8px #3b82f6); }
+        .rarity-classified .item-emoji { filter: saturate(1.6) drop-shadow(0 0 8px #d946ef); }
+        .rarity-covert .item-emoji { filter: saturate(1.6) drop-shadow(0 0 10px #ef4444); }
+
+        .item-card .item-price { font-size: 1.4rem; font-weight: 900; color: #facc15; }
     </style>
 </head>
 <body>
@@ -318,17 +292,18 @@
         </div>
     </section>
 
+    <!-- Прайс-лист со смайликами СЛЕВА от цен -->
     <section class="price-section">
         <h2>Наш <span>Инвентарь</span> Услуг</h2>
         <div class="inventory-grid">
-            <div class="item-card rarity-mil-spec"><div class="item-title">Замена разъема зарядки</div><div class="item-type">Армейское качество</div><div class="item-price">от 1 800 ₽</div></div>
-            <div class="item-card rarity-mil-spec"><div class="item-title">Замена динамика</div><div class="item-type">Армейское качество</div><div class="item-price">от 1 800 ₽</div></div>
-            <div class="item-card rarity-classified"><div class="item-title">Замена дисплея</div><div class="item-type">Засекреченное</div><div class="item-price">от 2 000 ₽</div></div>
-            <div class="item-card rarity-classified"><div class="item-title">Замена аккумулятора</div><div class="item-type">Засекреченное</div><div class="item-price">от 2 000 ₽</div></div>
-            <div class="item-card rarity-classified"><div class="item-title">Замена микрофона</div><div class="item-type">Засекреченное</div><div class="item-price">от 2 000 ₽</div></div>
-            <div class="item-card rarity-classified"><div class="item-title">Восстановление ПО</div><div class="item-type">Засекреченное</div><div class="item-price">от 2 000 ₽</div></div>
-            <div class="item-card rarity-covert"><div class="item-title">Чистка после воды</div><div class="item-type">Тайное</div><div class="item-price">от 2 500 ₽</div></div>
-            <div class="item-card rarity-covert"><div class="item-title">Разблокировка устройства</div><div class="item-type">Тайное</div><div class="item-price">от 3 000 ₽</div></div>
+            <div class="item-card rarity-mil-spec"><div class="item-title">Замена разъема зарядки</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔌</span><div class="item-price">от 1 800 ₽</div></div></div>
+            <div class="item-card rarity-mil-spec"><div class="item-title">Замена динамика</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔊</span><div class="item-price">от 1 800 ₽</div></div></div>
+            <div class="item-card rarity-classified"><div class="item-title">Замена дисплея</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">📱</span><div class="item-price">от 2 000 ₽</div></div></div>
+            <div class="item-card rarity-classified"><div class="item-title">Замена аккумулятора</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">🔋</span><div class="item-price">от 2 000 ₽</div></div></div>
+            <div class="item-card rarity-classified"><div class="item-title">Замена микрофона</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">🎙️</span><div class="item-price">от 2 000 ₽</div></div></div>
+            <div class="item-card rarity-classified"><div class="item-title">Восстановление ПО</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">📲</span><div class="item-price">от 2 000 ₽</div></div></div>
+            <div class="item-card rarity-covert"><div class="item-title">Чистка после воды</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">💧</span><div class="item-price">от 2 500 ₽</div></div></div>
+            <div class="item-card rarity-covert"><div class="item-title">Разблокировка устройства</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">🔓</span><div class="item-price">от 3 000 ₽</div></div></div>
         </div>
     </section>
 
@@ -342,40 +317,30 @@
         closeModal.addEventListener('click', () => modal.classList.remove('active'));
         modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('active'); });
 
-        // ПОДКЛЮЧЕНИЕ РЕАЛЬНЫХ ПЛОТНЫХ АУДИОФАЙЛОВ ИГРОВОЙ ТРЕЩОТКИ
-        const spinAudio = new Audio('https://mixkit.co'); // Механические щелчки колеса
-        const winAudio = new Audio('https://mixkit.co');   // Басовый киберпанк взрыв победы
+        // ПОДКЛЮЧЕНИЕ ЗВУКОВ
+        const spinAudio = new Audio('https://mixkit.co'); 
+        const winAudio = new Audio('https://mixkit.co');   
         spinAudio.volume = 0.4;
         winAudio.volume = 0.5;
 
-        // Логика зацикливания трещотки с замедлением под анимацию
-        let tickInterval;
         function startRealTicks() {
             spinAudio.currentTime = 0;
             spinAudio.play();
-            
-            let speed = 60; // Начальная частота звука в мс
+            let speed = 60; 
             let elapsed = 0;
-
             function run() {
-                if (elapsed >= 2200) {
-                    clearInterval(tickInterval);
-                    return;
-                }
+                if (elapsed >= 2200) return;
                 spinAudio.currentTime = 0;
                 spinAudio.play();
-
-                // Постепенное замедление частоты звуков трещотки к финалу
                 if (elapsed > 1200) speed = 140;
                 if (elapsed > 1800) speed = 300;
-
                 elapsed += speed;
                 setTimeout(run, speed);
             }
             run();
         }
 
-        // ЛОГИКА АНИМАЦИИ КНОПКИ РЕМОНТ
+        // ЛОГИКА АНИМАЦИИ
         const btn = document.getElementById('launch-btn');
         const axis = document.getElementById('arrow-axis');
         const radar = document.getElementById('main-radar');
@@ -387,13 +352,11 @@
 
         btn.addEventListener('click', () => {
             btn.disabled = true;
-            
-            // Запуск звука и крутилки стрелки через JS (на 1440 градусов)
             startRealTicks();
             axis.style.transform = 'rotate(1440deg)';
 
             setTimeout(() => {
-                winAudio.play(); // Сочный звук финала
+                winAudio.play();
 
                 radar.style.borderColor = '#facc15';
                 radar.style.boxShadow = '0 0 60px rgba(250, 204, 21, 0.6), inset 0 0 25px rgba(0, 0, 0, 0.8)';
@@ -408,7 +371,6 @@
                 rightCard.style.boxShadow = '0 0 50px rgba(250, 204, 21, 0.4), 0 40px 80px rgba(0,0,0,0.7)';
                 rightIcon.style.filter = 'drop-shadow(0 0 25px rgba(250, 204, 21, 0.8))';
 
-                // Скролл ко второму экрану
                 setTimeout(() => {
                     document.getElementById('scroll-zone').scrollIntoView({ behavior: 'smooth' });
                     setTimeout(() => {
