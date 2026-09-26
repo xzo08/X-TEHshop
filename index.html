@@ -76,16 +76,40 @@
             align-items: center;
             justify-content: center;
             width: 35vw;
+            position: relative;
         }
 
         .intro-text { text-align: center; margin-bottom: 40px; }
         .intro-text h1 { font-size: 2.8rem; font-weight: 900; line-height: 1.2; margin-bottom: 15px; text-transform: uppercase; }
         .intro-text p { color: #d4d4d8; font-size: 1.1rem; line-height: 1.6; }
 
-        /* Внешняя оболочка радара (стоит на месте) */
-        .radar-box {
+        /* Контейнер для радара и стрелочки */
+        .radar-wrapper {
+            position: relative;
             width: 250px;
             height: 250px;
+        }
+
+        /* Та самая острая стрелочка сверху радара */
+        .radar-pointer {
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-top: 24px solid #facc15;
+            filter: drop-shadow(0 0 10px #facc15);
+            z-index: 10;
+            transition: border-top-color 0.6s, filter 0.6s;
+        }
+
+        /* Круг радара */
+        .radar-box {
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
             border: 6px solid rgba(250, 204, 21, 0.15);
             display: flex;
@@ -97,7 +121,7 @@
             overflow: hidden;
         }
 
-        /* Жёлтое кольцо фона, которое БУДЕТ крутиться вместо текста */
+        /* Задний жёлтый фон, который крутится */
         .radar-bg {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -106,7 +130,6 @@
             z-index: 1;
         }
 
-        /* Анимация кручения ТОЛЬКО заднего жёлтого фона */
         .radar-spin {
             animation: spinCircle 2.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
@@ -116,7 +139,7 @@
             100% { transform: rotate(1440deg); }
         }
 
-        /* Кнопка с текстом поверх крутящегося фона (стоит мёртво) */
+        /* Мёртво стоящая кнопка */
         .btn-repair {
             width: 200px;
             height: 200px;
@@ -132,7 +155,7 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            z-index: 5; /* Поверх фона */
+            z-index: 5;
         }
         
         .btn-repair:hover:not(:disabled) {
@@ -140,58 +163,49 @@
             box-shadow: inset 0 0 35px rgba(250, 204, 21, 0.25);
             transform: scale(1.02);
         }
-        /* Второй экран - зона скролла */
+        /* ВТОРОЙ ЛИСТ НА ВЕСЬ ЭКРАН */
         .scroll-section {
             width: 100vw;
             height: 100vh;
             display: flex;
-            align-items: center;
-            justify-content: center;
             background: #0d0d0c;
             position: relative;
-        }
-
-        .stack-container {
-            display: flex;
-            width: 75vw;
-            height: 55vh;
-            border-radius: 32px;
             overflow: hidden;
-            box-shadow: 0 50px 100px rgba(0,0,0,0.8);
-            border: 2px solid rgba(250, 204, 21, 0.15);
-            position: relative;
         }
 
+        /* Две огромные половины сайта на 100% высоты */
         .stack-block {
             width: 50%;
             height: 100%;
-            padding: 60px;
+            padding: 0 10%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             position: absolute;
             top: 0;
             bottom: 0;
-            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: all 0.9s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
+        /* Левая стена вылетает слева наружу */
         .block-left {
-            background: #141413;
-            border-right: 1px solid rgba(250, 204, 21, 0.1);
-            left: -60vw;
-            width: 50%;
-        }
-        .block-right {
-            background: #1c1a14;
-            right: -60vw;
-            width: 50%;
+            background: #131312;
+            border-right: 2px solid rgba(250, 204, 21, 0.1);
+            left: -50vw;
         }
 
+        /* Правая стена вылетает справа наружу */
+        .block-right {
+            background: #1c1913;
+            right: -50vw;
+        }
+
+        /* Стыковка стен ровно 50/50 по центру экрана */
         .block-left.active { left: 0; }
         .block-right.active { right: 0; }
 
-        .stack-block h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; color: #facc15; }
-        .stack-block p { font-size: 1.2rem; color: #e4e4e7; line-height: 1.7; }
+        .stack-block h2 { font-size: 3.5rem; font-weight: 900; margin-bottom: 30px; text-transform: uppercase; color: #facc15; letter-spacing: 1px; }
+        .stack-block p { font-size: 1.4rem; color: #e4e4e7; line-height: 1.8; max-width: 600px; }
     </style>
 </head>
 <body>
@@ -214,9 +228,12 @@
                 <p>Мы молодые, на опыте, шарим в трендах и понимаем тебя с полуслова.</p>
             </div>
             
-            <div class="radar-box" id="main-radar">
-                <div class="radar-bg" id="radar-bg-layer"></div>
-                <button class="btn-repair" id="launch-btn">РЕМОНТ</button>
+            <div class="radar-wrapper">
+                <div class="radar-pointer" id="pointer"></div>
+                <div class="radar-box" id="main-radar">
+                    <div class="radar-bg" id="radar-bg-layer"></div>
+                    <button class="btn-repair" id="launch-btn">РЕМОНТ</button>
+                </div>
             </div>
         </div>
 
@@ -228,15 +245,13 @@
     </section>
 
     <section class="scroll-section" id="scroll-zone">
-        <div class="stack-container">
-            <div class="stack-block block-left" id="slide-left">
-                <h2>Любая сложность</h2>
-                <p>Мы работаем абсолютно со всеми видами сложностей. От быстрой замены разбитого экрана до полной подетальной пересборки твоего телефона или ПК.</p>
-            </div>
-            <div class="stack-block block-right" id="slide-right">
-                <h2>Всегда рядом</h2>
-                <p>Мы находимся в городе Купино. Работаем в максимально удобном для тебя формате: на дому или оперативно приедем по вызову в любую точку.</p>
-            </div>
+        <div class="stack-block block-left" id="slide-left">
+            <h2>Любая сложность</h2>
+            <p>Мы работаем абсолютно со всеми видами сложностей. От быстрой замены разбитого экрана до полной подетальной пересборки твоего телефона или ПК.</p>
+        </div>
+        <div class="stack-block block-right" id="slide-right">
+            <h2>Всегда рядом</h2>
+            <p>Мы находимся в городе Купино. Работаем в максимально удобном для тебя формате: на дому или оперативно приедем по вызову в любую точку.</p>
         </div>
     </section>
 
@@ -244,6 +259,7 @@
         const btn = document.getElementById('launch-btn');
         const radar = document.getElementById('main-radar');
         const radarBg = document.getElementById('radar-bg-layer');
+        const pointer = document.getElementById('pointer');
         const rightCard = document.getElementById('right-card');
         const rightIcon = document.getElementById('right-icon');
         const slideLeft = document.getElementById('slide-left');
@@ -251,14 +267,14 @@
 
         btn.addEventListener('click', () => {
             btn.disabled = true;
-            
-            // Крутим ТОЛЬКО задний фон круга. Текст стоит на месте!
             radarBg.classList.add('radar-spin');
 
             setTimeout(() => {
                 // Желтый неон
                 radar.style.borderColor = '#facc15';
                 radar.style.boxShadow = '0 0 60px rgba(250, 204, 21, 0.6)';
+                pointer.style.borderTopColor = '#22c55e'; // Стрелочка меняет цвет на победный
+                pointer.style.filter = 'drop-shadow(0 0 15px #22c55e)';
                 
                 btn.style.color = '#facc15';
                 btn.style.textShadow = '0 0 15px rgba(250, 204, 21, 0.8)';
@@ -268,15 +284,15 @@
                 rightCard.style.boxShadow = '0 0 50px rgba(250, 204, 21, 0.4), 0 40px 80px rgba(0,0,0,0.7)';
                 rightIcon.style.filter = 'drop-shadow(0 0 25px rgba(250, 204, 21, 0.8))';
 
-                // Скролл вниз
+                // Скролл вниз к полноэкранным стенам
                 setTimeout(() => {
                     document.getElementById('scroll-zone').scrollIntoView({ behavior: 'smooth' });
                     
-                    // Вылет боковых панелей
+                    // Огромные стены сдвигаются и закрывают весь экран
                     setTimeout(() => {
                         slideLeft.classList.add('active');
                         slideRight.classList.add('active');
-                    }, 600);
+                    }, 500);
                 }, 500);
 
             }, 2200);
