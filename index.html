@@ -10,7 +10,7 @@
             background: #0d0d0c;
             color: #fff;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            overflow-x: hidden;
+            overflow: hidden; /* Полностью блокируем ручной скролл */
         }
 
         /* Шапка */
@@ -46,7 +46,7 @@
         }
         .city-select-btn:hover { color: #facc15; }
 
-        /* ОКНО ВЫБОРА ГОРОДА (ПОПАП) */
+        /* ПОПАП ВЫБОРА ГОРОДА */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -63,127 +63,86 @@
         .modal-overlay.active { opacity: 1; pointer-events: auto; }
 
         .modal-card {
-            background: #141413;
-            border: 2px solid #facc15;
-            box-shadow: 0 0 50px rgba(250, 204, 21, 0.2);
-            border-radius: 24px;
-            padding: 40px;
-            width: 450px;
-            text-align: center;
-            position: relative;
+            background: #141413; border: 2px solid #facc15; box-shadow: 0 0 50px rgba(250, 204, 21, 0.2);
+            border-radius: 24px; padding: 40px; width: 450px; text-align: center; position: relative;
         }
         .modal-card h3 { font-size: 1.8rem; text-transform: uppercase; margin-bottom: 25px; color: #facc15; }
-        
-        .city-option {
-            padding: 15px;
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(250, 204, 21, 0.1);
-            border-radius: 12px;
-            margin-bottom: 12px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .city-option { padding: 15px; background: rgba(255,255,255,0.02); border: 1px solid rgba(250, 204, 21, 0.1); border-radius: 12px; margin-bottom: 12px; font-size: 1.2rem; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
         .city-option.available { border-color: #facc15; color: #fff; background: rgba(250, 204, 21, 0.05); }
         .city-option.locked { opacity: 0.4; color: #71717a; cursor: not-allowed; }
-        
         .modal-note { font-size: 0.9rem; color: #a1a1aa; margin-top: 25px; line-height: 1.4; }
         .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #71717a; }
         .close-modal:hover { color: #fff; }
 
         /* Первый экран */
         .screen-one {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 80px;
-            position: relative;
+            width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: space-between; padding: 0 80px; position: relative;
         }
 
         .panel {
-            width: 28vw;
-            height: 62vh;
-            background: rgba(18, 18, 18, 0.6);
-            border: 2px solid rgba(250, 204, 21, 0.1);
-            border-radius: 24px;
-            backdrop-filter: blur(20px);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 30px;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.7);
-            transition: all 0.6s ease;
+            width: 28vw; height: 62vh; background: rgba(18, 18, 18, 0.6); border: 2px solid rgba(250, 204, 21, 0.1); border-radius: 24px;
+            backdrop-filter: blur(20px); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 30px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.7); transition: all 0.6s ease;
         }
 
-        .hardware-icon {
-            font-size: 4.5rem;
-            margin-bottom: 25px;
-            filter: drop-shadow(0 0 25px rgba(250, 204, 21, 0.25));
-            transition: all 0.6s ease;
-        }
-
+        .hardware-icon { font-size: 4.5rem; margin-bottom: 25px; filter: drop-shadow(0 0 25px rgba(250, 204, 21, 0.25)); transition: all 0.6s ease; }
         .panel h3 { font-size: 1.3rem; text-transform: uppercase; margin-bottom: 15px; font-weight: 800; }
         .panel p { color: #a1a1aa; text-align: center; font-size: 1rem; line-height: 1.6; }
 
-        .center-area {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 35vw;
-            position: relative;
-        }
-
-        .intro-text { text-align: center; margin-bottom: 40px; }
+        .center-area { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 35vw; position: relative; }
+        .intro-text { text-align: center; margin-bottom: 30px; }
         .intro-text h1 { font-size: 2.8rem; font-weight: 900; line-height: 1.2; margin-bottom: 15px; text-transform: uppercase; }
         .intro-text p { color: #d4d4d8; font-size: 1.1rem; line-height: 1.6; }
 
-        .radar-wrapper { position: relative; width: 260px; height: 260px; display: flex; align-items: center; justify-content: center; }
-        
+        .radar-wrapper { position: relative; width: 260px; height: 260px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; }
         .pointer-axis { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 20; pointer-events: none; display: flex; justify-content: center; transition: transform 2.2s cubic-bezier(0.25, 1, 0.5, 1); }
         .radar-pointer { position: absolute; top: -12px; width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-top: 24px solid #facc15; filter: drop-shadow(0 0 10px #facc15); }
 
         .radar-box {
-            width: 250px; height: 250px; border-radius: 50%;
-            background: padding-box, conic-gradient(#facc15 0% 75%, #1c1913 75% 100%);
-            border: 4px solid rgba(250, 204, 21, 0.3);
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 0 50px rgba(250, 204, 21, 0.15), inset 0 0 25px rgba(0, 0, 0, 0.8);
-            position: relative; transition: all 0.6s ease;
+            width: 250px; height: 250px; border-radius: 50%; background: padding-box, conic-gradient(#facc15 0% 75%, #1c1913 75% 100%);
+            border: 4px solid rgba(250, 204, 21, 0.3); display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 0 50px rgba(250, 204, 21, 0.15), inset 0 0 25px rgba(0, 0, 0, 0.8); position: relative; transition: all 0.6s ease;
         }
 
         .btn-repair {
             width: 190px; height: 190px; border-radius: 50%; background: #111110; border: 2px solid rgba(255, 255, 255, 0.03);
-            color: #fff; font-size: 1.4rem; font-weight: 900; letter-spacing: 3px; cursor: pointer;
-            display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; z-index: 5;
+            color: #fff; font-size: 1.4rem; font-weight: 900; letter-spacing: 3px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; z-index: 5;
         }
-        .btn-repair:hover:not(:disabled) { color: #facc15; box-shadow: inset 0 0 35px rgba(250, 204, 21, 0.2); }
-        /* ВТОРОЙ ЛИСТ НА ВЕСЬ ЭКРАН */
-        .scroll-section { width: 100vw; height: 100vh; display: flex; background: #0d0d0c; position: relative; overflow: hidden; }
+
+        /* ТЕКСТ ЖМИ ЖМИ ПОД КРУГОМ */
+        .click-prompt {
+            font-size: 1.3rem; font-weight: 900; text-transform: uppercase; letter-spacing: 4px; color: #facc15;
+            text-shadow: 0 0 10px rgba(250, 204, 21, 0.6); animation: pulseText 1.5s infinite ease-in-out; margin-top: 10px; cursor: pointer;
+        }
+        @keyframes pulseText {
+            0%, 100% { opacity: 0.4; transform: scale(0.96); }
+            50% { opacity: 1; transform: scale(1.04); text-shadow: 0 0 20px rgba(250, 204, 21, 0.9); }
+        }
+        /* ВТОРОЙ ЛИСТ НА ВЕСЬ ЭКРАН (ТЕПЕРЬ ЭТО ОВЕРЛЕЙ ПОВЕРХ 1 СТР) */
+        .fullscreen-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            display: flex; z-index: 150; pointer-events: none; overflow: hidden;
+        }
         
         .stack-block {
             width: 50%; height: 100%; padding: 0 8%; display: flex; flex-direction: column; justify-content: center;
-            position: absolute; top: 0; bottom: 0; transition: all 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+            position: absolute; top: 0; bottom: 0; transition: all 0.9s cubic-bezier(0.25, 1, 0.5, 1); pointer-events: auto;
         }
 
+        /* Изначально раздвинуты за границы экрана */
         .block-left { background: #131312; border-right: 2px solid rgba(250, 204, 21, 0.1); left: -50vw; }
         .block-right { background: #1c1913; right: -50vw; }
         
-        .block-left.active { left: 0; }
-        .block-right.active { right: 0; }
+        /* Схлопывание стен на весь экран */
+        .fullscreen-overlay.active .block-left { left: 0; }
+        .fullscreen-overlay.active .block-right { right: 0; }
 
         .stack-block h2 { font-size: 3.5rem; font-weight: 900; margin-bottom: 25px; text-transform: uppercase; color: #facc15; }
         .stack-block p { font-size: 1.3rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 35px; }
 
         .link-btn {
             display: inline-block; align-self: flex-start; padding: 16px 35px; border-radius: 12px;
-            font-size: 1.1rem; font-weight: 800; text-transform: uppercase; text-decoration: none;
-            letter-spacing: 1px; transition: all 0.3s ease;
+            font-size: 1.1rem; font-weight: 800; text-transform: uppercase; text-decoration: none; letter-spacing: 1px; transition: all 0.3s ease;
         }
         .tg-color { background: #22c55e; color: #000; box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3); }
         .tg-color:hover { background: #4ade80; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(34, 197, 94, 0.5); }
@@ -191,50 +150,51 @@
         .vk-color { background: #facc15; color: #000; box-shadow: 0 10px 25px rgba(250, 204, 21, 0.3); }
         .vk-color:hover { background: #fde047; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(250, 204, 21, 0.5); }
 
-        /* ТРЕТИЙ ЭКРАН — ПРАЙС-ЛИСТ */
-        .price-section {
-            width: 100vw; min-height: 100vh; padding: 120px 80px; background: #090909;
-            display: flex; flex-direction: column; align-items: center;
+        /* Кнопка закрытия стен и возврата назад */
+        .back-to-repair-btn {
+            position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%);
+            padding: 15px 40px; background: #111; border: 2px solid #facc15; color: #facc15;
+            font-size: 1.1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;
+            border-radius: 14px; cursor: pointer; transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(250, 204, 21, 0.1); z-index: 160; opacity: 0; pointer-events: none;
         }
-        .price-section h2 { font-size: 3rem; font-weight: 900; text-transform: uppercase; margin-bottom: 50px; letter-spacing: 2px; }
-        .price-section h2 span { color: #facc15; }
+        .fullscreen-overlay.active .back-to-repair-btn { opacity: 1; pointer-events: auto; }
+        .back-to-repair-btn:hover { background: #facc15; color: #000; box-shadow: 0 0 30px rgba(250, 204, 21, 0.4); }
+
+        /* ОТДЕЛЬНАЯ КНОПКА ОТКРЫТИЯ ПРАЙСА НА 1 ЭКРАНЕ */
+        .open-price-trigger {
+            margin-top: 25px; padding: 12px 30px; background: transparent; border: 1px solid rgba(255,255,255,0.2);
+            color: #a1a1aa; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; border-radius: 8px;
+            cursor: pointer; transition: all 0.3s;
+        }
+        .open-price-trigger:hover { border-color: #facc15; color: #fff; }
+
+        /* СЕКЦИЯ ПРАЙС-ЛИСТА (ПОВЕРХ ВСЕГО ПО КЛИКУ) */
+        .price-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #090909;
+            z-index: 250; padding: 120px 80px; overflow-y: auto; display: flex; flex-direction: column; align-items: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.5s ease;
+        }
+        .price-overlay.active { opacity: 1; pointer-events: auto; }
+        .price-overlay h2 { font-size: 3rem; font-weight: 900; text-transform: uppercase; margin-bottom: 50px; letter-spacing: 2px; }
+        .price-overlay h2 span { color: #facc15; }
 
         .inventory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; width: 100%; max-width: 1200px; }
-
-        .item-card {
-            background: #131314; border: 1px solid rgba(255,255,255,0.03); border-radius: 16px;
-            padding: 25px; display: flex; flex-direction: column; justify-content: space-between;
-            position: relative; overflow: hidden; height: 230px; box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-        }
-
-        .rarity-mil-spec { border-bottom: 5px solid #3b82f6; } 
-        .rarity-classified { border-bottom: 5px solid #d946ef; } 
-        .rarity-covert { border-bottom: 5px solid #ef4444; } 
-
+        .item-card { background: #131314; border: 1px solid rgba(255,255,255,0.03); border-radius: 16px; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; height: 230px; box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
+        .rarity-mil-spec { border-bottom: 5px solid #3b82f6; } .rarity-classified { border-bottom: 5px solid #d946ef; } .rarity-covert { border-bottom: 5px solid #ef4444; } 
         .item-card .item-title { font-size: 1.1rem; font-weight: 800; text-transform: uppercase; color: #fff; line-height: 1.4; }
         .item-card .item-type { font-size: 0.8rem; color: #71717a; text-transform: uppercase; margin-top: 5px; letter-spacing: 0.5px; }
+        .price-wrapper { display: flex; align-items: center; justify-content: flex-end; margin-top: auto; gap: 10px; }
         
-        /* Контейнер цены и смайлика */
-        .price-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            margin-top: auto;
-            gap: 10px;
-        }
-
-        /* Настройка сочных смайликов */
-        .price-wrapper .item-emoji {
-            font-size: 1.6rem;
-            filter: saturate(1.5) drop-shadow(0 0 8px rgba(250, 204, 21, 0.5));
-        }
-
-        /* Кастомный цвет свечения смайликов под редкость карты */
+        /* Светимость смайликов под редкость карты */
+        .price-wrapper .item-emoji { font-size: 1.6rem; }
         .rarity-mil-spec .item-emoji { filter: saturate(1.6) drop-shadow(0 0 8px #3b82f6); }
         .rarity-classified .item-emoji { filter: saturate(1.6) drop-shadow(0 0 8px #d946ef); }
         .rarity-covert .item-emoji { filter: saturate(1.6) drop-shadow(0 0 10px #ef4444); }
-
         .item-card .item-price { font-size: 1.4rem; font-weight: 900; color: #facc15; }
+        
+        .close-price-btn { position: absolute; top: 40px; right: 60px; padding: 12px 30px; background: #111; border: 1px solid #71717a; color: #fff; font-weight: bold; text-transform: uppercase; border-radius: 8px; cursor: pointer; }
+        .close-price-btn:hover { border-color: #fff; }
     </style>
 </head>
 <body>
@@ -244,6 +204,7 @@
         <div class="city-select-btn" id="cityBtn">Купино</div>
     </header>
 
+    <!-- Выбор города -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-card">
             <div class="close-modal" id="closeModal">✕</div>
@@ -255,12 +216,14 @@
         </div>
     </div>
 
+    <!-- Главный 1 экран -->
     <section class="screen-one">
         <div class="panel" id="left-card">
             <div class="hardware-icon">📉</div>
             <h3>Твое старое железо</h3>
             <p>Греется, жутко лагает, выдает синий экран или намертво зависает в самый неподходящий момент?</p>
         </div>
+
         <div class="center-area">
             <div class="intro-text">
                 <h1>Мы лучший выбор.</h1>
@@ -270,6 +233,8 @@
                 <div class="pointer-axis" id="arrow-axis"><div class="radar-pointer" id="pointer"></div></div>
                 <div class="radar-box" id="main-radar"><button class="btn-repair" id="launch-btn">РЕМОНТ</button></div>
             </div>
+            <div class="click-prompt" id="prompt-txt">жми жми</div>
+            <button class="open-price-trigger" id="openPriceBtn">Посмотреть прайс</button>
         </div>
 
         <div class="panel" id="right-card">
@@ -279,7 +244,8 @@
         </div>
     </section>
 
-    <section class="scroll-section" id="scroll-zone">
+    <!-- Полноэкранный вылет 2 листа без ручного скролла -->
+    <div class="fullscreen-overlay" id="scroll-zone">
         <div class="stack-block block-left" id="slide-left">
             <h2>Любая сложность</h2>
             <p>Мы работаем абсолютно со всеми видами сложностей. От быстрой замены разбитого экрана до полной подетальной пересборки твоего телефона или ПК.</p>
@@ -290,10 +256,12 @@
             <p>Мы находимся в городе Купино. Работаем в максимально удобном для тебя формате: на дому или оперативно приедем по вызову в любую точку.</p>
             <a href="https://vk.com" target="_blank" class="link-btn vk-color">Связаться в VK</a>
         </div>
-    </section>
+        <button class="back-to-repair-btn" id="backBtn">Вернуться к ремонту</button>
+    </div>
 
-    <!-- Прайс-лист со смайликами СЛЕВА от цен -->
-    <section class="price-section">
+    <!-- Полноэкранный Прайс-лист -->
+    <div class="price-overlay" id="priceOverlay">
+        <button class="close-price-btn" id="closePriceBtn">Назад</button>
         <h2>Наш <span>Инвентарь</span> Услуг</h2>
         <div class="inventory-grid">
             <div class="item-card rarity-mil-spec"><div class="item-title">Замена разъема зарядки</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔌</span><div class="item-price">от 1 800 ₽</div></div></div>
@@ -305,33 +273,34 @@
             <div class="item-card rarity-covert"><div class="item-title">Чистка после воды</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">💧</span><div class="item-price">от 2 500 ₽</div></div></div>
             <div class="item-card rarity-covert"><div class="item-title">Разблокировка устройства</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">🔓</span><div class="item-price">от 3 000 ₽</div></div></div>
         </div>
-    </section>
-
+    </div>
     <script>
         // ИНТЕРАКТИВ ПОПАПА ГОРОДА
         const cityBtn = document.getElementById('cityBtn');
         const modal = document.getElementById('modalOverlay');
         const closeModal = document.getElementById('closeModal');
-
         cityBtn.addEventListener('click', () => modal.classList.add('active'));
         closeModal.addEventListener('click', () => modal.classList.remove('active'));
         modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('active'); });
 
-        // ПОДКЛЮЧЕНИЕ ЗВУКОВ
+        // ИНТЕРАКТИВ ПРАЙСА
+        const openPriceBtn = document.getElementById('openPriceBtn');
+        const priceOverlay = document.getElementById('priceOverlay');
+        const closePriceBtn = document.getElementById('closePriceBtn');
+        openPriceBtn.addEventListener('click', () => priceOverlay.classList.add('active'));
+        closePriceBtn.addEventListener('click', () => priceOverlay.classList.remove('active'));
+
+        // ПОДКЛЮЧЕНИЕ ЗВУКОВ РЕАЛЬНОЙ ИГРОВОЙ ТРЕЩОТКИ
         const spinAudio = new Audio('https://mixkit.co'); 
         const winAudio = new Audio('https://mixkit.co');   
-        spinAudio.volume = 0.4;
-        winAudio.volume = 0.5;
+        spinAudio.volume = 0.4; winAudio.volume = 0.5;
 
         function startRealTicks() {
-            spinAudio.currentTime = 0;
-            spinAudio.play();
-            let speed = 60; 
-            let elapsed = 0;
+            spinAudio.currentTime = 0; spinAudio.play();
+            let speed = 60; let elapsed = 0;
             function run() {
                 if (elapsed >= 2200) return;
-                spinAudio.currentTime = 0;
-                spinAudio.play();
+                spinAudio.currentTime = 0; spinAudio.play();
                 if (elapsed > 1200) speed = 140;
                 if (elapsed > 1800) speed = 300;
                 elapsed += speed;
@@ -340,15 +309,17 @@
             run();
         }
 
-        // ЛОГИКА АНИМАЦИИ
+        // ЛОГИКА АНИМАЦИИ РЕМОНТА И ВЫЛЕТА СТЕН
         const btn = document.getElementById('launch-btn');
         const axis = document.getElementById('arrow-axis');
         const radar = document.getElementById('main-radar');
         const pointer = document.getElementById('pointer');
         const rightCard = document.getElementById('right-card');
         const rightIcon = document.getElementById('right-icon');
+        const scrollZone = document.getElementById('scroll-zone');
         const slideLeft = document.getElementById('slide-left');
         const slideRight = document.getElementById('slide-right');
+        const backBtn = document.getElementById('backBtn');
 
         btn.addEventListener('click', () => {
             btn.disabled = true;
@@ -357,29 +328,49 @@
 
             setTimeout(() => {
                 winAudio.play();
-
                 radar.style.borderColor = '#facc15';
                 radar.style.boxShadow = '0 0 60px rgba(250, 204, 21, 0.6), inset 0 0 25px rgba(0, 0, 0, 0.8)';
                 pointer.style.borderTopColor = '#22c55e';
                 pointer.style.filter = 'drop-shadow(0 0 15px #22c55e)';
-                
                 btn.style.color = '#facc15';
                 btn.style.textShadow = '0 0 15px rgba(250, 204, 21, 0.8)';
                 btn.innerText = 'УСПЕШНО';
-
                 rightCard.style.borderColor = '#facc15';
                 rightCard.style.boxShadow = '0 0 50px rgba(250, 204, 21, 0.4), 0 40px 80px rgba(0,0,0,0.7)';
                 rightIcon.style.filter = 'drop-shadow(0 0 25px rgba(250, 204, 21, 0.8))';
 
+                // Вылет стен на весь экран
                 setTimeout(() => {
-                    document.getElementById('scroll-zone').scrollIntoView({ behavior: 'smooth' });
-                    setTimeout(() => {
-                        slideLeft.classList.add('active');
-                        slideRight.classList.add('active');
-                    }, 500);
-                }, 500);
-
+                    scrollZone.classList.add('active');
+                    slideLeft.classList.add('active');
+                    slideRight.classList.add('active');
+                }, 700);
             }, 2200);
+        });
+
+        // Функция возврата назад к ремонту
+        backBtn.addEventListener('click', () => {
+            slideLeft.classList.remove('active');
+            slideRight.classList.remove('active');
+            scrollZone.classList.remove('active');
+
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.innerText = 'РЕМОНТ';
+                btn.style.color = '#fff';
+                btn.style.textShadow = 'none';
+                axis.style.transition = 'none';
+                axis.style.transform = 'rotate(0deg)';
+                setTimeout(() => { axis.style.transition = 'transform 2.2s cubic-bezier(0.25, 1, 0.5, 1)'; }, 50);
+                
+                radar.style.borderColor = 'rgba(250, 204, 21, 0.3)';
+                radar.style.boxShadow = '0 0 50px rgba(250, 204, 21, 0.15), inset 0 0 25px rgba(0, 0, 0, 0.8)';
+                pointer.style.borderTopColor = '#facc15';
+                pointer.style.filter = 'drop-shadow(0 0 10px #facc15)';
+                rightCard.style.borderColor = 'rgba(250, 204, 21, 0.1)';
+                rightCard.style.boxShadow = '0 40px 80px rgba(0,0,0,0.7)';
+                rightIcon.style.filter = 'drop-shadow(0 0 25px rgba(250, 204, 21, 0.25))';
+            }, 900);
         });
     </script>
 </body>
