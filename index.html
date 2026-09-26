@@ -95,8 +95,8 @@
         .intro-text p { color: #d4d4d8; font-size: 1.1rem; line-height: 1.6; }
 
         .radar-wrapper { position: relative; width: 260px; height: 260px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; }
-        .pointer-axis { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 20; pointer-events: none; display: flex; justify-content: center; transition: transform 2.2s cubic-bezier(0.25, 1, 0.5, 1); }
-        .radar-pointer { position: absolute; top: -12px; width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-top: 24px solid #facc15; filter: drop-shadow(0 0 10px #facc15); }
+        .pointer-axis { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 20; pointer-events: none; display: flex; justify-content: center; transition: transform 2.2s cubic-bezier(0.1, 0.8, 0.2, 1); }
+        .radar-pointer { position: absolute; top: -12px; width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-top: 24px solid #facc15; filter: drop-shadow(0 0 10px #facc15); transition: border-top-color 0.4s, filter 0.4s; }
 
         .radar-box {
             width: 250px; height: 250px; border-radius: 50%; background: padding-box, conic-gradient(#facc15 0% 75%, #1c1913 75% 100%);
@@ -109,7 +109,6 @@
             color: #fff; font-size: 1.4rem; font-weight: 900; letter-spacing: 3px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; z-index: 5;
         }
 
-        /* ТЕКСТ ЖМИ ЖМИ */
         .click-prompt {
             font-size: 1.3rem; font-weight: 900; text-transform: uppercase; letter-spacing: 4px; color: #facc15;
             text-shadow: 0 0 10px rgba(250, 204, 21, 0.6); animation: pulseText 1.5s infinite ease-in-out; margin-top: 10px;
@@ -118,7 +117,7 @@
             0%, 100% { opacity: 0.4; transform: scale(0.96); }
             50% { opacity: 1; transform: scale(1.04); text-shadow: 0 0 20px rgba(250, 204, 21, 0.9); }
         }
-        /* ВТОРОЙ ЭКРАН НА ВЕСЬ ВЫСОТУ (СВОБОДНЫЙ СКРОЛЛ) */
+        /* ВТОРОЙ ЭКРАН НА ВЕСЬ ВЫСОТУ */
         .scroll-section {
             width: 100vw; height: 100vh; display: flex; background: #0d0d0c; position: relative; overflow: hidden;
         }
@@ -128,11 +127,9 @@
             position: absolute; top: 0; bottom: 0; transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* Изначально раздвинуты влево и вправо за границы */
         .block-left { background: #131312; border-right: 2px solid rgba(250, 204, 21, 0.1); left: -50vw; }
         .block-right { background: #1c1913; right: -50vw; }
         
-        /* Классы автоматического смыкания при прокрутке */
         .block-left.active { left: 0; }
         .block-right.active { right: 0; }
 
@@ -183,7 +180,6 @@
         <div class="city-select-btn" id="cityBtn">Купино</div>
     </header>
 
-    <!-- Окно выбора города -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-card">
             <div class="close-modal" id="closeModal">✕</div>
@@ -195,7 +191,7 @@
         </div>
     </div>
 
-    <!-- Страница 1 (Ремонт) -->
+    <!-- Раздел 1 -->
     <section class="screen-one">
         <div class="panel" id="left-card">
             <div class="hardware-icon">📉</div>
@@ -222,7 +218,7 @@
         </div>
     </section>
 
-    <!-- Страница 2 (Стены, которые вылетают при скролле) -->
+    <!-- Раздел 2 -->
     <section class="scroll-section" id="scroll-zone">
         <div class="stack-block block-left" id="slide-left">
             <h2>Любая сложность</h2>
@@ -236,7 +232,7 @@
         </div>
     </section>
 
-    <!-- Страница 3 (Инвентарь цен) -->
+    <!-- Раздел 3 -->
     <section class="price-section">
         <h2>Наш <span>Инвентарь</span> Услуг</h2>
         <div class="inventory-grid">
@@ -257,7 +253,6 @@
         const closeModal = document.getElementById('closeModal');
         cityBtn.addEventListener('click', () => modal.classList.add('active'));
         closeModal.addEventListener('click', () => modal.classList.remove('active'));
-        modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('active'); });
 
         // ЗВУКИ
         const spinAudio = new Audio('https://mixkit.co'); 
@@ -278,7 +273,7 @@
             run();
         }
 
-        // КНОПКА РЕМОНТ
+        // ЛОГИКА КНОПКИ РЕМОНТ С РАНДОМОМ И КД
         const btn = document.getElementById('launch-btn');
         const axis = document.getElementById('arrow-axis');
         const radar = document.getElementById('main-radar');
@@ -289,7 +284,12 @@
         btn.addEventListener('click', () => {
             btn.disabled = true;
             startRealTicks();
-            axis.style.transform = 'rotate(1440deg)';
+
+            // ЧЕСТНЫЙ РАНДОМ: 4 полных оборота (1440 град) + случайный угол строго внутри жёлтого сектора (от 0 до 270 градусов)
+            const randomYellowDegrees = Math.floor(Math.random() * 270);
+            const totalDegrees = 1440 + randomYellowDegrees;
+            
+            axis.style.transform = `rotate(${totalDegrees}deg)`;
 
             setTimeout(() => {
                 winAudio.play();
@@ -303,6 +303,27 @@
                 rightCard.style.borderColor = '#facc15';
                 rightCard.style.boxShadow = '0 0 50px rgba(250, 204, 21, 0.4), 0 40px 80px rgba(0,0,0,0.7)';
                 rightIcon.style.filter = 'drop-shadow(0 0 25px rgba(250, 204, 21, 0.8))';
+
+                // СИСТЕМА ПЕРЕЗАРЯДКИ (КД): Сбрасываем кнопку через 6 секунд, чтобы можно было крутить заново
+                setTimeout(() => {
+                    btn.disabled = false;
+                    btn.innerText = 'РЕМОНТ';
+                    btn.style.color = '#fff';
+                    btn.style.textShadow = 'none';
+                    
+                    // Плавно возвращаем стрелку на исходную позицию 0 градусов
+                    axis.style.transform = 'rotate(0deg)';
+                    
+                    // Тушим все неоновые подсветки
+                    radar.style.borderColor = 'rgba(250, 204, 21, 0.3)';
+                    radar.style.boxShadow = '0 0 50px rgba(250, 204, 21, 0.15), inset 0 0 25px rgba(0, 0, 0, 0.8)';
+                    pointer.style.borderTopColor = '#facc15';
+                    pointer.style.filter = 'drop-shadow(0 0 10px #facc15)';
+                    rightCard.style.borderColor = 'rgba(250, 204, 21, 0.1)';
+                    rightCard.style.boxShadow = '0 40px 80px rgba(0,0,0,0.7)';
+                    rightIcon.style.filter = 'drop-shadow(0 0 25px rgba(250, 204, 21, 0.25))';
+                }, 6000); // 6 секунд удержания перед КД
+
             }, 2200);
         });
 
@@ -312,15 +333,11 @@
         const scrollZone = document.getElementById('scroll-zone');
 
         window.addEventListener('scroll', () => {
-            // Получаем координаты второго экрана относительно окна
             const rect = scrollZone.getBoundingClientRect();
-            
-            // Если мы прокрутили сайт до начала второго экрана
             if (rect.top <= window.innerHeight * 0.7) {
                 slideLeft.classList.add('active');
                 slideRight.classList.add('active');
             } else {
-                // Если крутим обратно наверх — стены разъезжаются назад!
                 slideLeft.classList.remove('active');
                 slideRight.classList.remove('active');
             }
