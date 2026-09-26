@@ -115,8 +115,7 @@
             box-shadow: inset 0 0 35px rgba(250, 204, 21, 0.25);
             transform: scale(1.02);
         }
-
-        /* Второй экран - стакающиеся блоки */
+        /* Второй экран - стабильный информационный блок */
         .scroll-section {
             width: 100vw;
             height: 100vh;
@@ -124,13 +123,12 @@
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transform: translateY(100px);
-            transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: opacity 0.8s ease;
         }
 
+        /* Контейнер становится видимым после клика */
         .scroll-section.show {
             opacity: 1;
-            transform: translateY(0);
         }
 
         .stack-container {
@@ -140,7 +138,7 @@
             border-radius: 32px;
             overflow: hidden;
             box-shadow: 0 50px 100px rgba(0,0,0,0.8);
-            border: 1px solid rgba(250, 204, 21, 0.1);
+            border: 2px solid rgba(250, 204, 21, 0.15);
         }
 
         .stack-block {
@@ -150,23 +148,14 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            opacity: 0;
-            transition: all 1s ease;
-        }
-
-        .stack-block.fly-in {
-            opacity: 1;
-            transform: translateX(0) !important;
         }
 
         .block-left {
             background: #141413;
-            border-right: 1px solid rgba(250, 204, 21, 0.05);
-            transform: translateX(-100px);
+            border-right: 1px solid rgba(250, 204, 21, 0.1);
         }
         .block-right {
-            background: #1c1a14;
-            transform: translateX(100px);
+            background: #1c1a14; /* Золотисто-тёмный оттенок */
         }
 
         .stack-block h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; color: #facc15; }
@@ -204,20 +193,21 @@
             <p>Стабильный FPS, идеальный отклик, чистая система без мусора и кастомный апгрейд лично под твои задачи.</p>
         </div>
     </section>
+
     <section class="scroll-section" id="scroll-zone">
         <div class="stack-container">
-            <div class="stack-block block-left" id="slide-left">
+            <div class="stack-block block-left">
                 <h2>Любая сложность</h2>
                 <p>Мы работаем абсолютно со всеми видами сложностей. От быстрой замены разбитого экрана до полной подетальной пересборки твоего телефона или ПК.</p>
             </div>
-            <div class="stack-block block-right" id="slide-right">
+            <div class="stack-block block-right">
                 <h2>Всегда рядом</h2>
                 <p>Мы находимся в городе Купино. Работаем в максимально удобном для тебя формате: прямо у тебя на дому или оперативно приедем по вызову в любую точку.</p>
             </div>
         </div>
     </section>
 
-    <!-- Подключаем чистый GSAP (без забагованных скролл-плагинов) -->
+    <!-- Подключаем чистую анимацию вращения -->
     <script src="https://cloudflare.com"></script>
     <script>
         const btn = document.getElementById('launch-btn');
@@ -225,20 +215,20 @@
         const rightCard = document.getElementById('right-card');
         const rightIcon = document.getElementById('right-icon');
         const scrollZone = document.getElementById('scroll-zone');
-        const slideLeft = document.getElementById('slide-left');
-        const slideRight = document.getElementById('slide-right');
+
+        // При первой загрузке принудительно возвращаем наверх страницы
+        window.scrollTo(0, 0);
 
         btn.addEventListener('click', () => {
-            // Кнопка точно сработает и отключится, чтобы не спамили
             btn.disabled = true;
 
-            // Крутим радар чисто через GSAP
+            // Крутим круг радара
             gsap.to(radar, {
                 rotation: 1440,
                 duration: 2.2,
                 ease: "power4.inOut",
                 onComplete: () => {
-                    // Эффект «УДАЧНО» и зеленый неон
+                    // Красим радар и правое окно в зеленый цвет «УДАЧНО»
                     radar.style.background = 'padding-box, conic-gradient(#22c55e 0% 100%)';
                     radar.style.borderColor = 'rgba(34, 197, 94, 0.5)';
                     radar.style.boxShadow = '0 0 60px rgba(34, 197, 94, 0.4)';
@@ -246,28 +236,21 @@
                     btn.style.color = '#22c55e';
                     btn.innerText = 'УДАЧНО';
 
-                    rightCard.style.borderColor = 'rgba(34, 197, 94, 0.4)';
+                    rightCard.style.borderColor = 'rgba(34, 197, 94, 0.5)';
                     rightCard.style.boxShadow = '0 0 50px rgba(34, 197, 94, 0.2)';
                     rightIcon.style.filter = 'drop-shadow(0 0 25px rgba(34, 197, 94, 0.6))';
                     document.querySelector('.logo span').style.color = '#22c55e';
 
-                    // Через секунду после успеха мягко выкатываем второй экран снизу
+                    // Проявляем нижний инфо-блок
+                    scrollZone.classList.add('show');
+
+                    // Автоматически плавно перемещаем экран вниз, показывая информацию
                     setTimeout(() => {
-                        scrollZone.classList.add('show');
-                        
-                        // Плавный скролл всей страницы вниз к инфе
                         window.scrollTo({
                             top: window.innerHeight,
                             behavior: 'smooth'
                         });
-
-                        // Еще через полсекунды окна слева и справа стакаются в центр
-                        setTimeout(() => {
-                            slideLeft.classList.add('fly-in');
-                            slideRight.classList.add('fly-in');
-                        }, 400);
-
-                    }, 600);
+                    }, 400);
                 }
             });
         });
