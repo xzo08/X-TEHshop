@@ -33,6 +33,66 @@
         }
         .logo span { color: #facc15; }
 
+        .city-select-btn {
+            color: #a1a1aa;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: color 0.3s;
+            border-bottom: 1px dashed rgba(250, 204, 21, 0.4);
+            padding-bottom: 2px;
+        }
+        .city-select-btn:hover { color: #facc15; }
+
+        /* ОКНО ВЫБОРА ГОРОДА (ПОПАП) */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+
+        .modal-card {
+            background: #141413;
+            border: 2px solid #facc15;
+            box-shadow: 0 0 50px rgba(250, 204, 21, 0.2);
+            border-radius: 24px;
+            padding: 40px;
+            width: 450px;
+            text-align: center;
+            position: relative;
+        }
+        .modal-card h3 { font-size: 1.8rem; text-transform: uppercase; margin-bottom: 25px; color: #facc15; }
+        
+        .city-option {
+            padding: 15px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(250, 204, 21, 0.1);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .city-option.available { border-color: #facc15; color: #fff; background: rgba(250, 204, 21, 0.05); }
+        .city-option.locked { opacity: 0.4; color: #71717a; cursor: not-allowed; }
+        
+        .modal-note { font-size: 0.9rem; color: #a1a1aa; margin-top: 25px; line-height: 1.4; }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #71717a; }
+        .close-modal:hover { color: #fff; }
+
         /* Первый экран */
         .screen-one {
             width: 100vw;
@@ -67,7 +127,7 @@
             transition: all 0.6s ease;
         }
 
-        .panel h3 { font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; font-weight: 800; }
+        .panel h3 { font-size: 1.3rem; text-transform: uppercase; margin-bottom: 15px; font-weight: 800; }
         .panel p { color: #a1a1aa; text-align: center; font-size: 1rem; line-height: 1.6; }
 
         .center-area {
@@ -83,140 +143,107 @@
         .intro-text h1 { font-size: 2.8rem; font-weight: 900; line-height: 1.2; margin-bottom: 15px; text-transform: uppercase; }
         .intro-text p { color: #d4d4d8; font-size: 1.1rem; line-height: 1.6; }
 
-        /* Контейнер для радара */
-        .radar-wrapper {
-            position: relative;
-            width: 260px;
-            height: 260px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+        .radar-wrapper { position: relative; width: 260px; height: 260px; display: flex; align-items: center; justify-content: center; }
+        
+        .pointer-axis { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 20; pointer-events: none; display: flex; justify-content: center; }
+        .radar-pointer { position: absolute; top: -12px; width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-top: 24px solid #facc15; filter: drop-shadow(0 0 10px #facc15); }
 
-        /* Ось вращения стрелки — стоит в самом центре, крутится вся конструкция */
-        .pointer-axis {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0; left: 0;
-            z-index: 20;
-            pointer-events: none;
-            display: flex;
-            justify-content: center;
-        }
+        .radar-spin { animation: spinArrow 2.2s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+        @keyframes spinArrow { 0% { transform: rotate(0deg); } 100% { transform: rotate(1440deg); } }
 
-        /* Острая неоновая стрелочка на верхушке оси */
-        .radar-pointer {
-            position: absolute;
-            top: -12px;
-            width: 0;
-            height: 0;
-            border-left: 12px solid transparent;
-            border-right: 12px solid transparent;
-            border-top: 24px solid #facc15;
-            filter: drop-shadow(0 0 10px #facc15);
-        }
-
-        /* АНИМАЦИЯ БЕШЕНОГО ВРАЩЕНИЯ СТРЕЛКИ */
-        .arrow-spin {
-            animation: spinArrow 2.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-        }
-
-        @keyframes spinArrow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(1440deg); }
-        }
-
-        /* СТИЛЬНЫЙ СЛОЖНЫЙ РАДАР (Стоит мёртво, выглядит дорого) */
         .radar-box {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            /* Градиентная дорожка с красивой внутренней маской */
+            width: 250px; height: 250px; border-radius: 50%;
             background: padding-box, conic-gradient(#facc15 0% 75%, #1c1913 75% 100%);
             border: 4px solid rgba(250, 204, 21, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            /* Внешнее глубокое свечение */
+            display: flex; align-items: center; justify-content: center;
             box-shadow: 0 0 50px rgba(250, 204, 21, 0.15), inset 0 0 25px rgba(0, 0, 0, 0.8);
-            position: relative;
-            transition: all 0.6s ease;
+            position: relative; transition: all 0.6s ease;
         }
 
-        /* Кнопка внутри радара с эффектом глубины */
         .btn-repair {
-            width: 190px;
-            height: 190px;
-            border-radius: 50%;
-            background: #111110;
-            border: 2px solid rgba(255, 255, 255, 0.03);
-            color: #fff;
-            font-size: 1.4rem;
-            font-weight: 900;
-            letter-spacing: 3px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 10px 30px rgba(0,0,0,0.6);
-            z-index: 5;
+            width: 190px; height: 190px; border-radius: 50%; background: #111110; border: 2px solid rgba(255, 255, 255, 0.03);
+            color: #fff; font-size: 1.4rem; font-weight: 900; letter-spacing: 3px; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; z-index: 5;
         }
-        
-        .btn-repair:hover:not(:disabled) {
-            color: #facc15;
-            box-shadow: inset 0 0 35px rgba(250, 204, 21, 0.2), 0 10px 30px rgba(0,0,0,0.6);
-            transform: scale(1.02);
-        }
+        .btn-repair:hover:not(:disabled) { color: #facc15; box-shadow: inset 0 0 35px rgba(250, 204, 21, 0.2); }
         /* ВТОРОЙ ЛИСТ НА ВЕСЬ ЭКРАН */
-        .scroll-section {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            background: #0d0d0c;
-            position: relative;
-            overflow: hidden;
-        }
-
+        .scroll-section { width: 100vw; height: 100vh; display: flex; background: #0d0d0c; position: relative; overflow: hidden; }
+        
         .stack-block {
-            width: 50%;
-            height: 100%;
-            padding: 0 10%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            transition: all 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+            width: 50%; height: 100%; padding: 0 8%; display: flex; flex-direction: column; justify-content: center;
+            position: absolute; top: 0; bottom: 0; transition: all 0.9s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        .block-left {
-            background: #131312;
-            border-right: 2px solid rgba(250, 204, 21, 0.1);
-            left: -50vw;
-        }
-
-        .block-right {
-            background: #1c1913;
-            right: -50vw;
-        }
-
+        .block-left { background: #131312; border-right: 2px solid rgba(250, 204, 21, 0.1); left: -50vw; }
+        .block-right { background: #1c1913; right: -50vw; }
+        
         .block-left.active { left: 0; }
         .block-right.active { right: 0; }
 
-        .stack-block h2 { font-size: 3.5rem; font-weight: 900; margin-bottom: 30px; text-transform: uppercase; color: #facc15; letter-spacing: 1px; }
-        .stack-block p { font-size: 1.4rem; color: #e4e4e7; line-height: 1.8; max-width: 600px; }
+        .stack-block h2 { font-size: 3.5rem; font-weight: 900; margin-bottom: 25px; text-transform: uppercase; color: #facc15; }
+        .stack-block p { font-size: 1.3rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 35px; }
+
+        /* Кнопки связи */
+        .link-btn {
+            display: inline-block; align-self: flex-start; padding: 16px 35px; border-radius: 12px;
+            font-size: 1.1rem; font-weight: 800; text-transform: uppercase; text-decoration: none;
+            letter-spacing: 1px; transition: all 0.3s ease;
+        }
+        .tg-color { background: #22c55e; color: #000; box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3); }
+        .tg-color:hover { background: #4ade80; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(34, 197, 94, 0.5); }
+        
+        .vk-color { background: #facc15; color: #000; box-shadow: 0 10px 25px rgba(250, 204, 21, 0.3); }
+        .vk-color:hover { background: #fde047; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(250, 204, 21, 0.5); }
+
+        /* ТРЕТИЙ ЭКРАН — ПРАЙС-ЛИСТ (ИГРОВОЙ ИНВЕНТАРЬ) */
+        .price-section {
+            width: 100vw; min-height: 100vh; padding: 120px 80px; background: #090909;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .price-section h2 { font-size: 3rem; font-weight: 900; text-transform: uppercase; margin-bottom: 50px; letter-spacing: 2px; }
+        .price-section h2 span { color: #facc15; }
+
+        .inventory-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; width: 100%; max-width: 1200px;
+        }
+
+        /* Карточка скина/услуги */
+        .item-card {
+            background: #131314; border: 1px solid rgba(255,255,255,0.03); border-radius: 16px;
+            padding: 25px; display: flex; flex-direction: column; justify-content: space-between;
+            position: relative; overflow: hidden; height: 230px; box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        }
+
+        /* Цвета редкости (неоновая полоска внизу и свечение) */
+        .rarity-mil-spec { border-bottom: 5px solid #3b82f6; box-shadow: inset 0 -20px 30px rgba(59, 130, 246, 0.05); } /* Синий - Армейское */
+        .rarity-classified { border-bottom: 5px solid #d946ef; box-shadow: inset 0 -20px 30px rgba(217, 70, 239, 0.05); } /* Розовый - Засекреченное */
+        .rarity-covert { border-bottom: 5px solid #ef4444; box-shadow: inset 0 -20px 30px rgba(239, 68, 68, 0.05); } /* Красный - Тайное */
+
+        .item-card .item-title { font-size: 1.1rem; font-weight: 800; text-transform: uppercase; color: #fff; line-height: 1.4; }
+        .item-card .item-type { font-size: 0.8rem; color: #71717a; text-transform: uppercase; margin-top: 5px; letter-spacing: 0.5px; }
+        .item-card .item-price { font-size: 1.4rem; font-weight: 900; color: #facc15; align-self: flex-end; margin-top: auto; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="logo">X-<span>Tehnik</span></div>
-        <div style="color: #a1a1aa; font-weight: 600; letter-spacing: 1px; font-size: 0.9rem; text-transform: uppercase;">Купино</div>
+        <div class="city-select-btn" id="cityBtn">Купино</div>
     </header>
 
+    <!-- Попап выбора города -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-card">
+            <div class="close-modal" id="closeModal">✕</div>
+            <h3>Выберите место</h3>
+            <div class="city-option available">Купино <span>🟢</span></div>
+            <div class="city-option locked">Новосибирск <span>🔒</span></div>
+            <div class="city-option locked">Омск <span>🔒</span></div>
+            <div class="modal-note">Пока мы работаем только из выше предложенных вариантов</div>
+        </div>
+    </div>
+
+    <!-- Экран 1 -->
     <section class="screen-one">
         <div class="panel" id="left-card">
             <div class="hardware-icon">📉</div>
@@ -229,16 +256,9 @@
                 <h1>Мы лучший выбор.</h1>
                 <p>Мы молодые, на опыте, шарим в трендах и понимаем тебя с полуслова.</p>
             </div>
-            
             <div class="radar-wrapper">
-                <!-- Ось вращения, которая будет крутить стрелку -->
-                <div class="pointer-axis" id="arrow-axis">
-                    <div class="radar-pointer" id="pointer"></div>
-                </div>
-                <!-- Радар стоит статично -->
-                <div class="radar-box" id="main-radar">
-                    <button class="btn-repair" id="launch-btn">РЕМОНТ</button>
-                </div>
+                <div class="pointer-axis" id="arrow-axis"><div class="radar-pointer" id="pointer"></div></div>
+                <div class="radar-box" id="main-radar"><button class="btn-repair" id="launch-btn">РЕМОНТ</button></div>
             </div>
         </div>
 
@@ -248,19 +268,99 @@
             <p>Стабильный FPS, идеальный отклик, чистая система без мусора и кастомный апгрейд лично под твои задачи.</p>
         </div>
     </section>
-
+    <!-- Экран 2 (Стены) -->
     <section class="scroll-section" id="scroll-zone">
         <div class="stack-block block-left" id="slide-left">
             <h2>Любая сложность</h2>
             <p>Мы работаем абсолютно со всеми видами сложностей. От быстрой замены разбитого экрана до полной подетальной пересборки твоего телефона или ПК.</p>
+            <a href="https://t.me" target="_blank" class="link-btn tg-color">Написать в Telegram</a>
         </div>
         <div class="stack-block block-right" id="slide-right">
             <h2>Всегда рядом</h2>
             <p>Мы находимся в городе Купино. Работаем в максимально удобном для тебя формате: на дому или оперативно приедем по вызову в любую точку.</p>
+            <a href="https://vk.com" target="_blank" class="link-btn vk-color">Связаться в VK</a>
+        </div>
+    </section>
+
+    <!-- Экран 3 (Прайс-инвентарь) -->
+    <section class="price-section">
+        <h2>Наш <span>Инвентарь</span> Услуг</h2>
+        <div class="inventory-grid">
+            <div class="item-card rarity-mil-spec"><div class="item-title">Замена разъема зарядки</div><div class="item-type">Армейское качество</div><div class="item-price">от 1 800 ₽</div></div>
+            <div class="item-card rarity-mil-spec"><div class="item-title">Замена динамика</div><div class="item-type">Армейское качество</div><div class="item-price">от 1 800 ₽</div></div>
+            <div class="item-card rarity-classified"><div class="item-title">Замена дисплея</div><div class="item-type">Засекреченное</div><div class="item-price">от 2 000 ₽</div></div>
+            <div class="item-card rarity-classified"><div class="item-title">Замена аккумулятора</div><div class="item-type">Засекреченное</div><div class="item-price">от 2 000 ₽</div></div>
+            <div class="item-card rarity-classified"><div class="item-title">Замена микрофона</div><div class="item-type">Засекреченное</div><div class="item-price">от 2 000 ₽</div></div>
+            <div class="item-card rarity-classified"><div class="item-title">Восстановление ПО</div><div class="item-type">Засекреченное</div><div class="item-price">от 2 000 ₽</div></div>
+            <div class="item-card rarity-covert"><div class="item-title">Чистка после воды</div><div class="item-type">Тайное</div><div class="item-price">от 2 500 ₽</div></div>
+            <div class="item-card rarity-covert"><div class="item-title">Разблокировка устройства</div><div class="item-type">Тайное</div><div class="item-price">от 3 000 ₽</div></div>
         </div>
     </section>
 
     <script>
+        // ИНТЕРАКТИВ ПОПАПА ГОРОДА
+        const cityBtn = document.getElementById('cityBtn');
+        const modal = document.getElementById('modalOverlay');
+        const closeModal = document.getElementById('closeModal');
+
+        cityBtn.addEventListener('click', () => modal.classList.add('active'));
+        closeModal.addEventListener('click', () => modal.classList.remove('active'));
+        modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('active'); });
+
+        // СИСТЕМА ДИНАМИЧЕСКИХ ЗВУКОВ «ТРЕЩОТКИ» БЕЗ ФАЙЛОВ
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        
+        function playTick(vol = 0.1, freq = 600, duration = 0.03) {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            osc.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+            gainNode.gain.setValueAtTime(vol, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + duration);
+            osc.start();
+            osc.stop(audioCtx.currentTime + duration);
+        }
+
+        function playWinBlast() {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            osc.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(120, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + 0.6);
+            gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.6);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.6);
+        }
+
+        function triggerTickSequence() {
+            let currentDelay = 30; // Скорость щелчков на старте
+            let elapsed = 0;
+            const duration = 2200;
+
+            function scheduleNext() {
+                if (elapsed >= duration) return;
+                playTick(0.08, 500 - (elapsed / 6), 0.02);
+                
+                // Прогрессия замедления трещотки к концу колеса
+                let progress = elapsed / duration;
+                if (progress < 0.5) currentDelay = 30;
+                else if (progress < 0.8) currentDelay = 30 + (progress - 0.5) * 400;
+                else currentDelay = 150 + (progress - 0.8) * 1200;
+
+                elapsed += currentDelay;
+                setTimeout(scheduleNext, currentDelay);
+            }
+            scheduleNext();
+        }
+
+        // ЛОГИКА КНОПКИ РЕМОНТ
         const btn = document.getElementById('launch-btn');
         const axis = document.getElementById('arrow-axis');
         const radar = document.getElementById('main-radar');
@@ -272,32 +372,28 @@
 
         btn.addEventListener('click', () => {
             btn.disabled = true;
-            
-            // Запускаем бешеное кручение оси стрелки
             axis.classList.add('arrow-spin');
+            triggerTickSequence(); // Запуск трещотки
 
             setTimeout(() => {
-                // В конце стрелка меняет цвет на победный зеленый неон
-                pointer.style.borderTopColor = '#22c55e';
-                pointer.style.filter = 'drop-shadow(0 0 15px #22c55e)';
+                playWinBlast(); // Звук победы
 
-                // Сам радар вспыхивает сочным желтым неоном
                 radar.style.borderColor = '#facc15';
                 radar.style.boxShadow = '0 0 60px rgba(250, 204, 21, 0.6), inset 0 0 25px rgba(0, 0, 0, 0.8)';
+                pointer.style.borderTopColor = '#22c55e';
+                pointer.style.filter = 'drop-shadow(0 0 15px #22c55e)';
                 
                 btn.style.color = '#facc15';
                 btn.style.textShadow = '0 0 15px rgba(250, 204, 21, 0.8)';
                 btn.innerText = 'УСПЕШНО';
 
-                // Подсвечиваем правое окно желтым неоном
                 rightCard.style.borderColor = '#facc15';
                 rightCard.style.boxShadow = '0 0 50px rgba(250, 204, 21, 0.4), 0 40px 80px rgba(0,0,0,0.7)';
                 rightIcon.style.filter = 'drop-shadow(0 0 25px rgba(250, 204, 21, 0.8))';
 
-                // Плавный переход ко второму полноэкранному листу
+                // Скролл вниз к стенам
                 setTimeout(() => {
                     document.getElementById('scroll-zone').scrollIntoView({ behavior: 'smooth' });
-                    
                     setTimeout(() => {
                         slideLeft.classList.add('active');
                         slideRight.classList.add('active');
