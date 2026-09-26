@@ -10,30 +10,20 @@
             background: #0d0d0c;
             color: #fff;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            overflow: hidden;
-            height: 100vh;
+            overflow-x: hidden;
+            background-attachment: fixed;
         }
 
-        body::before {
-            content: '';
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(250, 204, 21, 0.05) 0%, rgba(0,0,0,0) 70%);
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 0;
-            pointer-events: none;
-        }
-
+        /* Шапка */
         header {
-            position: absolute;
+            position: fixed;
             top: 0; left: 0; width: 100%;
             padding: 30px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 10;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(13,13,12,1) 0%, rgba(13,13,12,0) 100%);
         }
 
         .logo {
@@ -42,9 +32,10 @@
             letter-spacing: 1px;
             text-transform: uppercase;
         }
-        .logo span { color: #facc15; text-shadow: 0 0 20px rgba(250, 204, 21, 0.3); }
+        .logo span { color: #facc15; transition: color 0.5s; }
 
-        .main-container {
+        /* Первый экран (Интерактивная зона ремонта) */
+        .screen-one {
             width: 100vw;
             height: 100vh;
             display: flex;
@@ -52,7 +43,6 @@
             justify-content: space-between;
             padding: 0 80px;
             position: relative;
-            z-index: 2;
         }
 
         .panel {
@@ -68,18 +58,14 @@
             justify-content: center;
             padding: 40px 30px;
             box-shadow: 0 40px 80px rgba(0,0,0,0.7);
-            will-change: transform, opacity;
-        }
-
-        .panel.upgrade-target {
-            border-color: rgba(250, 204, 21, 0.25);
-            box-shadow: 0 0 40px rgba(250, 204, 21, 0.05), 0 40px 80px rgba(0,0,0,0.7);
+            transition: border-color 0.6s, box-shadow 0.6s;
         }
 
         .hardware-icon {
             font-size: 4.5rem;
             margin-bottom: 25px;
             filter: drop-shadow(0 0 25px rgba(250, 204, 21, 0.25));
+            transition: filter 0.6s;
         }
 
         .panel h3 { font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; font-weight: 800; }
@@ -93,14 +79,11 @@
             width: 35vw;
         }
 
-        .intro-text {
-            text-align: center;
-            margin-bottom: 40px;
-            will-change: transform, opacity;
-        }
+        .intro-text { text-align: center; margin-bottom: 40px; }
         .intro-text h1 { font-size: 2.8rem; font-weight: 900; line-height: 1.2; margin-bottom: 15px; text-transform: uppercase; }
         .intro-text p { color: #d4d4d8; font-size: 1.1rem; line-height: 1.6; }
 
+        /* Радар */
         .radar-box {
             width: 250px;
             height: 250px;
@@ -112,7 +95,7 @@
             justify-content: center;
             box-shadow: 0 0 60px rgba(250, 204, 21, 0.1);
             position: relative;
-            will-change: transform;
+            transition: border-color 0.6s, box-shadow 0.6s, background 0.6s;
         }
 
         .btn-repair {
@@ -126,105 +109,76 @@
             font-weight: 900;
             letter-spacing: 3px;
             cursor: pointer;
-            z-index: 5;
             transition: all 0.3s ease;
-            box-shadow: inset 0 0 20px rgba(255,255,255,0.01);
         }
-        .btn-repair:hover {
+        .btn-repair:hover:not(:disabled) {
             color: #facc15;
-            box-shadow: inset 0 0 35px rgba(250, 204, 21, 0.25), 0 0 40px rgba(250, 204, 21, 0.15);
+            box-shadow: inset 0 0 35px rgba(250, 204, 21, 0.25);
             transform: scale(1.02);
         }
 
-        .finish-screen {
-            position: absolute;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background: #0d0d0c;
+        /* ВТОРОЙ ЭКРАН (Скролл-зона для стакающихся окон) */
+        .scroll-section {
+            width: 100vw;
+            height: 120vh;
+            position: relative;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transform: scale(1.2);
-            will-change: transform, opacity;
-            z-index: 20;
-            padding: 40px;
+            visibility: hidden;
         }
 
-        .finish-card {
-            background: rgba(18, 18, 18, 0.8);
-            border: 2px solid #facc15;
-            box-shadow: 0 0 50px rgba(250, 204, 21, 0.15);
-            border-radius: 32px;
-            padding: 50px;
-            text-align: center;
-            max-width: 650px;
-            width: 100%;
-        }
-
-        .finish-title { font-size: 3rem; font-weight: 900; color: #facc15; text-transform: uppercase; margin-bottom: 15px; }
-        .finish-subtitle { color: #e4e4e7; font-size: 1.3rem; margin-bottom: 35px; font-weight: 600; }
-        
-        .features-list {
-            text-align: left;
-            margin: 0 auto 35px auto;
-            max-width: 450px;
-            list-style: none;
-        }
-        .features-list li {
-            font-size: 1.1rem;
-            margin-bottom: 12px;
-            color: #a1a1aa;
+        /* Общий контейнер, где склеятся окна */
+        .stack-container {
             display: flex;
-            align-items: center;
-        }
-        .features-list li::before {
-            content: '⚡';
-            margin-right: 12px;
-            color: #facc15;
-            filter: drop-shadow(0 0 5px #facc15);
+            width: 70vw;
+            height: 55vh;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.8);
         }
 
-        .btn-contact {
-            display: inline-block;
-            padding: 18px 45px;
-            background: #facc15;
-            color: #000;
-            font-weight: 800;
-            font-size: 1.2rem;
-            text-decoration: none;
-            border-radius: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 10px 25px rgba(250, 204, 21, 0.3);
-            transition: all 0.3s ease;
+        .stack-block {
+            width: 50%;
+            height: 100%;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            will-change: transform;
         }
-        .btn-contact:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(250, 204, 21, 0.5);
-            background: #fde047;
+
+        /* Разные цвета отделов */
+        .block-left {
+            background: #161615;
+            border-right: 1px solid rgba(250, 204, 21, 0.1);
         }
+        .block-right {
+            background: #201d12;
+        }
+
+        .stack-block h2 { font-size: 2rem; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; color: #facc15; }
+        .stack-block p { font-size: 1.2rem; color: #e4e4e7; line-height: 1.7; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="logo">X-<span>Tehnik</span></div>
-        <div style="color: #a1a1aa; font-weight: 600; letter-spacing: 1px; font-size: 0.9rem; text-transform: uppercase;">Сделаем «Вообще всё»</div>
+        <div style="color: #a1a1aa; font-weight: 600; letter-spacing: 1px; font-size: 0.9rem; text-transform: uppercase;">Купино</div>
     </header>
 
-    <div class="main-container">
+    <section class="screen-one">
         <div class="panel" id="left-card">
             <div class="hardware-icon">📉</div>
             <h3>Твое старое железо</h3>
-            <p>Греется, жутко лагает, выдает синий экран или намертво зависает в самый неподходящий момент? Хватит это терпеть.</p>
+            <p>Греется, жутко лагает, выдает синий экран или намертво зависает в самый неподходящий момент?</p>
         </div>
 
         <div class="center-area">
-            <div class="intro-text" id="middle-text">
+            <div class="intro-text">
                 <h1>Мы лучший выбор.</h1>
-                <p>Мы молодые, на опыте, шарим в трендах и понимаем тебя с полуслова. Вернем твоему ПК былую мощь.</p>
+                <p>Мы молодые, на опыте, шарим в трендах и понимаем тебя с полуслова.</p>
             </div>
             
             <div class="radar-box" id="main-radar">
@@ -232,63 +186,80 @@
             </div>
         </div>
 
-        <div class="panel upgrade-target" id="right-card">
-            <div class="hardware-icon">⚡</div>
+        <div class="panel" id="right-card">
+            <div class="hardware-icon" id="right-icon">⚡</div>
             <h3>Заряженный монстр</h3>
             <p>Стабильный FPS, идеальный отклик, чистая система без мусора и кастомный апгрейд лично под твои задачи.</p>
         </div>
-    </div>
-
-    <div class="finish-screen" id="end-screen">
-        <div class="finish-card">
-            <h1 class="finish-title">X-Tehnik в деле</h1>
-            <p class="finish-subtitle">Чиним, меняем, оптимизируем — доводим до идеала!</p>
-            
-            <ul class="features-list">
-                <li>Диагностика и полное обновление системы</li>
-                <li>Замена любых комплектующих (смартфоны, ПК, ноутбуки)</li>
-                <li>Апгрейд железа до максимальных мощностей</li>
-                <li>Очистка от вирусов и тонкая оптимизация софта</li>
-            </ul>
-            
-            <a href="https://t.me" target="_blank" class="btn-contact">Связаться с нами</a>
+    </section>
+    <section class="scroll-section" id="scroll-zone">
+        <div class="stack-container">
+            <div class="stack-block block-left" id="slide-left">
+                <h2>Любая сложность</h2>
+                <p>Мы работаем абсолютно со всеми видами сложностей. От быстрой замены разбитого экрана до полной подетальной пересборки твоего телефона или ПК.</p>
+            </div>
+            <div class="stack-block block-right" id="slide-right">
+                <h2>Всегда рядом</h2>
+                <p>Мы находимся в городе Купино. Работаем в максимально удобном для тебя формате: прямо у тебя на дому или оперативно приедем по вызову в любую точку.</p>
+            </div>
         </div>
-    </div>
+    </section>
 
+    <!-- Подключаем библиотеки GSAP -->
+    <script src="https://cloudflare.com"></script>
     <script src="https://cloudflare.com"></script>
     <script>
+        gsap.registerPlugin(ScrollTrigger);
+
         const btn = document.getElementById('launch-btn');
+        const radar = document.getElementById('main-radar');
+        const rightCard = document.getElementById('right-card');
+        const rightIcon = document.getElementById('right-icon');
+
+        // Блокируем скролл принудительно при старте
+        window.scrollTo(0, 0);
+        document.body.style.overflow = 'hidden';
+
         btn.addEventListener('click', () => {
             btn.disabled = true;
-            const tl = gsap.timeline();
-            tl.to(['#left-card', '#right-card', '#middle-text'], {
-                scale: 0.4,
-                opacity: 0,
-                duration: 0.6,
-                ease: "power3.inOut"
-            });
-            tl.to('#main-radar', {
-                scale: 1.2,
-                rotation: 1080,
-                duration: 2.2,
-                ease: "power4.inOut"
-            }, "-=0.4");
-            tl.to('#main-radar', {
-                scale: 0,
-                opacity: 0,
-                duration: 0.3,
-                ease: "power2.in"
-            });
-            tl.to('#end-screen', {
-                opacity: 1,
-                scale: 1,
-                duration: 0.8,
-                ease: "back.out(1.1)",
-                onStart: () => {
-                    document.getElementById('end-screen').style.pointerEvents = 'auto';
+
+            // Анимация бешеного вращения радара
+            gsap.to(radar, {
+                rotation: 1440,
+                duration: 2.5,
+                ease: "power4.inOut",
+                onComplete: () => {
+                    // Переход в зеленый статус
+                    radar.style.background = 'padding-box, conic-gradient(#22c55e 0% 100%)';
+                    radar.style.borderColor = 'rgba(34, 197, 94, 0.4)';
+                    radar.style.boxShadow = '0 0 60px rgba(34, 197, 94, 0.3)';
+                    
+                    btn.style.color = '#22c55e';
+                    btn.innerText = 'УДАЧНО';
+
+                    rightCard.style.borderColor = 'rgba(34, 197, 94, 0.4)';
+                    rightCard.style.boxShadow = '0 0 50px rgba(34, 197, 94, 0.15), 0 40px 80px rgba(0,0,0,0.7)';
+                    rightIcon.style.filter = 'drop-shadow(0 0 25px rgba(34, 197, 94, 0.6))';
+                    document.querySelector('.logo span').style.color = '#22c55e';
+
+                    // Разрешаем скролл и делаем видимой вторую секцию
+                    document.body.style.overflow = 'auto';
+                    document.getElementById('scroll-zone').style.visibility = 'visible';
                 }
-            }, "-=0.1");
+            });
         });
+
+        // Скролл-анимация: окна вылетают по бокам и стакаются в один блок
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#scroll-zone",
+                start: "top bottom",
+                end: "center center",
+                scrub: 1
+            }
+        })
+        .from("#slide-left", { x: "-100%", opacity: 0, ease: "power2.out" }, 0)
+        .from("#slide-right", { x: "100%", opacity: 0, ease: "power2.out" }, 0);
     </script>
 </body>
 </html>
