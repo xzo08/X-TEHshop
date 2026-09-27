@@ -13,12 +13,14 @@
             overflow-x: hidden;
             position: relative;
         }
+        
+        /* СДЕЛАЛИ 4D ПОТЕМНЕЕ (ПРИГЛУШИЛИ ОПАСиТИ ДО 0.45) */
         #bg-canvas {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: -1;
             pointer-events: none;
-            opacity: 1.0; 
+            opacity: 0.45; 
         }
         header {
             position: fixed;
@@ -224,17 +226,17 @@
         </div>
     </section>
     
-    <!-- ТУТ ЗАШИТА ПРАВИЛЬНАЯ ПРЯМАЯ ССЫЛКА НА БОТА В ОБЕ КНОПКИ -->
+    <!-- ПОМЕНЯЛ НАЗВАНИЕ НА «ЗАЯВКА В TELEGRAM» -->
     <section class="scroll-section" id="scroll-zone">
         <div class="stack-block block-left" id="slide-left">
             <h2>Любая сложность</h2>
             <p>Мы работаем абсолютно со всеми видами сложностей. От быстрой замены разбитого экрана до полной работы с вашим телефоном или ПК.</p>
-            <a href="https://t.me/xtehnik_bot" target="_blank" class="link-btn">Сдать в Telegram</a>
+            <a href="https://t.me" target="_blank" class="link-btn">Заявка в Telegram</a>
         </div>
         <div class="stack-block block-right" id="slide-right">
             <h2>Всегда рядом</h2>
             <p>Мы находимся в городе Купино. Работаем в максимально удобном для вас формате: на дому или оперативно приедем по вызову в любую точку.</p>
-            <a href="https://t.me/xtehnik_bot" target="_blank" class="link-btn">Вызвать мастера</a>
+            <a href="https://t.me" target="_blank" class="link-btn">Вызвать мастера</a>
         </div>
     </section>
     <section class="price-section">
@@ -273,10 +275,10 @@
 
     <div class="calc-bar" id="priceCalcBar">
         <div class="calc-info">
-            <h4>Выбрано услуг для контракта</h4>
+            <h4>Выбрано услуг для сделки</h4>
             <div class="calc-total" id="calcTotalSum">0 ₽</div>
         </div>
-        <button class="calc-btn" id="sendContractTelegramBtn">Заключить контракт</button>
+        <a href="https://t.me" target="_blank" class="calc-btn" id="sendContractTelegramBtn" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">Заключить сделку</a>
     </div>
     <section class="shield-section">
         <h2>Система <span>Защиты</span> X-Tehnik</h2>
@@ -327,18 +329,27 @@
         window.addEventListener('resize', () => { w = cv.width = window.innerWidth; h = cv.height = window.innerHeight; });
 
         const pts = []; const maxP = 55;
-        for (let i = 0; i < maxP; i++) { pts.push({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4, r: Math.random() * 2.5 + 1.5 }); }
+        for (let i = 0; i < maxP; i++) { pts.push({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4, r: Math.random() * 2 + 1 }); }
 
+        // ДОБАВИЛ ЖИВОЙ НЕОНОВЫЙ КОННЕКТ ЛИНИЙ И ТОЧЕК С ПОДСТРОЙКОЙ ЦВЕТА
         function draw_bg() {
             cx.clearRect(0, 0, w, h); 
-            cx.fillStyle = 'rgba(250, 204, 21, 0.85)'; 
-            cx.strokeStyle = 'rgba(250, 204, 21, 0.25)';
-            cx.lineWidth = 1.2;
+            cx.fillStyle = 'rgba(250, 204, 21, 0.7)'; 
+            cx.lineWidth = 1.0;
             for (let i = 0; i < maxP; i++) {
                 const p = pts[i]; cx.beginPath(); cx.arc(p.x, p.y, p.r, 0, Math.PI * 2); cx.fill();
                 p.x += p.vx; p.y += p.vy;
                 if (p.x < 0 || p.x > w) p.vx *= -1; if (p.y < 0 || p.y > h) p.vy *= -1;
-                for (let j = i + 1; j < maxP; j++) { const p2 = pts[j]; const d = Math.hypot(p.x - p2.x, p.y - p2.y); if (d < 160) { cx.beginPath(); cx.moveTo(p.x, p.y); cx.lineTo(p2.x, p2.y); cx.stroke(); } }
+                for (let j = i + 1; j < maxP; j++) { 
+                    const p2 = pts[j]; 
+                    const d = Math.hypot(p.x - p2.x, p.y - p2.y); 
+                    if (d < 150) { 
+                        // ЭФФЕКТ: Яркость линии зависит от близости точек друг к другу
+                        let alpha = (1 - d / 150) * 0.25;
+                        cx.strokeStyle = `rgba(250, 204, 21, ${alpha})`;
+                        cx.beginPath(); cx.moveTo(p.x, p.y); cx.lineTo(p2.x, p2.y); cx.stroke(); 
+                    } 
+                }
             }
             requestAnimationFrame(draw_bg);
         }
@@ -398,44 +409,23 @@
         const cards = document.querySelectorAll('.item-card');
         const bar = document.getElementById('priceCalcBar');
         const totalSum = document.getElementById('calcTotalSum');
-        const tgBtn = document.getElementById('sendContractTelegramBtn');
-
-        let selectedServices = [];
 
         cards.forEach(card => {
             card.addEventListener('click', () => {
                 card.classList.toggle('selected');
-                const name = card.getAttribute('data-name');
-                const price = parseInt(card.getAttribute('data-price'));
-
-                if (card.classList.contains('selected')) {
-                    selectedServices.push({ name, price });
-                } else {
-                    selectedServices = selectedServices.filter(s => s.name !== name);
-                }
-
-                let total = selectedServices.reduce((sum, item) => sum + item.price, 0);
+                let selected = document.querySelectorAll('.item-card.selected');
+                
+                let total = 0;
+                selected.forEach(c => { total += parseInt(c.getAttribute('data-price')); });
                 if (totalSum) totalSum.innerText = total.toLocaleString('ru-RU') + ' ₽';
 
-                if (selectedServices.length > 0) {
+                if (selected.length > 0) {
                     if (bar) bar.classList.add('active');
                 } else {
                     if (bar) bar.classList.remove('active');
                 }
             });
         });
-
-        // ФИНАЛЬНАЯ ПРЯМАЯ ССЫЛКА НА БОТА И ПЕРЕДАЧА СФОРМИРОВАННОГО КОНТРАКТА
-        if (tgBtn) {
-            tgBtn.addEventListener('click', () => {
-                let total = selectedServices.reduce((sum, item) => sum + item.price, 0);
-                let text = "Привет! Я составил контракт услуг на сайте X-Tehnik:\n\n";
-                selectedServices.forEach((s, i) => { text += `${i+1}. ${s.name} — ${s.price.toLocaleString('ru-RU')} ₽\n`; });
-                text += `\nИтого за работу: ${total.toLocaleString('ru-RU')} ₽`;
-                
-                window.open(`https://t.me{encodeURIComponent(text)}`, '_blank');
-            });
-        }
     </script>
 </body>
 </html>
