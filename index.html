@@ -14,7 +14,6 @@
             position: relative;
         }
 
-        /* 3D/4D НЕОНОВЫЙ ЗАДНИЙ ФОН */
         #bg-canvas {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -23,7 +22,6 @@
             opacity: 0.6;
         }
 
-        /* Шапка */
         header {
             position: fixed;
             top: 0; left: 0; width: 100%;
@@ -55,8 +53,6 @@
             padding-bottom: 2px;
         }
         .city-select-btn:hover { color: #facc15; }
-
-        /* ПОПАП ВЫБОРА ГОРОДА */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -83,7 +79,7 @@
         .modal-note { font-size: 0.9rem; color: #a1a1aa; margin-top: 25px; line-height: 1.4; }
         .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #71717a; }
         .close-modal:hover { color: #fff; }
-        /* Первый экран */
+
         .screen-one {
             width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: space-between; padding: 0 80px; position: relative;
         }
@@ -100,7 +96,6 @@
 
         .panel h3 { font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; font-weight: 800; }
         .panel p { color: #a1a1aa; text-align: center; font-size: 1rem; line-height: 1.6; }
-
         .center-area { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 35vw; position: relative; }
         .intro-text { text-align: center; margin-bottom: 30px; }
         .intro-text h1 { font-size: 2.8rem; font-weight: 900; line-height: 1.2; margin-bottom: 15px; text-transform: uppercase; }
@@ -129,7 +124,7 @@
             0%, 100% { opacity: 0.4; transform: scale(0.96); }
             50% { opacity: 1; transform: scale(1.04); text-shadow: 0 0 20px rgba(250, 204, 21, 0.9); }
         }
-        /* ВТОРОЙ ЭКРАН НА ВЕСЬ ВЫСОТУ */
+
         .scroll-section {
             width: 100vw; height: 100vh; display: flex; background: transparent; position: relative; overflow: hidden;
         }
@@ -156,7 +151,6 @@
         }
         .link-btn:hover { background: #fde047; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(250, 204, 21, 0.5); }
 
-        /* ТРЕТИЙ ЭКРАН — ПРАЙС-ЛИСТ */
         .price-section {
             width: 100vw; min-height: 100vh; padding: 120px 80px; background: transparent;
             display: flex; flex-direction: column; align-items: center;
@@ -167,9 +161,9 @@
         .inventory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; width: 100%; max-width: 1200px; }
         .item-card { background: rgba(19, 19, 20, 0.75); border: 1px solid rgba(255,255,255,0.03); backdrop-filter: blur(10px); border-radius: 16px; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; height: 230px; box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
         
-        .rarity-mil-spec { border-bottom: 5px solid #3b82f6; } 
-        .rarity-classified { border-bottom: 5px solid #d946ef; } 
-        .rarity-covert { border-bottom: 5px solid #ef4444; } 
+        .r-mil { border-bottom: 5px solid #3b82f6; } 
+        .r-cls { border-bottom: 5px solid #d946ef; } 
+        .r-cov { border-bottom: 5px solid #ef4444; } 
 
         .item-card .item-title { font-size: 1.1rem; font-weight: 800; text-transform: uppercase; color: #fff; line-height: 1.4; }
         .item-card .item-type { font-size: 0.8rem; color: #71717a; text-transform: uppercase; margin-top: 5px; letter-spacing: 0.5px; }
@@ -178,11 +172,10 @@
         .price-wrapper { display: flex; align-items: center; justify-content: flex-end; margin-top: auto; gap: 10px; }
         .price-wrapper .item-emoji { font-size: 1.6rem; }
         
-        .rarity-mil-spec .item-emoji { filter: saturate(1.6) drop-shadow(0 0 8px #3b82f6); }
-        .rarity-classified .item-emoji { filter: saturate(1.6) drop-shadow(0 0 8px #d946ef); }
-        .rarity-covert .item-emoji { filter: saturate(1.6) drop-shadow(0 0 10px #ef4444); }
+        .r-mil .item-emoji { filter: saturate(1.6) drop-shadow(0 0 8px #3b82f6); }
+        .r-cls .item-emoji { filter: saturate(1.6) drop-shadow(0 0 8px #d946ef); }
+        .r-cov .item-emoji { filter: saturate(1.6) drop-shadow(0 0 10px #ef4444); }
         .item-card .item-price { font-size: 1.4rem; font-weight: 900; color: #facc15; }
-        /* ЭКРАН ЗАЩИТЫ */
         .shield-section {
             width: 100vw; min-height: 45vh; background: transparent; padding: 60px 80px;
             display: flex; flex-direction: column; align-items: center;
@@ -196,7 +189,6 @@
         .shield-card h3 { font-size: 1.4rem; font-weight: 900; text-transform: uppercase; margin-bottom: 15px; color: #fff; letter-spacing: 0.5px; }
         .shield-card p { color: #a1a1aa; font-size: 1rem; line-height: 1.6; }
 
-        /* ЭКРАН FAQ */
         .faq-section {
             width: 100vw; min-height: 90vh; background: transparent; padding: 100px 80px;
             display: flex; flex-direction: column; align-items: center;
@@ -209,7 +201,6 @@
         .msg-master { background: rgba(28, 26, 20, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(250, 204, 21, 0.2); align-self: flex-end; border-bottom-right-radius: 4px; color: #fff; box-shadow: 0 0 25px rgba(250, 204, 21, 0.03); }
         .msg-master::before { content: '⚡ X-TEHNIK:'; display: block; font-size: 0.85rem; font-weight: 900; color: #facc15; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(250, 204, 21, 0.4); }
 
-        /* ОТЗЫВЫ В САМОМ НИЗУ СТРАНИЦЫ */
         .reviews-bottom-section {
             width: 100vw; min-height: 100vh; background: transparent; padding: 100px 80px;
             display: flex; flex-direction: column; align-items: center;
@@ -240,7 +231,6 @@
         .review-item-stars { color: #facc15; font-size: 1rem; }
         .review-item-body { color: #a1a1aa; font-size: 0.95rem; line-height: 1.5; }
 
-        /* ЖЕСТКИЙ ЮРИДИЧЕСКИЙ ПОДВАЛ */
         .legal-footer {
             width: 100vw; background: #070708; border-top: 1px solid rgba(255, 255, 255, 0.03);
             padding: 60px 80px; font-size: 0.75rem; color: #52525b; line-height: 1.6;
@@ -252,7 +242,6 @@
         .legal-list li::before { content: "—"; position: absolute; left: 0; color: #52525b; }
         .copyright-block { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.02); padding-top: 20px; font-weight: 500; }
 
-        /* COOKIE БАННЕР */
         .cookie-banner {
             position: fixed; bottom: -250px; left: 40px; max-width: 380px; background: rgba(20, 20, 22, 0.9); border: 2px solid #facc15; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(250, 204, 21, 0.15); border-radius: 16px; padding: 24px; z-index: 300; display: flex; flex-direction: column; gap: 15px; backdrop-filter: blur(15px); transition: bottom 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
@@ -283,7 +272,6 @@
         </div>
     </div>
 
-    <!-- Раздел 1 -->
     <section class="screen-one">
         <div class="panel" id="left-card">
             <div class="hardware-icon left-glow">📉</div>
@@ -294,7 +282,7 @@
         <div class="center-area">
             <div class="intro-text">
                 <h1>Мы лучший выбор.</h1>
-                <p>Мы молодые, на опыте, шарим в трендах и понимаем тебя с полуслова.</p>
+                <p>Мы молодые, на опыте, шарим в трендах and понимаем тебя с полуслова.</p>
             </div>
             <div class="radar-wrapper">
                 <div class="pointer-axis" id="arrow-axis"><div class="radar-pointer" id="pointer"></div></div>
@@ -310,7 +298,6 @@
         </div>
     </section>
 
-    <!-- Раздел 2 (Вылет стен) -->
     <section class="scroll-section" id="scroll-zone">
         <div class="stack-block block-left" id="slide-left">
             <h2>Любая сложность</h2>
@@ -323,26 +310,25 @@
             <a href="https://t.me" target="_blank" class="link-btn">Вызвать мастера</a>
         </div>
     </section>
-    <!-- Раздел 3 (Прайс с новым дисклеймером за запчасти) -->
     <section class="price-section">
         <h2>Наш <span>Инвентарь</span> Услуг</h2>
         <div class="inventory-grid">
-            <div class="item-card rarity-mil-spec"><div class="item-title">Замена разъема зарядки</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔌</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card rarity-mil-spec"><div class="item-title">Замена динамика</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔊</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card rarity-mil-spec"><div class="item-title">Замена микрофона</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🎙️</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card rarity-mil-spec"><div class="item-title">Замена стекла камеры</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">💎</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card rarity-mil-spec"><div class="item-title">Замена передней камеры</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">📸</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card rarity-mil-spec"><div class="item-title">Замена кнопок громкости</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔉</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card rarity-mil-spec"><div class="item-title">Замена кноп. включения</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔘</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card rarity-mil-spec"><div class="item-title">Замена кнопки вибро</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔕</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card rarity-mil-spec"><div class="item-title">Замена вибромотора</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">📳</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card rarity-mil-spec"><div class="item-title">Сброс экранного пароля</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔓</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card rarity-classified"><div class="item-title">Замена аккумулятора</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">🔋</span><div class="item-price">1 100 ₽</div></div></div>
-            <div class="item-card rarity-classified"><div><div class="item-title">Обновление ПО и сброс</div><div class="item-subtitle-small">с учетом айклауда</div></div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">📲</span><div class="item-price">1 200 ₽</div></div></div>
-            <div class="item-card rarity-classified"><div class="item-title">Замена задней крышки</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">📱</span><div class="item-price">1 500 ₽</div></div></div>
-            <div class="item-card rarity-classified"><div class="item-title">Замена задней камеры</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">📷</span><div class="item-price">1 500 ₽</div></div></div>
-            <div class="item-card rarity-covert"><div class="item-title">Замена экрана</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">🖥️</span><div class="item-price">2 000 ₽</div></div></div>
-            <div class="item-card rarity-covert"><div class="item-title">Замена корпуса</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">🧰</span><div class="item-price">2 500 ₽</div></div></div>
+            <div class="item-card r-mil"><div class="item-title">Замена разъема зарядки</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔌</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card r-mil"><div class="item-title">Замена динамика</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔊</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card r-mil"><div class="item-title">Замена микрофона</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🎙️</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card r-mil"><div class="item-title">Замена стекла камеры</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">💎</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card r-mil"><div class="item-title">Замена передней камеры</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">📸</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card r-mil"><div class="item-title">Замена кнопок громкости</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔉</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card r-mil"><div class="item-title">Замена кноп. включения</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔘</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card r-mil"><div class="item-title">Замена кнопки вибро</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔕</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card r-mil"><div class="item-title">Замена вибромотора</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">📳</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card r-mil"><div class="item-title">Сброс экранного пароля</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔓</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card r-cls"><div class="item-title">Замена аккумулятора</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">🔋</span><div class="item-price">1 100 ₽</div></div></div>
+            <div class="item-card r-cls"><div><div class="item-title">Обновление ПО и сброс</div><div class="item-subtitle-small">с учетом айклауда</div></div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">📲</span><div class="item-price">1 200 ₽</div></div></div>
+            <div class="item-card r-cls"><div class="item-title">Замена задней крышки</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">📱</span><div class="item-price">1 500 ₽</div></div></div>
+            <div class="item-card r-cls"><div class="item-title">Замена задней камеры</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">📷</span><div class="item-price">1 500 ₽</div></div></div>
+            <div class="item-card r-cov"><div class="item-title">Замена экрана</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">🖥️</span><div class="item-price">2 000 ₽</div></div></div>
+            <div class="item-card r-cov"><div class="item-title">Замена корпуса</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">🧰</span><div class="item-price">2 500 ₽</div></div></div>
         </div>
 
         <div style="width: 100%; max-width: 1200px; display: flex; justify-content: flex-end; margin-top: 25px;">
@@ -351,16 +337,15 @@
             </div>
         </div>
     </section>
-    <!-- Раздел 4 -->
     <section class="shield-section">
-        <h2>System <span>Защиты</span> X-Tehnik</h2>
+        <h2>Система <span>Защиты</span> X-Tehnik</h2>
         <div class="shield-grid">
-            <div class="shield-card rarity-mil-spec">
+            <div class="shield-card r-mil">
                 <div class="shield-icon">🛡️</div>
                 <h3>Премиум-детали</h3>
                 <p>Мы закупаем только проверенные, надежные комплектующие класса оригинал. Никакого дешевого китая, который сдохнет через неделю.</p>
             </div>
-            <div class="shield-card rarity-covert">
+            <div class="shield-card r-cov">
                 <div class="shield-icon">🚀</div>
                 <h3>Фаст-сервис</h3>
                 <p>Большинство модульных ремонтов делаются прямо при вас за 30–60 минут. Никакого затягивания сроков и ожидания девайса неделями.</p>
@@ -368,7 +353,6 @@
         </div>
     </section>
 
-    <!-- Раздел 5 (FAQ) -->
     <section class="faq-section">
         <h2>Вопросы и <span>Ответы</span></h2>
         <div class="chat-container">
@@ -380,7 +364,6 @@
         </div>
     </section>
 
-    <!-- Раздел 6 (ОТЗЫВЫ В САМОМ ПОДВАЛЕ — ЧИСТАЯ ЛЕНТА) -->
     <section class="reviews-bottom-section">
         <h2>Отзывы <span>Пользователей</span></h2>
         <div class="review-container">
@@ -394,13 +377,12 @@
             </div>
             <div class="review-form-group">
                 <input type="text" class="review-input-name" id="reviewerName" placeholder="Ваш никнейм" required>
-                <input type="text" class="review-input-text" id="reviewerText" placeholder="Напишите ваш отзыв о ремонте или сайте..." required>
+                <input type="text" class="review-input-text" id="reviewerText" placeholder="Напишите ваш отзыв..." required>
                 <button class="btn-submit-review" id="submitReviewBtn">Отправить контракт</button>
             </div>
             <div class="reviews-feed-list" id="reviewsFeedContainer"></div>
         </div>
     </section>
-    <!-- Раздел 7 (ЮРИДИЧЕСКОЕ АЛИБИ СЦ) -->
     <footer class="legal-footer">
         <div class="legal-container">
             <div class="legal-text-block">
@@ -421,7 +403,6 @@
         </div>
     </footer>
 
-    <!-- БАННЕР COOKIE -->
     <div class="cookie-banner" id="cookiePrivacyBanner">
         <div class="cookie-title">⚙️ ЛИЦЕНЗИОННОЕ СОГЛАШЕНИЕ</div>
         <div class="cookie-text">
@@ -430,83 +411,90 @@
         <button class="cookie-btn" id="acceptCookieBtn">Принять контракт</button>
     </div>
     <script>
-        // ИНТЕРАКТИВНЫЙ 3D ЗАДНИЙ ФОН
-        const canvas = document.getElementById('bg-canvas');
-        const ctx = canvas.getContext('2d');
-        let width = canvas.width = window.innerWidth;
-        let height = canvas.height = window.innerHeight;
-        window.addEventListener('resize', () => { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; });
+        const cv = document.getElementById('bg-canvas');
+        const cx = cv.getContext('2d');
+        let w = cv.width = window.innerWidth;
+        let h = cv.height = window.innerHeight;
+        window.addEventListener('resize', () => { w = cv.width = window.innerWidth; h = cv.height = window.innerHeight; });
 
-        const points = []; const maxPoints = 55;
-        for (let i = 0; i < maxPoints; i++) { points.push({ x: Math.random() * width, y: Math.random() * height, vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4, radius: Math.random() * 2 + 1 }); }
+        const pts = []; const maxP = 55;
+        for (let i = 0; i < maxP; i++) { pts.push({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4, r: Math.random() * 2 + 1 }); }
 
-        function drawMatrix() {
-            ctx.clearRect(0, 0, width, height); ctx.fillStyle = 'rgba(250, 204, 21, 0.25)'; ctx.strokeStyle = 'rgba(250, 204, 21, 0.04)';
-            for (let i = 0; i < maxPoints; i++) {
-                const p = points[i]; ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2); ctx.fill();
+        function draw_bg() {
+            cx.clearRect(0, 0, w, h); cx.fillStyle = 'rgba(250, 204, 21, 0.25)'; cx.strokeStyle = 'rgba(250, 204, 21, 0.04)';
+            for (let i = 0; i < maxP; i++) {
+                const p = pts[i]; cx.beginPath(); cx.arc(p.x, p.y, p.r, 0, Math.PI * 2); cx.fill();
                 p.x += p.vx; p.y += p.vy;
-                if (p.x < 0 || p.x > width) p.vx *= -1; if (p.y < 0 || p.y > height) p.vy *= -1;
-                for (let j = i + 1; j < maxPoints; j++) { const p2 = points[j]; const dist = Math.hypot(p.x - p2.x, p.y - p2.y); if (dist < 160) { ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke(); } }
+                if (p.x < 0 || p.x > w) p.vx *= -1; if (p.y < 0 || p.y > h) p.vy *= -1;
+                for (let j = i + 1; j < maxP; j++) { const p2 = pts[j]; const d = Math.hypot(p.x - p2.x, p.y - p2.y); if (d < 160) { cx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); cx.stroke(); } }
             }
-            requestAnimationFrame(drawMatrix);
+            requestAnimationFrame(draw_bg);
         }
-        drawMatrix();
+        draw_bg();
 
-        // ЛОГИКА COOKIE
-        const cookieBanner = document.getElementById('cookiePrivacyBanner');
-        const acceptCookieBtn = document.getElementById('acceptCookieBtn');
-        setTimeout(() => { if (!localStorage.getItem('x_teh_license_accepted')) cookieBanner.classList.add('show'); }, 2000);
-        acceptCookieBtn.addEventListener('click', () => { localStorage.setItem('x_teh_license_accepted', 'true'); cookieBanner.classList.remove('show'); });
+        const c_b = document.getElementById('cookiePrivacyBanner');
+        const c_ok = document.getElementById('acceptCookieBtn');
+        setTimeout(() => { if (!localStorage.getItem('xt_l_ok')) c_b.classList.add('show'); }, 2000);
+        c_ok.addEventListener('click', () => { localStorage.setItem('xt_l_ok', '1'); c_b.classList.remove('show'); });
 
-        // ЛОГИКА ОТЗЫВОВ
-        const stars = document.querySelectorAll('.star-opt');
-        let currentRating = 5;
-        stars.forEach(star => {
-            star.addEventListener('click', () => {
-                currentRating = parseInt(star.getAttribute('data-val'));
-                stars.forEach(s => { if (parseInt(s.getAttribute('data-val')) <= currentRating) s.classList.add('active'); else s.classList.remove('active'); });
+        const sts = document.querySelectorAll('.star-opt');
+        let r_val = 5;
+        sts.forEach(st => {
+            st.addEventListener('click', () => {
+                r_val = parseInt(st.getAttribute('data-val'));
+                sts.forEach(s => { if (parseInt(s.getAttribute('data-val')) <= r_val) s.classList.add('active'); else s.classList.remove('active'); });
             });
         });
 
-        const feedContainer = document.getElementById('reviewsFeedContainer');
-        const submitReviewBtn = document.getElementById('submitReviewBtn');
+        const feed = document.getElementById('reviewsFeedContainer');
+        const rev_btn = document.getElementById('submitReviewBtn');
 
-        function loadReviews() {
-            let stored = localStorage.getItem('x_tehnik_user_reviews');
-            let reviewsList = stored ? JSON.parse(stored) : [];
-            feedContainer.innerHTML = '';
-            if (reviewsList.length === 0) {
-                feedContainer.innerHTML = '<div style="color:#71717a; text-align:center; font-size:0.95rem; font-weight:bold; text-transform:uppercase; padding:20px;">На данный момент контрактов не заключено. Оставьте первый отзыв!</div>';
-                return;
-            }
-            reviewsList.forEach(r => {
-                const item = document.createElement('div'); item.className = 'review-item-card';
-                item.innerHTML = `<div class="review-item-header"><span class="review-item-user">👤 ${r.name}</span><span class="review-item-stars">${"★".repeat(r.rating)}${"☆".repeat(5-r.rating)}</span></div><div class="review-item-body">${r.text}</div>`;
-                feedContainer.appendChild(item);
-            });
+        const sb_url = "https://supabase.co";
+        const sb_key = "sb_publishable_rHNpdfsT2pYOC69whwGAwA_N9tsLQ8_";
+
+        async function fetch_revs() {
+            try {
+                const res = await fetch(`${sb_url}/rest/v1/reviews?select=*&order=id.desc`, {
+                    headers: { "apikey": sb_key, "Authorization": `Bearer ${sb_key}` }
+                });
+                const data = await res.json();
+                feed.innerHTML = '';
+                if(data.length === 0) {
+                    feed.innerHTML = '<div style="color:#71717a; text-align:center; font-size:0.95rem; font-weight:bold; text-transform:uppercase; padding:20px;">На данный момент контрактов не заключено. Оставьте первый отзыв!</div>';
+                    return;
+                }
+                data.forEach(r => {
+                    const item = document.createElement('div'); item.className = 'review-item-card';
+                    item.innerHTML = `<div class="review-item-header"><span class="review-item-user">👤 ${r.name}</span><span class="review-item-stars">${"★".repeat(r.rating)}${"☆".repeat(5-r.rating)}</span></div><div class="review-item-body">${r.text}</div>`;
+                    feed.appendChild(item);
+                });
+            } catch(e) { console.log(e); }
         }
 
-        submitReviewBtn.addEventListener('click', () => {
-            const nameInput = document.getElementById('reviewerName').value.trim();
-            const textInput = document.getElementById('reviewerText').value.trim();
-            if (!nameInput || !textInput) { alert("Заполните никнейм и текст отзыва!"); return; }
-            let stored = localStorage.getItem('x_tehnik_user_reviews');
-            let reviewsList = stored ? JSON.parse(stored) : [];
-            reviewsList.unshift({ name: nameInput, rating: currentRating, text: textInput });
-            localStorage.setItem('x_tehnik_user_reviews', JSON.stringify(reviewsList));
-            document.getElementById('reviewerName').value = ''; document.getElementById('reviewerText').value = '';
-            loadReviews();
-        });
-        loadReviews();
+        rev_btn.addEventListener('click', async () => {
+            const n = document.getElementById('reviewerName').value.trim();
+            const t = document.getElementById('reviewerText').value.trim();
+            if (!n || !t) { alert("Заполните форму!"); return; }
 
-        // ПОПАП ГОРОДА
+            try {
+                await fetch(`${sb_url}/rest/v1/reviews`, {
+                    method: 'POST',
+                    headers: { "apikey": sb_key, "Authorization": `Bearer ${sb_key}`, "Content-Type": "application/json", "Prefer": "return=minimal" },
+                    body: JSON.stringify({ name: n, rating: r_val, text: t })
+                });
+                document.getElementById('reviewerName').value = '';
+                document.getElementById('reviewerText').value = '';
+                fetch_revs();
+            } catch(e) { console.log(e); }
+        });
+        fetch_revs();
+
         const cityBtn = document.getElementById('cityBtn');
         const modal = document.getElementById('modalOverlay');
         const closeModal = document.getElementById('closeModal');
         cityBtn.addEventListener('click', () => modal.classList.add('active'));
         closeModal.addEventListener('click', () => modal.classList.remove('active'));
 
-        // КНОПКА РЕМОНТ
         const btn = document.getElementById('launch-btn');
         const axis = document.getElementById('arrow-axis');
         const radar = document.getElementById('main-radar');
@@ -515,14 +503,13 @@
 
         btn.addEventListener('click', () => {
             btn.disabled = true;
-            const spinAudio = new Audio('https://mixkit.co'); spinAudio.volume = 0.4; spinAudio.play();
-            const winAudio = new Audio('https://mixkit.co'); winAudio.volume = 0.5;
-            const randomYellowDegrees = Math.floor(Math.random() * 270);
-            const totalDegrees = 1440 + randomYellowDegrees;
-            axis.style.transform = `rotate(${totalDegrees}deg)`;
+            const s_a = new Audio('https://mixkit.co'); s_a.volume = 0.4; s_a.play();
+            const w_a = new Audio('https://mixkit.co'); w_a.volume = 0.5;
+            const rot = 1440 + Math.floor(Math.random() * 270);
+            axis.style.transform = `rotate(${rot}deg)`;
 
             setTimeout(() => {
-                winAudio.play();
+                w_a.play();
                 radar.style.borderColor = '#facc15'; radar.style.boxShadow = '0 0 60px rgba(250, 204, 21, 0.6), inset 0 0 25px rgba(0, 0, 0, 0.8)';
                 pointer.style.borderTopColor = '#22c55e'; pointer.style.filter = 'drop-shadow(0 0 15px #22c55e)';
                 btn.style.color = '#facc15'; btn.style.textShadow = '0 0 15px rgba(250, 204, 21, 0.8)'; btn.innerText = 'УСПЕШНО';
@@ -537,14 +524,13 @@
             }, 2200);
         });
 
-        // СКРОЛЛ
-        const slideLeft = document.getElementById('slide-left');
-        const slideRight = document.getElementById('slide-right');
-        const scrollZone = document.getElementById('scroll-zone');
+        const s_l = document.getElementById('slide-left');
+        const s_r = document.getElementById('slide-right');
+        const s_z = document.getElementById('scroll-zone');
         window.addEventListener('scroll', () => {
-            const rect = scrollZone.getBoundingClientRect();
-            if (rect.top <= window.innerHeight * 0.7) { slideLeft.classList.add('active'); slideRight.classList.add('active'); }
-            else { slideLeft.classList.remove('active'); slideRight.classList.remove('active'); }
+            const r = s_z.getBoundingClientRect();
+            if (r.top <= window.innerHeight * 0.7) { s_l.classList.add('active'); s_r.classList.add('active'); }
+            else { s_l.classList.remove('active'); s_r.classList.remove('active'); }
         });
     </script>
 </body>
