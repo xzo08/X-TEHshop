@@ -183,64 +183,57 @@
         .cookie-btn { background: #facc15; color: #000; border: none; padding: 12px; border-radius: 8px; font-size: 0.9rem; font-weight: 900; text-transform: uppercase; cursor: pointer; letter-spacing: 0.5px; transition: all 0.3s; width: 100%; text-align: center; box-shadow: 0 5px 15px rgba(250, 204, 21, 0.2); }
         .cookie-btn:hover { background: #fde047; transform: translateY(-2px); }
 
-        /* ======================================================== */
-        /* ИЗОЛИРОВАННЫЙ МОБИЛЬНЫЙ ШАБЛОН (ДО 768px). ПК НЕ ТРОГАЕТ */
-        /* ======================================================== */
+        .tgc-widget {
+            position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px;
+            background: #141413; border: 2px solid #facc15; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; z-index: 400;
+            box-shadow: 0 0 20px rgba(250, 204, 21, 0.3); transition: all 0.3s ease; text-decoration: none;
+        }
+        .tgc-widget:hover { transform: scale(1.1); box-shadow: 0 0 30px rgba(250, 204, 21, 0.6); background: #1c1c1b; }
+        .tgc-icon { width: 28px; height: 26px; fill: #facc15; margin-right: 2px; }
+
         @media (max-width: 768px) {
             body { overflow-x: hidden; width: 100%; position: relative; }
             header { padding: 20px 25px; }
             .logo { font-size: 1.4rem; }
-            
-            /* ФИКС СДВИГА И ВЫПРАВЛЕНИЕ ПЕРВОГО ЭКРАНА В ВЕРТИКАЛЬНУЮ ЛЕНТУ */
-            .screen-one {
-                flex-direction: column; height: auto; padding: 100px 20px 40px 20px; justify-content: center; gap: 35px; overflow: hidden;
-            }
+            .screen-one { flex-direction: column; height: auto; padding: 100px 20px 40px 20px; justify-content: center; gap: 35px; overflow: hidden; }
             .panel { width: 100vw; max-width: 340px; height: auto; min-height: 220px; padding: 25px 20px; }
             .hardware-icon { font-size: 3rem; margin-bottom: 12px; }
             .panel h3 { font-size: 1rem; margin-bottom: 8px; text-align: center; }
             .panel p { font-size: 0.85rem; line-height: 1.5; }
-            
             .center-area { width: 100%; order: -1; margin-bottom: 10px; }
             .intro-text h1 { font-size: 1.8rem; margin-bottom: 10px; }
             .intro-text p { font-size: 0.9rem; padding: 0 10px; }
             .radar-wrapper { width: 210px; height: 260px; margin-bottom: 0; }
+            
+            /* ЮВЕЛИРНО ВЫПРАВИЛИ СТРЕЛКУ РАДАРА ВНУТРЬ КРУГА НА МОБИЛКАХ */
             .radar-box { width: 190px; height: 190px; }
             .btn-repair { width: 140px; height: 140px; font-size: 1.1rem; letter-spacing: 2px; }
-            .radar-pointer { top: -8px; border-left: 9px solid transparent; border-right: 9px solid transparent; border-top: 18px solid #facc15; }
+            .radar-pointer { top: 2px; border-left: 9px solid transparent; border-right: 9px solid transparent; border-top: 18px solid #facc15; }
+            
             .click-prompt { font-size: 1rem; margin-top: 5px; }
-
-            /* ФИКС СТЕН НА ВТОРОМ ЭКРАНЕ С ЭФФЕКТОМ ПОДЪЕМА СНИЗУ ВМЕСТО ВЫЛЕТА С БОКОВ */
             .scroll-section { height: auto; min-height: auto; flex-direction: column; padding: 40px 20px; gap: 20px; }
             .stack-block { width: 100% !important; height: auto !important; position: relative !important; top: auto !important; left: 0 !important; right: auto !important; padding: 30px 20px !important; border-radius: 16px; border: 1px solid rgba(250,204,21,0.1) !important; opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
             .stack-block.active { opacity: 1; transform: translateY(0); }
             .stack-block h2 { font-size: 2rem; margin-bottom: 15px; }
             .stack-block p { font-size: 1rem; line-height: 1.6; }
             .link-btn { width: 100%; text-align: center; padding: 14px; font-size: 1rem; margin-top: 20px; }
-            /* ИДЕАЛЬНЫЙ ШАБЛОН ДЛЯ РОДНОЙ СЕТКИ ПРАЙСА 2 В РЯД */
+            .tgc-widget { bottom: 20px; left: 20px; width: 50px; height: 50px; }
+            .tgc-icon { width: 22px; height: 20px; }
             .price-section { padding: 60px 15px; }
             .price-section h2 { font-size: 1.8rem; margin-bottom: 30px; text-align: center; letter-spacing: 1px; }
-            
-            .inventory-grid { 
-                grid-template-columns: repeat(2, 1fr) !important; 
-                gap: 12px !important; 
-                padding: 0 !important;
-            }
+            .inventory-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; padding: 0 !important; }
             .item-card { height: 180px !important; padding: 15px 12px !important; border-radius: 12px !important; }
             .item-card .item-title { font-size: 0.8rem !important; line-height: 1.3 !important; font-weight: 800 !important; }
             .item-card .item-type { font-size: 0.65rem !important; margin-top: 4px !important; }
             .item-card .item-subtitle-small { font-size: 0.65rem !important; margin-top: 2px !important; }
-            
             .price-wrapper { gap: 6px !important; margin-top: auto !important; }
             .price-wrapper .item-emoji { font-size: 1.2rem !important; }
             .item-card .item-price { font-size: 0.95rem !important; font-weight: 900 !important; }
-            
-            /* ШТОРКА КАЛЬКУЛЯТОРА НА ВЕСЬ ЭКРАН И ПОД КЛЕШНЮ ПАЛЬЦА */
             .calc-bar { width: 100% !important; border-radius: 16px 16px 0 0 !important; padding: 20px 20px !important; bottom: -200px; }
-            .calc-bar.active { bottom: 0 !important; }
+            .calc-bar.active { bottom: 0; }
             .calc-total { font-size: 1.5rem !important; }
             .calc-btn { padding: 12px 20px !important; font-size: 0.85rem !important; border-radius: 10px !important; }
-
-            /* ВЕРТИКАЛЬНЫЙ СПИСОК ДЛЯ СИСТЕМЫ ЗАЩИТЫ */
             .shield-section { padding: 40px 15px; }
             .shield-section h2 { font-size: 1.8rem; text-align: center; margin-bottom: 30px; }
             .shield-grid { flex-direction: column !important; gap: 20px !important; }
@@ -248,7 +241,6 @@
             .shield-icon { font-size: 2.5rem; margin-bottom: 12px; }
             .shield-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
             .shield-card p { font-size: 0.85rem; line-height: 1.5; }
-            
             .legal-footer { padding: 40px 20px; font-size: 0.7rem; text-align: justify; }
             .copyright-block { flex-direction: column; gap: 10px; text-align: center; padding-top: 15px; }
             .cookie-banner { left: 15px; right: 15px; max-width: none; padding: 16px; }
@@ -257,6 +249,11 @@
 </head>
 <body>
     <canvas id="bg-canvas"></canvas>
+    <a href="https://t.me" target="_blank" class="tgc-widget" title="Наш Telegram Канал">
+        <svg class="tgc-icon" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15.82-.75 4.34-1.06 6.01-.13.7-.39.94-.64.96-.55.05-1.07-.36-1.6-.7-1.19-.77-1.87-1.25-3.03-2.01-1.34-.88-.47-1.37.29-2.16.2-.21 3.65-3.35 3.72-3.66.01-.04.01-.18-.07-.25-.08-.07-.2-.05-.29-.03-.12.02-2.04 1.29-5.74 3.56-.54.37-1.03.55-1.47.54-.48-.01-1.41-.27-2.1-.57-.85-.37-1.53-.57-1.47-.98.03-.21.59-.43 1.67-.67 3.64-1.58 6.07-2.63 7.29-3.14 3.48-1.46 4.2-1.71 4.67-1.72.1 0 .47.03.68.21.34.29.37.81.33 1.15z"/>
+        </svg>
+    </a>
     <header>
         <div class="logo">X-<span>Tehnik</span></div>
         <div class="city-select-btn" id="cityBtn">Купино</div>
@@ -271,6 +268,8 @@
             <div class="modal-note">Пока мы работаем только из выше предложенных вариантов</div>
         </div>
     </div>
+    
+    <!-- ТУТ ИСПРАВИЛ НА «ПОЛУСЛОВА, БЕЗ ЛИШНЕГО БАЗАРА» -->
     <section class="screen-one">
         <div class="panel" id="left-card">
             <div class="hardware-icon left-glow">📉</div>
@@ -280,7 +279,7 @@
         <div class="center-area">
             <div class="intro-text">
                 <h1>Мы лучший выбор.</h1>
-                <p>Мы молодые, на опыте, шарим в трендах and понимаем тебя с полуслова.</p>
+                <p>Мы молодые, на опыте, шарим в трендах and понимаем тебя с полуслова, без лишнего базара.</p>
             </div>
             <div class="radar-wrapper">
                 <div class="pointer-axis" id="arrow-axis"><div class="radar-pointer" id="pointer"></div></div>
@@ -298,12 +297,12 @@
         <div class="stack-block block-left" id="slide-left">
             <h2>Любая сложность</h2>
             <p>Мы работаем абсолютно со всеми видами сложностей. От быстрой замены разбитого экрана до полной работы с вашим телефоном или ПК.</p>
-            <a href="https://t.me/xtehnik_bot" target="_blank" class="link-btn">Заявка в Telegram</a>
+            <a href="tg://resolve?domain=xtehnik_bot" target="_blank" class="link-btn">Заявка в Telegram</a>
         </div>
         <div class="stack-block block-right" id="slide-right">
             <h2>Всегда рядом</h2>
             <p>Мы находимся в городе Купино. Работаем в максимально удобном для вас формате: на дому или оперативно приедем по вызову в любую точку.</p>
-            <a href="https://t.me/xtehnik_bot" target="_blank" class="link-btn">Вызвать мастера</a>
+            <a href="tg://resolve?domain=xtehnik_bot" target="_blank" class="link-btn">Вызвать мастера</a>
         </div>
     </section>
     <section class="price-section">
@@ -334,72 +333,156 @@
             </div>
         </div>
     </section>
+
     <div class="calc-bar" id="priceCalcBar">
         <div class="calc-info">
             <h4>Выбрано услуг для сделки</h4>
             <div class="calc-total" id="calcTotalSum">0 ₽</div>
         </div>
-        <a href="https://t.me/xtehnik_bot" target="_blank" class="calc-btn" id="sendContractTelegramBtn">Заключить сделку</a>
+        <a href="tg://resolve?domain=xtehnik_bot" target="_blank" class="calc-btn" id="sendContractTelegramBtn">Заключить сделку</a>
     </div>
     <section class="shield-section">
         <h2>Система <span>Защиты</span> X-Tehnik</h2>
         <div class="shield-grid">
-            <div class="shield-card r-mil"><div class="shield-icon">🛡️</div><h3>Премиум-детали</h3><p>Мы закупаем только проверенные, надежные комплектующие класса оригинал. Никакого дешевого китая, который сдохнет через неделю.</p></div>
-            <div class="shield-card r-cov"><div class="shield-icon">🚀</div><h3>Фаст-сервис</h3><p>Большинство модульных ремонтов делаются прямо при вас за 30–60 минут. Никакого затягивания сроков и ожидания девайса неделями.</p></div>
+            <div class="shield-card r-mil">
+                <div class="shield-icon">🛡️</div>
+                <h3>Премиум-детали</h3>
+                <p>Мы закупаем только проверенные, надежные комплектующие класса оригинал. Никакого дешевого китая, который сдохнет через неделю.</p>
+            </div>
+            <div class="shield-card r-cov">
+                <div class="shield-icon">🚀</div>
+                <h3>Фаст-сервис</h3>
+                <p>Большинство модульных ремонтов делаются прямо при вас за 30–60 минут. Никакого затягивания сроков и ожидания девайса неделями.</p>
+            </div>
         </div>
     </section>
     <footer class="legal-footer">
         <div class="legal-container">
-            <div class="legal-text-block">iPhone, Macbook, iPad — являются зарегистрированными товарными знаками Apple Inc.; Huawei, Honor, Samsung, Xiaomi, Redmi, Realme, Poco, Tecno, Infinix, Lenovo, LG, Philips, Sony, ASUS, Acer, DELL, HP, Toshiba — зарегистрированы товарными знаками их правообладателей. Услуги оказываются в независимых сервисных центрах.</div>
-            <div class="legal-text-block">Ознакомившись с текстовой информацией, прайс-листом и центром поддержки сайта, вы подтверждаете свое согласие на подачу заявки. Сервисный центр не несет технической ответственности в случаях скрытых внутренних дефектов.</div>
+            <div class="legal-text-block">
+                iPhone, Macbook, iPad — являются зарегистрированными товарными знаками Apple Inc.; Huawei, Honor, Samsung, Xiaomi, Redmi, Realme, Poco, Tecno, Infinix, Lenovo, LG, Philips, Sony, ASUS, Acer, DELL, HP, Toshiba — зарегистрированы товарными знаками их правообладателей. Все торговые марки и бренды упоминаются на данном интернет-ресурсе исключительно с целью информирования потребителей об оказываемых услугах по компонентному и модульному ремонту техники. Услуги оказываются в независимых сервисных центрах, не связанных прямыми дилерскими или контрактными обязательствами с официальными заводами-изготовителями указанных брендов.
+            </div>
+            <div class="legal-text-block">
+                Ознакомившись с полной текстовой информацией, прайс-листом и центром поддержки данного сайта, вы подтверждаете свое согласие на подачу электронной заявки для проведения диагностики и ремонта вашей техники. Сервисный центр не несет юридической, материальной или технической ответственности в случаях, если после проведения технологического вскрытия устройство останется в исходном неработоспособном состоянии, вызванном скрытыми дефектами. 
+            </div>
             <ul class="legal-list">
                 <li>Сервисный центр не является уполномоченной организацией изготовителя техники.</li>
-                <li>Вся информация носит справочно-информационный характер и ни при каких условиях не является публичной офертой (Статья 437 ГК РФ).</li>
+                <li>Подписываясь на официальный Telegram-канал проекта, вы подтверждаете свое согласие на получение информационных материалов и открытых отчетов о проведенных ремонтных работах.</li>
+                <li>Вся информация носит справочно-информационный характер и ни при каких условиях не является публичной офертой, определяемой положениями Статьи 437 Гражданского кодекса РФ.</li>
             </ul>
-            <div class="copyright-block"><div>© 2026 x-tehnik-kupino.ru</div><div>Копирование игрового дизайна преследуется по закону.</div></div>
+            <div class="copyright-block">
+                <div>© 2026 x-tehnik-kupino.ru</div>
+                <div>Копирование игрового дизайна преследуется по закону.</div>
+            </div>
         </div>
     </footer>
-    <div class="cookie-banner" id="cookiePrivacyBanner"><div class="cookie-title">⚙️ ЛИЦЕНЗИОННОЕ СОГЛАШЕНИЕ</div><div class="cookie-text">Система X-Tehnik использует Cookie для обеспечения работоспособности инвентаря услуг.</div><button class="cookie-btn" id="acceptCookieBtn">Принять соглашение</button></div>
+    <div class="cookie-banner" id="cookiePrivacyBanner">
+        <div class="cookie-title">⚙️ ЛИЦЕНЗИОННОЕ СОГЛАШЕНИЕ</div>
+        <div class="cookie-text">
+            Система X-Tehnik использует файлы Cookie для технического обеспечения работоспособности, сохранения данных инвентаря услуг и защиты сессии. Продолжая работу, вы принимаете условия соглашения.
+        </div>
+        <button class="cookie-btn" id="acceptCookieBtn">Принять соглашение</button>
+    </div>
     <script>
-        const cv = document.getElementById('bg-canvas'); const cx = cv.getContext('2d');
-        let w = cv.width = window.innerWidth; let h = cv.height = window.innerHeight;
+        const cv = document.getElementById('bg-canvas');
+        const cx = cv.getContext('2d');
+        let w = cv.width = window.innerWidth;
+        let h = cv.height = window.innerHeight;
         window.addEventListener('resize', () => { w = cv.width = window.innerWidth; h = cv.height = window.innerHeight; });
+
         const pts = []; const maxP = 55;
         for (let i = 0; i < maxP; i++) { pts.push({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4, r: Math.random() * 2 + 1 }); }
+
         function draw_bg() {
-            cx.clearRect(0, 0, w, h); cx.fillStyle = 'rgba(250, 204, 21, 0.7)'; cx.lineWidth = 1.0;
+            cx.clearRect(0, 0, w, h); 
+            cx.fillStyle = 'rgba(250, 204, 21, 0.7)'; 
+            cx.lineWidth = 1.0;
             for (let i = 0; i < maxP; i++) {
-                const p = pts[i]; cx.beginPath(); cx.arc(p.x, p.y, p.r, 0, Math.PI * 2); cx.fill(); p.x += p.vx; p.y += p.vy;
+                const p = pts[i]; cx.beginPath(); cx.arc(p.x, p.y, p.r, 0, Math.PI * 2); cx.fill();
+                p.x += p.vx; p.y += p.vy;
                 if (p.x < 0 || p.x > w) p.vx *= -1; if (p.y < 0 || p.y > h) p.vy *= -1;
-                for (let j = i + 1; j < maxP; j++) { const p2 = pts[j]; const d = Math.hypot(p.x - p2.x, p.y - p2.y); if (d < 150) { let alpha = (1 - d / 150) * 0.45; cx.strokeStyle = `rgba(250, 204, 21, ${alpha})`; cx.beginPath(); cx.moveTo(p.x, p.y); cx.lineTo(p2.x, p2.y); cx.stroke(); } }
-            } requestAnimationFrame(draw_bg);
-        } draw_bg();
-        const c_b = document.getElementById('cookiePrivacyBanner'); const c_ok = document.getElementById('acceptCookieBtn');
+                for (let j = i + 1; j < maxP; j++) { 
+                    const p2 = pts[j]; 
+                    const d = Math.hypot(p.x - p2.x, p.y - p2.y); 
+                    if (d < 150) { 
+                        let alpha = (1 - d / 150) * 0.45;
+                        cx.strokeStyle = `rgba(250, 204, 21, ${alpha})`;
+                        cx.beginPath(); cx.moveTo(p.x, p.y); cx.lineTo(p2.x, p2.y); cx.stroke(); 
+                    } 
+                }
+            }
+            requestAnimationFrame(draw_bg);
+        }
+        draw_bg();
+
+        const c_b = document.getElementById('cookiePrivacyBanner');
+        const c_ok = document.getElementById('acceptCookieBtn');
         setTimeout(() => { if (!localStorage.getItem('xt_l_ok')) c_b.classList.add('show'); }, 2000);
         if (c_ok) { c_ok.addEventListener('click', () => { localStorage.setItem('xt_l_ok', '1'); c_b.classList.remove('show'); }); }
-        const cityBtn = document.getElementById('cityBtn'); const modal = document.getElementById('modalOverlay'); const closeModal = document.getElementById('closeModal');
-        if (cityBtn) cityBtn.addEventListener('click', () => modal.classList.add('active')); if (closeModal) closeModal.addEventListener('click', () => modal.classList.remove('active'));
-        const btn = document.getElementById('launch-btn'); const axis = document.getElementById('arrow-axis'); const radar = document.getElementById('main-radar'); const pointer = document.getElementById('pointer'); const rightCard = document.getElementById('right-card');
+
+        const cityBtn = document.getElementById('cityBtn');
+        const modal = document.getElementById('modalOverlay');
+        const closeModal = document.getElementById('closeModal');
+        if (cityBtn) cityBtn.addEventListener('click', () => modal.classList.add('active'));
+        if (closeModal) closeModal.addEventListener('click', () => modal.classList.remove('active'));
+
+        const btn = document.getElementById('launch-btn');
+        const axis = document.getElementById('arrow-axis');
+        const radar = document.getElementById('main-radar');
+        const pointer = document.getElementById('pointer');
+        const rightCard = document.getElementById('right-card');
+
         if (btn) {
             btn.addEventListener('click', () => {
-                btn.disabled = true; (new Audio('https://mixkit.co')).play(); const w_a = new Audio('https://mixkit.co');
-                const rot = 1440 + Math.floor(Math.random() * 270); axis.style.transform = `rotate(${rot}deg)`;
+                btn.disabled = true;
+                const s_a = new Audio('https://mixkit.co'); s_a.volume = 0.4; s_a.play();
+                const w_a = new Audio('https://mixkit.co'); w_a.volume = 0.5;
+                const rot = 1440 + Math.floor(Math.random() * 270);
+                axis.style.transform = `rotate(${rot}deg)`;
                 setTimeout(() => {
-                    w_a.play(); radar.style.borderColor = '#facc15'; radar.style.boxShadow = '0 0 60px rgba(250, 204, 21, 0.6), inset 0 0 25px rgba(0, 0, 0, 0.8)'; pointer.style.borderTopColor = '#22c55e'; pointer.style.filter = 'drop-shadow(0 0 15px #22c55e)'; btn.style.color = '#facc15'; btn.style.textShadow = '0 0 15px rgba(250, 204, 21, 0.8)'; btn.innerText = 'УСПЕШНО'; rightCard.style.borderColor = '#facc15'; rightCard.style.boxShadow = '0 0 50px rgba(250, 204, 21, 0.4), 0 40px 80px rgba(0,0,0,0.7)';
+                    w_a.play();
+                    radar.style.borderColor = '#facc15'; radar.style.boxShadow = '0 0 60px rgba(250, 204, 21, 0.6), inset 0 0 25px rgba(0, 0, 0, 0.8)';
+                    pointer.style.borderTopColor = '#22c55e'; pointer.style.filter = 'drop-shadow(0 0 15px #22c55e)';
+                    btn.style.color = '#facc15'; btn.style.textShadow = '0 0 15px rgba(250, 204, 21, 0.8)'; btn.innerText = 'УСПЕШНО';
+                    rightCard.style.borderColor = '#facc15'; rightCard.style.boxShadow = '0 0 50px rgba(250, 204, 21, 0.4), 0 40px 80px rgba(0,0,0,0.7)';
                     setTimeout(() => {
-                        btn.disabled = false; btn.innerText = 'РЕМОНТ'; btn.style.color = '#fff'; btn.style.textShadow = 'none'; axis.style.transform = 'rotate(0deg)'; radar.style.borderColor = 'rgba(250, 204, 21, 0.3)'; radar.style.boxShadow = '0 0 50px rgba(250, 204, 21, 0.15), inset 0 0 25px rgba(0, 0, 0, 0.8)'; pointer.style.borderTopColor = '#facc15'; pointer.style.filter = 'drop-shadow(0 0 10px #facc15)'; rightCard.style.borderColor = 'rgba(250, 204, 21, 0.1)'; rightCard.style.boxShadow = '0 40px 80px rgba(0,0,0,0.7)';
+                        btn.disabled = false; btn.innerText = 'РЕМОНТ'; btn.style.color = '#fff'; btn.style.textShadow = 'none'; axis.style.transform = 'rotate(0deg)';
+                        radar.style.borderColor = 'rgba(250, 204, 21, 0.3)'; radar.style.boxShadow = '0 0 50px rgba(250, 204, 21, 0.15), inset 0 0 25px rgba(0, 0, 0, 0.8)';
+                        pointer.style.borderTopColor = '#facc15'; pointer.style.filter = 'drop-shadow(0 0 10px #facc15)';
+                        rightCard.style.borderColor = 'rgba(250, 204, 21, 0.1)'; rightCard.style.boxShadow = '0 40px 80px rgba(0,0,0,0.7)';
                     }, 6000);
                 }, 2200);
             });
         }
-        const s_l = document.getElementById('slide-left'); const s_r = document.getElementById('slide-right'); const s_z = document.getElementById('scroll-zone');
-        if (s_z) { window.addEventListener('scroll', () => { const r = s_z.getBoundingClientRect(); if (r.top <= window.innerHeight * 0.7) { s_l.classList.add('active'); s_r.classList.add('active'); } else { s_l.classList.remove('active'); s_r.classList.remove('active'); } }); }
-        const cards = document.querySelectorAll('.item-card'); const bar = document.getElementById('priceCalcBar'); const totalSum = document.getElementById('calcTotalSum');
+
+        const s_l = document.getElementById('slide-left');
+        const s_r = document.getElementById('slide-right');
+        const s_z = document.getElementById('scroll-zone');
+        if (s_z) {
+            window.addEventListener('scroll', () => {
+                const r = s_z.getBoundingClientRect();
+                if (r.top <= window.innerHeight * 0.7) { s_l.classList.add('active'); s_r.classList.add('active'); }
+                else { s_l.classList.remove('active'); s_r.classList.remove('active'); }
+            });
+        }
+
+        const cards = document.querySelectorAll('.item-card');
+        const bar = document.getElementById('priceCalcBar');
+        const totalSum = document.getElementById('calcTotalSum');
+
         cards.forEach(card => {
             card.addEventListener('click', () => {
-                card.classList.toggle('selected'); let selected = document.querySelectorAll('.item-card.selected'); let total = 0; selected.forEach(c => { total += parseInt(c.getAttribute('data-price')); });
+                card.classList.toggle('selected');
+                let selected = document.querySelectorAll('.item-card.selected');
+                
+                let total = 0;
+                selected.forEach(c => { total += parseInt(c.getAttribute('data-price')); });
                 if (totalSum) totalSum.innerText = total.toLocaleString('ru-RU') + ' ₽';
-                if (selected.length > 0) { if (bar) bar.classList.add('active'); } else { if (bar) bar.classList.remove('active'); }
+
+                if (selected.length > 0) {
+                    if (bar) bar.classList.add('active');
+                } else {
+                    if (bar) bar.classList.remove('active');
+                }
             });
         });
     </script>
