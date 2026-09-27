@@ -18,7 +18,7 @@
             top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: -1;
             pointer-events: none;
-            opacity: 0.6;
+            opacity: 1.0; 
         }
         header {
             position: fixed;
@@ -223,16 +223,18 @@
             <p>Стабильный FPS, идеальный отклик, чистая система без мусора и кастомный апгрейд лично под твои задачи.</p>
         </div>
     </section>
+    
+    <!-- ТУТ ЗАШИТА ПРАВИЛЬНАЯ ПРЯМАЯ ССЫЛКА НА БОТА В ОБЕ КНОПКИ -->
     <section class="scroll-section" id="scroll-zone">
         <div class="stack-block block-left" id="slide-left">
             <h2>Любая сложность</h2>
             <p>Мы работаем абсолютно со всеми видами сложностей. От быстрой замены разбитого экрана до полной работы с вашим телефоном или ПК.</p>
-            <a href="https://t.me" target="_blank" class="link-btn">Сдать в Telegram</a>
+            <a href="https://t.me/xtehnik_bot" target="_blank" class="link-btn">Сдать в Telegram</a>
         </div>
         <div class="stack-block block-right" id="slide-right">
             <h2>Всегда рядом</h2>
             <p>Мы находимся в городе Купино. Работаем в максимально удобном для вас формате: на дому или оперативно приедем по вызову в любую точку.</p>
-            <a href="https://t.me" target="_blank" class="link-btn">Вызвать мастера</a>
+            <a href="https://t.me/xtehnik_bot" target="_blank" class="link-btn">Вызвать мастера</a>
         </div>
     </section>
     <section class="price-section">
@@ -269,7 +271,6 @@
         </div>
     </section>
 
-    <!-- ИНТЕРАКТИВНЫЙ ВЫПЛЫВАЮЩИЙ БАР КАЛЬКУЛЯТОРА -->
     <div class="calc-bar" id="priceCalcBar">
         <div class="calc-info">
             <h4>Выбрано услуг для контракта</h4>
@@ -326,10 +327,13 @@
         window.addEventListener('resize', () => { w = cv.width = window.innerWidth; h = cv.height = window.innerHeight; });
 
         const pts = []; const maxP = 55;
-        for (let i = 0; i < maxP; i++) { pts.push({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4, r: Math.random() * 2 + 1 }); }
+        for (let i = 0; i < maxP; i++) { pts.push({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4, r: Math.random() * 2.5 + 1.5 }); }
 
         function draw_bg() {
-            cx.clearRect(0, 0, w, h); cx.fillStyle = 'rgba(250, 204, 21, 0.25)'; cx.strokeStyle = 'rgba(250, 204, 21, 0.04)';
+            cx.clearRect(0, 0, w, h); 
+            cx.fillStyle = 'rgba(250, 204, 21, 0.85)'; 
+            cx.strokeStyle = 'rgba(250, 204, 21, 0.25)';
+            cx.lineWidth = 1.2;
             for (let i = 0; i < maxP; i++) {
                 const p = pts[i]; cx.beginPath(); cx.arc(p.x, p.y, p.r, 0, Math.PI * 2); cx.fill();
                 p.x += p.vx; p.y += p.vy;
@@ -421,6 +425,7 @@
             });
         });
 
+        // ФИНАЛЬНАЯ ПРЯМАЯ ССЫЛКА НА БОТА И ПЕРЕДАЧА СФОРМИРОВАННОГО КОНТРАКТА
         if (tgBtn) {
             tgBtn.addEventListener('click', () => {
                 let total = selectedServices.reduce((sum, item) => sum + item.price, 0);
