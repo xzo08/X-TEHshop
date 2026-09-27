@@ -83,7 +83,6 @@
         .modal-note { font-size: 0.9rem; color: #a1a1aa; margin-top: 25px; line-height: 1.4; }
         .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #71717a; }
         .close-modal:hover { color: #fff; }
-
         /* Первый экран */
         .screen-one {
             width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: space-between; padding: 0 80px; position: relative;
@@ -183,14 +182,13 @@
         .rarity-classified .item-emoji { filter: saturate(1.6) drop-shadow(0 0 8px #d946ef); }
         .rarity-covert .item-emoji { filter: saturate(1.6) drop-shadow(0 0 10px #ef4444); }
         .item-card .item-price { font-size: 1.4rem; font-weight: 900; color: #facc15; }
-
         /* ЭКРАН ЗАЩИТЫ */
         .shield-section {
-            width: 100vw; min-height: 50vh; background: transparent; padding: 80px 80px;
+            width: 100vw; min-height: 45vh; background: transparent; padding: 60px 80px;
             display: flex; flex-direction: column; align-items: center;
             border-top: 2px solid rgba(250, 204, 21, 0.05);
         }
-        .shield-section h2 { font-size: 3rem; font-weight: 900; text-transform: uppercase; margin-bottom: 50px; letter-spacing: 2px; }
+        .shield-section h2 { font-size: 3rem; font-weight: 900; text-transform: uppercase; margin-bottom: 40px; letter-spacing: 2px; }
         .shield-section h2 span { color: #facc15; }
         .shield-grid { display: flex; justify-content: center; gap: 40px; width: 100%; max-width: 900px; }
         .shield-card { background: rgba(20, 20, 22, 0.8); border: 1px solid rgba(255,255,255,0.02); backdrop-filter: blur(10px); border-radius: 20px; padding: 45px 35px; flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
@@ -198,9 +196,30 @@
         .shield-card h3 { font-size: 1.4rem; font-weight: 900; text-transform: uppercase; margin-bottom: 15px; color: #fff; letter-spacing: 0.5px; }
         .shield-card p { color: #a1a1aa; font-size: 1rem; line-height: 1.6; }
 
-        /* СТЕНА ОТЗЫВОВ И ОЦЕНОК */
+        /* ЭКРАН FAQ */
+        .faq-section {
+            width: 100vw; min-height: 90vh; background: transparent; padding: 100px 80px;
+            display: flex; flex-direction: column; align-items: center;
+            border-top: 2px solid rgba(250, 204, 21, 0.05);
+        }
+        .chat-container { width: 100%; max-width: 900px; display: flex; flex-direction: column; gap: 25px; margin-top: 30px; }
+        .chat-msg { max-width: 75%; padding: 20px 25px; border-radius: 20px; line-height: 1.6; font-size: 1.1rem; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.4); }
+        .msg-client { background: rgba(25, 25, 27, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.03); align-self: flex-start; border-bottom-left-radius: 4px; color: #e4e4e7; }
+        .msg-client::before { content: 'Пользователь:'; display: block; font-size: 0.85rem; font-weight: bold; color: #71717a; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }
+        .msg-master { background: rgba(28, 26, 20, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(250, 204, 21, 0.2); align-self: flex-end; border-bottom-right-radius: 4px; color: #fff; box-shadow: 0 0 25px rgba(250, 204, 21, 0.03); }
+        .msg-master::before { content: '⚡ X-TEHNIK:'; display: block; font-size: 0.85rem; font-weight: 900; color: #facc15; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(250, 204, 21, 0.4); }
+
+        /* ОТЗЫВЫ В САМОМ НИЗУ СТРАНИЦЫ */
+        .reviews-bottom-section {
+            width: 100vw; min-height: 100vh; background: transparent; padding: 100px 80px;
+            display: flex; flex-direction: column; align-items: center;
+            border-top: 2px solid rgba(250, 204, 21, 0.05);
+        }
+        .reviews-bottom-section h2 { font-size: 3rem; font-weight: 900; text-transform: uppercase; margin-bottom: 50px; letter-spacing: 2px; }
+        .reviews-bottom-section h2 span { color: #facc15; }
+
         .review-container {
-            width: 100%; max-width: 900px; background: rgba(20, 20, 22, 0.6); border: 1px solid rgba(250, 204, 21, 0.15); border-radius: 20px; padding: 35px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); backdrop-filter: blur(10px); margin-bottom: 50px;
+            width: 100%; max-width: 900px; background: rgba(20, 20, 22, 0.6); border: 1px solid rgba(250, 204, 21, 0.15); border-radius: 20px; padding: 35px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); backdrop-filter: blur(10px);
         }
         .review-form-group { display: flex; gap: 15px; margin-bottom: 20px; }
         .review-input-name { width: 30%; background: #111110; border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; padding: 14px; color: #fff; font-size: 1rem; }
@@ -221,27 +240,21 @@
         .review-item-stars { color: #facc15; font-size: 1rem; }
         .review-item-body { color: #a1a1aa; font-size: 0.95rem; line-height: 1.5; }
 
-        /* ЭКРАН — ИНТЕРАКТИВНЫЙ FAQ */
-        .faq-section {
-            width: 100vw; min-height: 100vh; background: transparent; padding: 120px 80px;
-            display: flex; flex-direction: column; align-items: center;
-            border-top: 2px solid rgba(250, 204, 21, 0.05);
+        /* ЖЕСТКИЙ ЮРИДИЧЕСКИЙ ПОДВАЛ */
+        .legal-footer {
+            width: 100vw; background: #070708; border-top: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 60px 80px; font-size: 0.75rem; color: #52525b; line-height: 1.6;
         }
-        .chat-container { width: 100%; max-width: 900px; display: flex; flex-direction: column; gap: 25px; margin-top: 30px; }
-        .chat-msg { max-width: 75%; padding: 20px 25px; border-radius: 20px; line-height: 1.6; font-size: 1.1rem; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.4); }
-        .msg-client { background: rgba(25, 25, 27, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.03); align-self: flex-start; border-bottom-left-radius: 4px; color: #e4e4e7; }
-        .msg-client::before { content: 'Пользователь:'; display: block; font-size: 0.85rem; font-weight: bold; color: #71717a; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }
-        .msg-master { background: rgba(28, 26, 20, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(250, 204, 21, 0.2); align-self: flex-end; border-bottom-right-radius: 4px; color: #fff; box-shadow: 0 0 25px rgba(250, 204, 21, 0.03); }
-        .msg-master::before { content: '⚡ X-TEHNIK:'; display: block; font-size: 0.85rem; font-weight: 900; color: #facc15; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(250, 204, 21, 0.4); }
+        .legal-container { width: 100%; max-width: 1200px; margin: 0 auto; }
+        .legal-text-block { margin-bottom: 25px; text-align: justify; }
+        .legal-list { list-style: none; padding-left: 0; margin-bottom: 25px; }
+        .legal-list li { margin-bottom: 6px; position: relative; padding-left: 15px; }
+        .legal-list li::before { content: "—"; position: absolute; left: 0; color: #52525b; }
+        .copyright-block { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.02); padding-top: 20px; font-weight: 500; }
 
-        /* ЧИСТЫЙ COOKIE БАННЕР */
+        /* COOKIE БАННЕР */
         .cookie-banner {
-            position: fixed; bottom: -250px; left: 40px; max-width: 380px;
-            background: rgba(20, 20, 22, 0.9); border: 2px solid #facc15;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(250, 204, 21, 0.15);
-            border-radius: 16px; padding: 24px; z-index: 300;
-            display: flex; flex-direction: column; gap: 15px;
-            backdrop-filter: blur(15px); transition: bottom 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            position: fixed; bottom: -250px; left: 40px; max-width: 380px; background: rgba(20, 20, 22, 0.9); border: 2px solid #facc15; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(250, 204, 21, 0.15); border-radius: 16px; padding: 24px; z-index: 300; display: flex; flex-direction: column; gap: 15px; backdrop-filter: blur(15px); transition: bottom 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
         .cookie-banner.show { bottom: 40px; }
         .cookie-title { font-size: 1rem; font-weight: 900; text-transform: uppercase; color: #facc15; letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px; }
@@ -252,7 +265,6 @@
 </head>
 <body>
 
-    <!-- ЭЛЕМЕНТ 4D АНИМИРОВАННОГО КИБЕРПАНК БЭКГРАУНДА -->
     <canvas id="bg-canvas"></canvas>
 
     <header>
@@ -341,7 +353,7 @@
     </section>
     <!-- Раздел 4 -->
     <section class="shield-section">
-        <h2>Система <span>Защиты</span> X-Tehnik</h2>
+        <h2>System <span>Защиты</span> X-Tehnik</h2>
         <div class="shield-grid">
             <div class="shield-card rarity-mil-spec">
                 <div class="shield-icon">🛡️</div>
@@ -356,8 +368,20 @@
         </div>
     </section>
 
-    <!-- Раздел 5 (Интерактивная стена отзывов и оценок) -->
-    <section class="faq-section" style="border-top: 2px solid rgba(250, 204, 21, 0.05);">
+    <!-- Раздел 5 (FAQ) -->
+    <section class="faq-section">
+        <h2>Вопросы и <span>Ответы</span></h2>
+        <div class="chat-container">
+            <div class="chat-msg msg-client">А если вы приедете делать ремонт на дому в Купино, это платно?</div>
+            <div class="chat-msg msg-master">По всему городу Купино наш выезд абсолютно бесплатный. Вы оплачиваете строго только стоимость самого ремонта и заменяемых запчастей.</div>
+            
+            <div class="chat-msg msg-client">Сколько обычно по времени занимает замена экрана на телефоне?</div>
+            <div class="chat-msg msg-master">Большинство модульных ремонтов (экраны, аккумуляторы, шлейфы) мы делаем в течение 30-60 минут прямо при вас. Успеете только кофе выпить!</div>
+        </div>
+    </section>
+
+    <!-- Раздел 6 (ОТЗЫВЫ В САМОМ ПОДВАЛЕ — ЧИСТАЯ ЛЕНТА) -->
+    <section class="reviews-bottom-section">
         <h2>Отзывы <span>Пользователей</span></h2>
         <div class="review-container">
             <div class="rating-stars-select" id="starRatingSelect">
@@ -373,26 +397,31 @@
                 <input type="text" class="review-input-text" id="reviewerText" placeholder="Напишите ваш отзыв о ремонте или сайте..." required>
                 <button class="btn-submit-review" id="submitReviewBtn">Отправить контракт</button>
             </div>
-
-            <div class="reviews-feed-list" id="reviewsFeedContainer">
-                <!-- Отзывы -->
+            <div class="reviews-feed-list" id="reviewsFeedContainer"></div>
+        </div>
+    </section>
+    <!-- Раздел 7 (ЮРИДИЧЕСКОЕ АЛИБИ СЦ) -->
+    <footer class="legal-footer">
+        <div class="legal-container">
+            <div class="legal-text-block">
+                iPhone, Macbook, iPad — являются зарегистрированными товарными знаками Apple Inc.; Huawei, Honor, Samsung, Xiaomi, Redmi, Realme, Poco, Tecno, Infinix, Lenovo, LG, Philips, Sony, ASUS, Acer, DELL, HP, Toshiba — являются зарегистрированными товарными знаками их соответствующих правообладателей. Все торговые марки и бренды упоминаются на данном интернет-ресурсе исключительно с целью информирования потребителей об оказываемых услугах по компонентному и модульному ремонту техники. Услуги оказываются в независимых, неавторизованных сервисных центрах, не связанных прямыми дилерскими или контрактными обязательствами с официальными заводами-изготовителями указанных брендов.
+            </div>
+            <div class="legal-text-block">
+                Ознакомившись с полной текстовой информацией, прайс-листом и структурой данного сайта, вы подтверждаете свое согласие на подачу электронной заявки для проведения диагностики и ремонта вашей техники. Сервисный центр не несет юридической, материальной или технической ответственности в случаях, если после проведения технологического вскрытия, ультразвуковой чистки или пайки устройство останется в исходном неработоспособном состоянии, вызванном скрытыми внутренними дефектами, коррозией после попадания жидкости или деградацией межплатных соединений. 
+            </div>
+            <ul class="legal-list">
+                <li>Сервисный центр не является уполномоченной организацией импортера, продавца или официального изготовителя техники.</li>
+                <li>В случае невозможности проведения ремонта по техническим причинам или при одностороннем отказе клиента от проведения восстановительных работ после проведения разбора устройства, с владельца девайса взимается фиксированная плата за проведение диагностических работ и дефектовку в размере, согласованном с мастером.</li>
+                <li>Вся информация, включая базовые тарифные сетки, условия выезда и текстовые модули, носит исключительно справочно-информационный характер и ни при каких условиях не является публичной офертой, определяемой положениями Статьи 437 Гражданского кодекса РФ.</li>
+            </ul>
+            <div class="copyright-block">
+                <div>© 2026 x-tehnik-kupino.ru</div>
+                <div>Любое копирование материалов, элементов игрового дизайна и оформления структуры сайта преследуется по закону.</div>
             </div>
         </div>
-    </section>
+    </footer>
 
-    <!-- Раздел 6 (FAQ) -->
-    <section class="faq-section">
-        <h2>Вопросы и <span>Ответы</span></h2>
-        <div class="chat-container">
-            <div class="chat-msg msg-client">А если вы приедете делать ремонт на дому в Купино, это платно?</div>
-            <div class="chat-msg msg-master">По всему городу Купино наш выезд абсолютно бесплатный. Вы оплачиваете строго только стоимость самого ремонта и заменяемых запчастей.</div>
-            
-            <div class="chat-msg msg-client">Сколько обычно по времени занимает замена экрана на телефоне?</div>
-            <div class="chat-msg msg-master">Большинство модульных ремонтов (экраны, аккумуляторы, шлейфы) мы делаем в течение 30-60 минут прямо при вас. Успеете только кофе выпить!</div>
-        </div>
-    </section>
-
-    <!-- ИСПРАВЛЕННЫЙ БАННЕР COOKIE -->
+    <!-- БАННЕР COOKIE -->
     <div class="cookie-banner" id="cookiePrivacyBanner">
         <div class="cookie-title">⚙️ ЛИЦЕНЗИОННОЕ СОГЛАШЕНИЕ</div>
         <div class="cookie-text">
@@ -406,16 +435,10 @@
         const ctx = canvas.getContext('2d');
         let width = canvas.width = window.innerWidth;
         let height = canvas.height = window.innerHeight;
-
-        window.addEventListener('resize', () => {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        });
+        window.addEventListener('resize', () => { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; });
 
         const points = []; const maxPoints = 55;
-        for (let i = 0; i < maxPoints; i++) {
-            points.push({ x: Math.random() * width, y: Math.random() * height, vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4, radius: Math.random() * 2 + 1 });
-        }
+        for (let i = 0; i < maxPoints; i++) { points.push({ x: Math.random() * width, y: Math.random() * height, vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4, radius: Math.random() * 2 + 1 }); }
 
         function drawMatrix() {
             ctx.clearRect(0, 0, width, height); ctx.fillStyle = 'rgba(250, 204, 21, 0.25)'; ctx.strokeStyle = 'rgba(250, 204, 21, 0.04)';
@@ -423,58 +446,42 @@
                 const p = points[i]; ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2); ctx.fill();
                 p.x += p.vx; p.y += p.vy;
                 if (p.x < 0 || p.x > width) p.vx *= -1; if (p.y < 0 || p.y > height) p.vy *= -1;
-                for (let j = i + 1; j < maxPoints; j++) {
-                    const p2 = points[j]; const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-                    if (dist < 160) { ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke(); }
-                }
+                for (let j = i + 1; j < maxPoints; j++) { const p2 = points[j]; const dist = Math.hypot(p.x - p2.x, p.y - p2.y); if (dist < 160) { ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke(); } }
             }
             requestAnimationFrame(drawMatrix);
         }
         drawMatrix();
 
-        // ЛОГИКА COOKIE БАННЕРА
+        // ЛОГИКА COOKIE
         const cookieBanner = document.getElementById('cookiePrivacyBanner');
         const acceptCookieBtn = document.getElementById('acceptCookieBtn');
         setTimeout(() => { if (!localStorage.getItem('x_teh_license_accepted')) cookieBanner.classList.add('show'); }, 2000);
         acceptCookieBtn.addEventListener('click', () => { localStorage.setItem('x_teh_license_accepted', 'true'); cookieBanner.classList.remove('show'); });
 
-        // ЛОГИКА ОТЗЫВОВ И ОЦЕНОК
+        // ЛОГИКА ОТЗЫВОВ
         const stars = document.querySelectorAll('.star-opt');
         let currentRating = 5;
-
         stars.forEach(star => {
             star.addEventListener('click', () => {
                 currentRating = parseInt(star.getAttribute('data-val'));
-                stars.forEach(s => {
-                    if (parseInt(s.getAttribute('data-val')) <= currentRating) s.classList.add('active');
-                    else s.classList.remove('active');
-                });
+                stars.forEach(s => { if (parseInt(s.getAttribute('data-val')) <= currentRating) s.classList.add('active'); else s.classList.remove('active'); });
             });
         });
 
         const feedContainer = document.getElementById('reviewsFeedContainer');
         const submitReviewBtn = document.getElementById('submitReviewBtn');
 
-        const defaultReviews = [
-            { name: "Sanya_Kupino", rating: 5, text: "Разбил экран на редмике, пацаны за полчаса все поменяли, выезд на дом бесплатный, респект!" },
-            { name: "DotaPlayer228", rating: 5, text: "Сбросили пароль на планшете и обновили прошу, теперь все летает. Советую!" }
-        ];
-
         function loadReviews() {
             let stored = localStorage.getItem('x_tehnik_user_reviews');
-            let reviewsList = stored ? JSON.parse(stored) : defaultReviews;
+            let reviewsList = stored ? JSON.parse(stored) : [];
             feedContainer.innerHTML = '';
-            
+            if (reviewsList.length === 0) {
+                feedContainer.innerHTML = '<div style="color:#71717a; text-align:center; font-size:0.95rem; font-weight:bold; text-transform:uppercase; padding:20px;">На данный момент контрактов не заключено. Оставьте первый отзыв!</div>';
+                return;
+            }
             reviewsList.forEach(r => {
-                const item = document.createElement('div');
-                item.className = 'review-item-card';
-                item.innerHTML = `
-                    <div class="review-item-header">
-                        <span class="review-item-user">👤 ${r.name}</span>
-                        <span class="review-item-stars">${"★".repeat(r.rating)}${"☆".repeat(5-r.rating)}</span>
-                    </div>
-                    <div class="review-item-body">${r.text}</div>
-                `;
+                const item = document.createElement('div'); item.className = 'review-item-card';
+                item.innerHTML = `<div class="review-item-header"><span class="review-item-user">👤 ${r.name}</span><span class="review-item-stars">${"★".repeat(r.rating)}${"☆".repeat(5-r.rating)}</span></div><div class="review-item-body">${r.text}</div>`;
                 feedContainer.appendChild(item);
             });
         }
@@ -483,17 +490,13 @@
             const nameInput = document.getElementById('reviewerName').value.trim();
             const textInput = document.getElementById('reviewerText').value.trim();
             if (!nameInput || !textInput) { alert("Заполните никнейм и текст отзыва!"); return; }
-
             let stored = localStorage.getItem('x_tehnik_user_reviews');
-            let reviewsList = stored ? JSON.parse(stored) : [...defaultReviews];
+            let reviewsList = stored ? JSON.parse(stored) : [];
             reviewsList.unshift({ name: nameInput, rating: currentRating, text: textInput });
             localStorage.setItem('x_tehnik_user_reviews', JSON.stringify(reviewsList));
-
-            document.getElementById('reviewerName').value = '';
-            document.getElementById('reviewerText').value = '';
+            document.getElementById('reviewerName').value = ''; document.getElementById('reviewerText').value = '';
             loadReviews();
         });
-
         loadReviews();
 
         // ПОПАП ГОРОДА
@@ -503,25 +506,7 @@
         cityBtn.addEventListener('click', () => modal.classList.add('active'));
         closeModal.addEventListener('click', () => modal.classList.remove('active'));
 
-        // ЗВУКИ И КНОПКА РЕМОНТ
-        const spinAudio = new Audio('https://mixkit.co'); 
-        const winAudio = new Audio('https://mixkit.co');   
-        spinAudio.volume = 0.4; winAudio.volume = 0.5;
-
-        function startRealTicks() {
-            spinAudio.currentTime = 0; spinAudio.play();
-            let speed = 60; let elapsed = 0;
-            function run() {
-                if (elapsed >= 2200) return;
-                spinAudio.currentTime = 0; spinAudio.play();
-                if (elapsed > 1200) speed = 140;
-                if (elapsed > 1800) speed = 300;
-                elapsed += speed;
-                setTimeout(run, speed);
-            }
-            run();
-        }
-
+        // КНОПКА РЕМОНТ
         const btn = document.getElementById('launch-btn');
         const axis = document.getElementById('arrow-axis');
         const radar = document.getElementById('main-radar');
@@ -529,18 +514,18 @@
         const rightCard = document.getElementById('right-card');
 
         btn.addEventListener('click', () => {
-            btn.disabled = true; startRealTicks();
+            btn.disabled = true;
+            const spinAudio = new Audio('https://mixkit.co'); spinAudio.volume = 0.4; spinAudio.play();
+            const winAudio = new Audio('https://mixkit.co'); winAudio.volume = 0.5;
             const randomYellowDegrees = Math.floor(Math.random() * 270);
             const totalDegrees = 1440 + randomYellowDegrees;
             axis.style.transform = `rotate(${totalDegrees}deg)`;
 
             setTimeout(() => {
                 winAudio.play();
-                radar.style.borderColor = '#facc15';
-                radar.style.boxShadow = '0 0 60px rgba(250, 204, 21, 0.6), inset 0 0 25px rgba(0, 0, 0, 0.8)';
+                radar.style.borderColor = '#facc15'; radar.style.boxShadow = '0 0 60px rgba(250, 204, 21, 0.6), inset 0 0 25px rgba(0, 0, 0, 0.8)';
                 pointer.style.borderTopColor = '#22c55e'; pointer.style.filter = 'drop-shadow(0 0 15px #22c55e)';
-                btn.style.color = '#facc15'; btn.style.textShadow = '0 0 15px rgba(250, 204, 21, 0.8)';
-                btn.innerText = 'УСПЕШНО';
+                btn.style.color = '#facc15'; btn.style.textShadow = '0 0 15px rgba(250, 204, 21, 0.8)'; btn.innerText = 'УСПЕШНО';
                 rightCard.style.borderColor = '#facc15'; rightCard.style.boxShadow = '0 0 50px rgba(250, 204, 21, 0.4), 0 40px 80px rgba(0,0,0,0.7)';
 
                 setTimeout(() => {
@@ -552,10 +537,10 @@
             }, 2200);
         });
 
+        // СКРОЛЛ
         const slideLeft = document.getElementById('slide-left');
         const slideRight = document.getElementById('slide-right');
         const scrollZone = document.getElementById('scroll-zone');
-
         window.addEventListener('scroll', () => {
             const rect = scrollZone.getBoundingClientRect();
             if (rect.top <= window.innerHeight * 0.7) { slideLeft.classList.add('active'); slideRight.classList.add('active'); }
