@@ -410,7 +410,7 @@
         </div>
         <button class="cookie-btn" id="acceptCookieBtn">Принять соглашение</button>
     </div>
-    <script>
+        <script>
         const cv = document.getElementById('bg-canvas');
         const cx = cv.getContext('2d');
         let w = cv.width = window.innerWidth;
@@ -423,7 +423,7 @@
         function draw_bg() {
             cx.clearRect(0, 0, w, h); cx.fillStyle = 'rgba(250, 204, 21, 0.25)'; cx.strokeStyle = 'rgba(250, 204, 21, 0.04)';
             for (let i = 0; i < maxP; i++) {
-                const p = pts[i]; cx.beginPath(); cx.arc(p.x, p.y, p.r, 0, Math.PI * 2); cx.fill();
+                const p = pts[i]; ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
                 p.x += p.vx; p.y += p.vy;
                 if (p.x < 0 || p.x > w) p.vx *= -1; if (p.y < 0 || p.y > h) p.vy *= -1;
                 for (let j = i + 1; j < maxP; j++) { const p2 = pts[j]; const d = Math.hypot(p.x - p2.x, p.y - p2.y); if (d < 160) { cx.beginPath(); cx.moveTo(p.x, p.y); cx.lineTo(p2.x, p2.y); cx.stroke(); } }
