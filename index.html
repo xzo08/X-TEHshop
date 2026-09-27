@@ -129,7 +129,6 @@
         .item-card { background: rgba(19, 19, 20, 0.75); backdrop-filter: blur(10px); border-radius: 16px; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; height: 230px; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); cursor: pointer; border: 2px solid rgba(255,255,255,0.02); }
         .item-card:hover { transform: translateY(-8px) scale(1.02); }
         
-        /* ЦВЕТА СТИМ-ИНВЕНТАРЯ И СВЕЧЕНИЕ КАРТОЧЕК */
         .r-mil { border-color: rgba(59, 130, 246, 0.3); }
         .r-mil:hover { border-color: #3b82f6; box-shadow: 0 15px 35px rgba(59, 130, 246, 0.25), 0 0 15px rgba(59, 130, 246, 0.2); }
         .r-cls { border-color: rgba(217, 70, 239, 0.3); }
@@ -137,7 +136,6 @@
         .r-cov { border-color: rgba(239, 68, 68, 0.3); }
         .r-cov:hover { border-color: #ef4444; box-shadow: 0 15px 35px rgba(239, 68, 68, 0.25), 0 0 15px rgba(239, 68, 68, 0.2); }
 
-        /* ИНДИКАТОР ВЫБОРА УСЛУГИ */
         .item-card.selected { background: rgba(250, 204, 21, 0.05); border-color: #facc15 !important; box-shadow: 0 0 25px rgba(250, 204, 21, 0.25) !important; }
         .item-card .item-title { font-size: 1.1rem; font-weight: 800; text-transform: uppercase; color: #fff; line-height: 1.4; }
         .item-card .item-type { font-size: 0.8rem; color: #71717a; text-transform: uppercase; margin-top: 5px; letter-spacing: 0.5px; }
@@ -148,7 +146,7 @@
         .r-cls .item-emoji { filter: saturate(1.6) drop-shadow(0 0 8px #d946ef); }
         .r-cov .item-emoji { filter: saturate(1.6) drop-shadow(0 0 10px #ef4444); }
         .item-card .item-price { font-size: 1.4rem; font-weight: 900; color: #facc15; }
-        /* СТИЛИ ЖИВОГО КАЛЬКУЛЯТОРА КОНТРАКТОВ */
+
         .calc-bar {
             position: fixed; bottom: -150px; left: 50%; transform: translateX(-50%);
             width: 100%; max-width: 900px; background: rgba(20, 20, 22, 0.95);
@@ -178,7 +176,7 @@
         .legal-list li { margin-bottom: 6px; position: relative; padding-left: 15px; }
         .legal-list li::before { content: "—"; position: absolute; left: 0; color: #52525b; }
         .copyright-block { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.02); padding-top: 20px; font-weight: 500; }
-        .cookie-banner { position: fixed; bottom: -250px; left: 40px; max-width: 380px; background: rgba(20, 20, 22, 0.9); border: 2px solid #facc15; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(250, 204, 21, 0.15); border-radius: 16px; padding: 24px; z-index: 300; display: flex; flex-direction: column; gap: 15px; backdrop-filter: blur(15px); transition: bottom 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
+        .cookie-banner { position: fixed; bottom: -250px; left: 40px; max-width: 380px; background: rgba(20, 20, 22, 0.9); border: 2px solid #facc15; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(250, 204, 21, 0.2); border-radius: 16px; padding: 24px; z-index: 300; display: flex; flex-direction: column; gap: 15px; backdrop-filter: blur(15px); transition: bottom 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
         .cookie-banner.show { bottom: 40px; }
         .cookie-title { font-size: 1rem; font-weight: 900; text-transform: uppercase; color: #facc15; letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px; }
         .cookie-text { font-size: 0.85rem; color: #d4d4d8; line-height: 1.5; }
@@ -240,34 +238,41 @@
     <section class="price-section">
         <h2>Наш <span>Инвентарь</span> Услуг</h2>
         <div class="inventory-grid">
-            <div class="item-card r-mil" data-name="Замена разъема зарядки" data-price="1000"><div class="item-title">Замена разъема зарядки</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔌</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card r-mil" data-name="Замена динамика" data-price="1000"><div class="item-title">Замена динамика</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔊</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card r-mil" data-name="Замена микрофона" data-price="1000"><div class="item-title">Замена микрофона</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🎙️</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card r-mil" data-name="Замена стекла камеры" data-price="1000"><div class="item-title">Замена стекла камеры</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">💎</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card r-mil" data-name="Замена передней камеры" data-price="1000"><div class="item-title">Замена передней камеры</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">📸</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card r-mil" data-name="Замена кнопок громкости" data-price="1000"><div class="item-title">Замена кнопок громкости</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔉</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card r-mil" data-name="Замена кнопки включения" data-price="1000"><div class="item-title">Замена кноп. включения</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔘</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card r-mil" data-name="Замена кнопки вибро" data-price="1000"><div class="item-title">Замена кнопки вибро</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔕</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card r-mil" data-name="Замена вибромотора" data-price="1000"><div class="item-title">Замена вибромотора</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">📳</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card r-mil" data-name="Сброс экранного пароля" data-price="1000"><div class="item-title">Сброс экранного пароля</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔓</span><div class="item-price">1 000 ₽</div></div></div>
+            <!-- КАТЕГОРИЯ: АРМЕЙСКОЕ КАЧЕСТВО -->
+            <div class="item-card r-mil" data-name="Замена разъема зарядки" data-price="1000"><div class="item-title">Замена разъема зарядки</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔌</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card r-mil" data-name="Замена динамика" data-price="1000"><div class="item-title">Замена динамика</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔊</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card r-mil" data-name="Замена микрофона" data-price="1000"><div class="item-title">Замена микрофона</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🎙️</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card r-mil" data-name="Замена стекла камеры" data-price="1000"><div class="item-title">Замена стекла камеры</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">💎</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card r-mil" data-name="Замена передней камеры" data-price="1000"><div class="item-title">Замена передней камеры</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">📸</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card r-mil" data-name="Замена кнопок громкости" data-price="1000"><div class="item-title">Замена кнопок громкости</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔉</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card r-mil" data-name="Замена кнопки включения" data-price="1000"><div class="item-title">Замена кноп. включения</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔘</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card r-mil" data-name="Замена кнопки вибро" data-price="1000"><div class="item-title">Замена кнопки вибро</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔕</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card r-mil" data-name="Сброс экранного пароля" data-price="1000"><div class="item-title">Сброс экранного пароля</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔓</span><div class="item-price">1 000 ₽</div></div></div>
+            <div class="item-card r-mil" data-name="Почистить от пыли и поменять термопасту" data-price="1000"><div><div class="item-title">Чистка + термопаста</div><div class="item-subtitle-small">Для ПК и Ноутбуков</div></div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">💨</span><div class="item-price">1 000 ₽</div></div></div>
+            
+            <!-- КАТЕГОРИЯ: ЗАСЕКРЕЧЕННОЕ -->
             <div class="item-card r-cls" data-name="Замена аккумулятора" data-price="1100"><div class="item-title">Замена аккумулятора</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">🔋</span><div class="item-price">1 100 ₽</div></div></div>
+            <div class="item-card r-cls" data-name="Установить чистую Windows 11 и накатить дрова" data-price="1200"><div><div class="item-title">Windows 11 + Драйверы</div><div class="item-subtitle-small">Чистая ОС без мусора</div></div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">💿</span><div class="item-price">1 200 ₽</div></div></div>
             <div class="item-card r-cls" data-name="Обновление ПО и сброс" data-price="1200"><div><div class="item-title">Обновление ПО и сброс</div><div class="item-subtitle-small">с учетом айклауда</div></div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">📲</span><div class="item-price">1 200 ₽</div></div></div>
             <div class="item-card r-cls" data-name="Замена задней крышки" data-price="1500"><div class="item-title">Замена задней крышки</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">📱</span><div class="item-price">1 500 ₽</div></div></div>
             <div class="item-card r-cls" data-name="Замена задней камеры" data-price="1500"><div class="item-title">Замена задней камеры</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">📷</span><div class="item-price">1 500 ₽</div></div></div>
+            <div class="item-card r-cls" data-name="Подобрать и поставить комплектующие ПК" data-price="1500"><div><div class="item-title">Сборка ПК под ключ</div><div class="item-subtitle-small">Из твоих комплектующих</div></div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">🛠️</span><div class="item-price">1 500 ₽</div></div></div>
+            
+            <!-- КАТЕГОРИЯ: ТАЙНОЕ -->
             <div class="item-card r-cov" data-name="Замена экрана" data-price="2000"><div class="item-title">Замена экрана</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">🖥️</span><div class="item-price">2 000 ₽</div></div></div>
             <div class="item-card r-cov" data-name="Замена корпуса" data-price="2500"><div class="item-title">Замена корпуса</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">🧰</span><div class="item-price">2 500 ₽</div></div></div>
         </div>
         <div style="width: 100%; max-width: 1200px; display: flex; justify-content: flex-end; margin-top: 25px;">
             <div style="max-width: 500px; text-align: right; background: rgba(250, 204, 21, 0.03); border: 1px dashed rgba(250, 204, 21, 0.2); padding: 15px 20px; border-radius: 12px; font-size: 0.85rem; color: #a1a1aa; line-height: 1.5; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
-                <span style="color: #facc15; font-weight: 900; letter-spacing: 0.5px;">⚠️ ВНИМАНИЕ:</span> Кликни на любые карточки услуг, чтобы составить контракт! Указана стоимость исключительно за выполнение ремонтных работ. Финальная цена зависит от запчастей.
+                <span style="color: #facc15; font-weight: 900; letter-spacing: 0.5px;">⚠️ ИНВЕНТАРЬ КОНТРАКТОВ:</span> Кликни на любые карточки услуг выше, чтобы составить контракт! Итоговая сумма за работу посчитается на лету в выплывающем баре.
             </div>
         </div>
     </section>
 
-    <!-- НОВЫЙ ЖИВОЙ БАР КАЛЬКУЛЯТОРА -->
+    <!-- ИНТЕРАКТИВНЫЙ ВЫПЛЫВАЮЩИЙ БАР КАЛЬКУЛЯТОРА -->
     <div class="calc-bar" id="priceCalcBar">
         <div class="calc-info">
-            <h4>Выбрано контрактов услуг</h4>
+            <h4>Выбрано услуг для контракта</h4>
             <div class="calc-total" id="calcTotalSum">0 ₽</div>
         </div>
         <button class="calc-btn" id="sendContractTelegramBtn">Заключить контракт</button>
@@ -293,7 +298,7 @@
                 iPhone, Macbook, iPad — являются зарегистрированными товарными знаками Apple Inc.; Huawei, Honor, Samsung, Xiaomi, Redmi, Realme, Poco, Tecno, Infinix, Lenovo, LG, Philips, Sony, ASUS, Acer, DELL, HP, Toshiba — являются зарегистрированными товарными знаками их соответствующих правообладателей. Все торговые марки и бренды упоминаются на данном интернет-ресурсе исключительно с целью информирования потребителей об оказываемых услугах по компонентному и модульному ремонту техники. Услуги оказываются в независимых, неавторизованных сервисных центрах, не связанных прямыми дилерскими или контрактными обязательствами с официальными заводами-изготовителями указанных брендов.
             </div>
             <div class="legal-text-block">
-                Ознакомившись с полной текстовой информацией, прайс-листом и структурой данного сайта, вы подтверждаете свое согласие на подачу электронной заявки для проведения диагностики и ремонта вашей техники. Сервисный центр не несет юридической, материальной или технической ответственности в случаях, если после проведения технологического вскрытия, ультразвуковой чистки или пайки устройство останется в исходном неработоспособном состоянии, вызванном скрытыми внутренними дефектами, коррозией после попадания жидкости или деградацией межплатных соединений. 
+                Ознакомившись с полной текстовой информацией, прайс-листом и центром поддержки данного сайта, вы подтверждаете свое согласие на подачу электронной заявки для проведения диагностики и ремонта вашей техники. Сервисный центр не несет юридической, материальной или технической ответственности в случаях, если после проведения технологического вскрытия, ультразвуковой чистки или пайки устройство останется в исходном неработоспособном состоянии, вызванном скрытыми внутренними дефектами, коррозией после попадания жидкости или деградацией межплатных соединений. 
             </div>
             <ul class="legal-list">
                 <li>Сервисный центр не является уполномоченной организацией импортера, продавца или официального изготовителя техники.</li>
@@ -386,7 +391,6 @@
             });
         }
 
-        // ЖЕЛЕЗОБЕТОННАЯ КИБЕРПАНК ЛОГИКА КАЛЬКУЛЯТОРА И СТИМ-ПОДСВЕТКИ
         const cards = document.querySelectorAll('.item-card');
         const bar = document.getElementById('priceCalcBar');
         const totalSum = document.getElementById('calcTotalSum');
@@ -407,12 +411,12 @@
                 }
 
                 let total = selectedServices.reduce((sum, item) => sum + item.price, 0);
-                totalSum.innerText = total.toLocaleString() + ' ₽';
+                if (totalSum) totalSum.innerText = total.toLocaleString('ru-RU') + ' ₽';
 
                 if (selectedServices.length > 0) {
-                    bar.classList.add('active');
+                    if (bar) bar.classList.add('active');
                 } else {
-                    bar.classList.remove('active');
+                    if (bar) bar.classList.remove('active');
                 }
             });
         });
@@ -420,9 +424,9 @@
         if (tgBtn) {
             tgBtn.addEventListener('click', () => {
                 let total = selectedServices.reduce((sum, item) => sum + item.price, 0);
-                let text = "Привет! Я составил контракт услуг на сайте:\n\n";
-                selectedServices.forEach((s, i) => { text += `${i+1}. ${s.name} — ${s.price.toLocaleString()} ₽\n`; });
-                text += `\nИтого за работу: ${total.toLocaleString()} ₽`;
+                let text = "Привет! Я составил контракт услуг на сайте X-Tehnik:\n\n";
+                selectedServices.forEach((s, i) => { text += `${i+1}. ${s.name} — ${s.price.toLocaleString('ru-RU')} ₽\n`; });
+                text += `\nИтого за работу: ${total.toLocaleString('ru-RU')} ₽`;
                 
                 window.open(`https://t.me{encodeURIComponent(text)}`, '_blank');
             });
