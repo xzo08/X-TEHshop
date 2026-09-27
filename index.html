@@ -158,7 +158,7 @@
         .calc-bar.active { bottom: 0; }
         .calc-info h4 { font-size: 0.85rem; color: #a1a1aa; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
         .calc-total { font-size: 2rem; font-weight: 900; color: #facc15; text-shadow: 0 0 15px rgba(250, 204, 21, 0.3); }
-        .calc-btn { background: #facc15; color: #000; border: none; padding: 18px 40px; border-radius: 12px; font-size: 1.1rem; font-weight: 900; text-transform: uppercase; cursor: pointer; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(250, 204, 21, 0.3); text-decoration: none; display: flex; align-items: center; justify-content: center; }
+        .calc-btn { background: #facc15; color: #000; border: none; padding: 18px 40px; border-radius: 12px; font-size: 1.1rem; font-weight: 900; text-transform: uppercase; cursor: pointer; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(250, 204, 21, 0.2); text-decoration: none; display: flex; align-items: center; justify-content: center; }
         .calc-btn:hover { background: #fde047; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(250, 204, 21, 0.5); }
 
         .shield-section { width: 100vw; min-height: 45vh; background: transparent; padding: 60px 80px; display: flex; flex-direction: column; align-items: center; border-top: 2px solid rgba(250, 204, 21, 0.05); }
@@ -203,7 +203,7 @@
     <section class="screen-one">
         <div class="panel" id="left-card">
             <div class="hardware-icon left-glow">📉</div>
-            <h3>Твое ставое железо</h3>
+            <h3>Твое старое железо</h3>
             <p>Греется, жутко лагает, выдает синий экран или намертво зависает в самый неподходящий момент?</p>
         </div>
         <div class="center-area">
@@ -219,7 +219,7 @@
         </div>
         <div class="panel" id="right-card">
             <div class="hardware-icon right-glow">⚡</div>
-            <h3>Заряженный монстр</h3>
+            <h3>Заряженного монстра</h3>
             <p>Стабильный FPS, идеальный отклик, чистая система без мусора и кастомный апгрейд лично под твои задачи.</p>
         </div>
     </section>
@@ -227,17 +227,18 @@
         <div class="stack-block block-left" id="slide-left">
             <h2>Любая сложность</h2>
             <p>Мы работаем абсолютно со всеми видами сложностей. От быстрой замены разбитого экрана до полной работы с вашим телефоном или ПК.</p>
-            <a href="https://t.me/xtehnik_bot" target="_blank" class="link-btn">Заявка в Telegram</a>
+            <a href="https://t.me" target="_blank" class="link-btn">Заявка в Telegram</a>
         </div>
         <div class="stack-block block-right" id="slide-right">
             <h2>Всегда рядом</h2>
             <p>Мы находимся в городе Купино. Работаем в максимально удобном для вас формате: на дому или оперативно приедем по вызову в любую точку.</p>
-            <a href="https://t.me/xtehnik_bot" target="_blank" class="link-btn">Вызвать мастера</a>
+            <a href="https://t.me" target="_blank" class="link-btn">Вызвать мастера</a>
         </div>
     </section>
     <section class="price-section">
         <h2>Наш <span>Инвентарь</span> Услуг</h2>
         <div class="inventory-grid">
+            <!-- КАТЕГОРИЯ: АРМЕЙСКОЕ КАЧЕСТВО -->
             <div class="item-card r-mil" data-name="Замена разъема зарядки" data-price="1000"><div class="item-title">Замена разъема зарядки</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔌</span><div class="item-price">1 000 ₽</div></div></div>
             <div class="item-card r-mil" data-name="Замена динамика" data-price="1000"><div class="item-title">Замена динамика</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔊</span><div class="item-price">1 000 ₽</div></div></div>
             <div class="item-card r-mil" data-name="Замена микрофона" data-price="1000"><div class="item-title">Замена микрофона</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🎙️</span><div class="item-price">1 000 ₽</div></div></div>
@@ -248,18 +249,22 @@
             <div class="item-card r-mil" data-name="Замена кнопки вибро" data-price="1000"><div class="item-title">Замена кнопки вибро</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔕</span><div class="item-price">1 000 ₽</div></div></div>
             <div class="item-card r-mil" data-name="Сброс экранного пароля" data-price="1000"><div class="item-title">Сброс экранного пароля</div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">🔓</span><div class="item-price">1 000 ₽</div></div></div>
             <div class="item-card r-mil" data-name="Почистить от пыли и поменять термопасту" data-price="1000"><div><div class="item-title">Чистка + термопаста</div><div class="item-subtitle-small">Для ПК и Ноутбуков</div></div><div class="item-type">Армейское качество</div><div class="price-wrapper"><span class="item-emoji">💨</span><div class="item-price">1 000 ₽</div></div></div>
+            
+            <!-- КАТЕГОРИЯ: ЗАСЕКРЕЧЕННОЕ -->
             <div class="item-card r-cls" data-name="Замена аккумулятора" data-price="1100"><div class="item-title">Замена аккумулятора</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">🔋</span><div class="item-price">1 100 ₽</div></div></div>
             <div class="item-card r-cls" data-name="Установить чистую Windows 11 и накатить дрова" data-price="1200"><div><div class="item-title">Windows 11 + Драйверы</div><div class="item-subtitle-small">Чистая ОС без мусора</div></div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">💿</span><div class="item-price">1 200 ₽</div></div></div>
             <div class="item-card r-cls" data-name="Обновление ПО и сброс" data-price="1200"><div><div class="item-title">Обновление ПО и сброс</div><div class="item-subtitle-small">с учетом айклауда</div></div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">📲</span><div class="item-price">1 200 ₽</div></div></div>
             <div class="item-card r-cls" data-name="Замена задней крышки" data-price="1500"><div class="item-title">Замена задней крышки</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">📱</span><div class="item-price">1 500 ₽</div></div></div>
             <div class="item-card r-cls" data-name="Замена задней камеры" data-price="1500"><div class="item-title">Замена задней камеры</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">📷</span><div class="item-price">1 500 ₽</div></div></div>
             <div class="item-card r-cls" data-name="Подобрать и поставить комплектующие ПК" data-price="1500"><div><div class="item-title">Сборка ПК под ключ</div><div class="item-subtitle-small">Из твоих комплектующих</div></div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">🛠️</span><div class="item-price">1 500 ₽</div></div></div>
+            
+            <!-- КАТЕГОРИЯ: ТАЙНОЕ -->
             <div class="item-card r-cov" data-name="Замена экрана" data-price="2000"><div class="item-title">Замена экрана</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">🖥️</span><div class="item-price">2 000 ₽</div></div></div>
             <div class="item-card r-cov" data-name="Замена корпуса" data-price="2500"><div class="item-title">Замена корпуса</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">🧰</span><div class="item-price">2 500 ₽</div></div></div>
         </div>
         <div style="width: 100%; max-width: 1200px; display: flex; justify-content: flex-end; margin-top: 25px;">
             <div style="max-width: 500px; text-align: right; background: rgba(250, 204, 21, 0.03); border: 1px dashed rgba(250, 204, 21, 0.2); padding: 15px 20px; border-radius: 12px; font-size: 0.85rem; color: #a1a1aa; line-height: 1.5; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
-                <span style="color: #facc15; font-weight: 900; letter-spacing: 0.5px;">⚠️ ИНВЕНТАРЬ КОНТРАКТОВ:</span> Кликни на любые карточки услуг выше, чтобы составить контракт! Итоговая сумма за работу посчитается на лету в выплывающем баре.
+                <span style="color: #facc15; font-weight: 900; letter-spacing: 0.5px;">⚠️ ВНИМАНИЕ:</span> Указана стоимость исключительно за выполнение ремонтных работ. Финальная цена может варьироваться в зависимости от стоимости необходимых комплектующих для вашей модели устройства.
             </div>
         </div>
     </section>
@@ -269,7 +274,7 @@
             <h4>Выбрано услуг для сделки</h4>
             <div class="calc-total" id="calcTotalSum">0 ₽</div>
         </div>
-        <a href="https://t.me/xtehnik_bot" target="_blank" class="calc-btn" id="sendContractTelegramBtn">Заключить сделку</a>
+        <a href="https://t.me" target="_blank" class="calc-btn" id="sendContractTelegramBtn">Заключить сделку</a>
     </div>
     <section class="shield-section">
         <h2>Система <span>Защиты</span> X-Tehnik</h2>
@@ -334,7 +339,8 @@
                     const p2 = pts[j]; 
                     const d = Math.hypot(p.x - p2.x, p.y - p2.y); 
                     if (d < 150) { 
-                        let alpha = (1 - d / 150) * 0.25;
+                        // ПОЙМАЛИ ТУ САМУЮ СЕРЕДИНУ ПО ЯРКОСТИ ПОЛОС
+                        let alpha = (1 - d / 150) * 0.45;
                         cx.strokeStyle = `rgba(250, 204, 21, ${alpha})`;
                         cx.beginPath(); cx.moveTo(p.x, p.y); cx.lineTo(p2.x, p2.y); cx.stroke(); 
                     } 
