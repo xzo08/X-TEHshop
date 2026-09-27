@@ -186,7 +186,7 @@
 
         /* ЭКРАН ЗАЩИТЫ */
         .shield-section {
-            width: 100vw; min-height: 70vh; background: transparent; padding: 100px 80px;
+            width: 100vw; min-height: 50vh; background: transparent; padding: 80px 80px;
             display: flex; flex-direction: column; align-items: center;
             border-top: 2px solid rgba(250, 204, 21, 0.05);
         }
@@ -197,6 +197,29 @@
         .shield-icon { font-size: 3.5rem; margin-bottom: 20px; }
         .shield-card h3 { font-size: 1.4rem; font-weight: 900; text-transform: uppercase; margin-bottom: 15px; color: #fff; letter-spacing: 0.5px; }
         .shield-card p { color: #a1a1aa; font-size: 1rem; line-height: 1.6; }
+
+        /* СТЕНА ОТЗЫВОВ И ОЦЕНОК */
+        .review-container {
+            width: 100%; max-width: 900px; background: rgba(20, 20, 22, 0.6); border: 1px solid rgba(250, 204, 21, 0.15); border-radius: 20px; padding: 35px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); backdrop-filter: blur(10px); margin-bottom: 50px;
+        }
+        .review-form-group { display: flex; gap: 15px; margin-bottom: 20px; }
+        .review-input-name { width: 30%; background: #111110; border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; padding: 14px; color: #fff; font-size: 1rem; }
+        .review-input-text { flex: 1; background: #111110; border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; padding: 14px; color: #fff; font-size: 1rem; }
+        .review-input-name:focus, .review-input-text:focus { outline: none; border-color: #facc15; }
+        
+        .rating-stars-select { display: flex; gap: 8px; font-size: 1.6rem; cursor: pointer; align-items: center; margin-bottom: 20px; }
+        .star-opt { color: #3f3f46; transition: color 0.2s; }
+        .star-opt.active { color: #facc15; filter: drop-shadow(0 0 5px #facc15); }
+        
+        .btn-submit-review { background: #facc15; color: #000; font-weight: 900; text-transform: uppercase; border: none; padding: 14px 30px; border-radius: 10px; cursor: pointer; transition: all 0.3s; letter-spacing: 0.5px; }
+        .btn-submit-review:hover { background: #fde047; transform: translateY(-2px); }
+
+        .reviews-feed-list { display: flex; flex-direction: column; gap: 15px; max-height: 400px; overflow-y: auto; padding-right: 10px; margin-top: 25px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 25px; }
+        .review-item-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.03); padding: 20px; border-radius: 12px; display: flex; flex-direction: column; gap: 8px; }
+        .review-item-header { display: flex; justify-content: space-between; align-items: center; }
+        .review-item-user { font-weight: 800; color: #fff; font-size: 1.05rem; }
+        .review-item-stars { color: #facc15; font-size: 1rem; }
+        .review-item-body { color: #a1a1aa; font-size: 0.95rem; line-height: 1.5; }
 
         /* ЭКРАН — ИНТЕРАКТИВНЫЙ FAQ */
         .faq-section {
@@ -211,7 +234,7 @@
         .msg-master { background: rgba(28, 26, 20, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(250, 204, 21, 0.2); align-self: flex-end; border-bottom-right-radius: 4px; color: #fff; box-shadow: 0 0 25px rgba(250, 204, 21, 0.03); }
         .msg-master::before { content: '⚡ X-TEHNIK:'; display: block; font-size: 0.85rem; font-weight: 900; color: #facc15; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(250, 204, 21, 0.4); }
 
-        /* ИНТЕРАКТИВНЫЙ ИГРОВОЙ COOKIE БАННЕР СНИЗУ СЛЕВА */
+        /* ЧИСТЫЙ COOKIE БАННЕР */
         .cookie-banner {
             position: fixed; bottom: -250px; left: 40px; max-width: 380px;
             background: rgba(20, 20, 22, 0.9); border: 2px solid #facc15;
@@ -223,12 +246,7 @@
         .cookie-banner.show { bottom: 40px; }
         .cookie-title { font-size: 1rem; font-weight: 900; text-transform: uppercase; color: #facc15; letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px; }
         .cookie-text { font-size: 0.85rem; color: #d4d4d8; line-height: 1.5; }
-        .cookie-btn {
-            background: #facc15; color: #000; border: none; padding: 12px; border-radius: 8px;
-            font-size: 0.9rem; font-weight: 900; text-transform: uppercase; cursor: pointer;
-            letter-spacing: 0.5px; transition: all 0.3s; width: 100%; text-align: center;
-            box-shadow: 0 5px 15px rgba(250, 204, 21, 0.2);
-        }
+        .cookie-btn { background: #facc15; color: #000; border: none; padding: 12px; border-radius: 8px; font-size: 0.9rem; font-weight: 900; text-transform: uppercase; cursor: pointer; letter-spacing: 0.5px; transition: all 0.3s; width: 100%; text-align: center; box-shadow: 0 5px 15px rgba(250, 204, 21, 0.2); }
         .cookie-btn:hover { background: #fde047; transform: translateY(-2px); }
     </style>
 </head>
@@ -293,9 +311,8 @@
             <a href="https://t.me" target="_blank" class="link-btn">Вызвать мастера</a>
         </div>
     </section>
-
     <!-- Раздел 3 (Прайс с новым дисклеймером за запчасти) -->
-    <section class="price-section" style="position: relative;">
+    <section class="price-section">
         <h2>Наш <span>Инвентарь</span> Услуг</h2>
         <div class="inventory-grid">
             <div class="item-card rarity-mil-spec"><div class="item-title">Замена разъема зарядки</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔌</span><div class="item-price">1 000 ₽</div></div></div>
@@ -339,7 +356,31 @@
         </div>
     </section>
 
-    <!-- Раздел 5 -->
+    <!-- Раздел 5 (Интерактивная стена отзывов и оценок) -->
+    <section class="faq-section" style="border-top: 2px solid rgba(250, 204, 21, 0.05);">
+        <h2>Отзывы <span>Пользователей</span></h2>
+        <div class="review-container">
+            <div class="rating-stars-select" id="starRatingSelect">
+                <span class="star-opt active" data-val="1">★</span>
+                <span class="star-opt active" data-val="2">★</span>
+                <span class="star-opt active" data-val="3">★</span>
+                <span class="star-opt active" data-val="4">★</span>
+                <span class="star-opt active" data-val="5">★</span>
+                <span style="font-size:0.9rem; color:#71717a; margin-left:10px; font-weight:bold; text-transform:uppercase;">Ваша оценка</span>
+            </div>
+            <div class="review-form-group">
+                <input type="text" class="review-input-name" id="reviewerName" placeholder="Ваш никнейм" required>
+                <input type="text" class="review-input-text" id="reviewerText" placeholder="Напишите ваш отзыв о ремонте или сайте..." required>
+                <button class="btn-submit-review" id="submitReviewBtn">Отправить контракт</button>
+            </div>
+
+            <div class="reviews-feed-list" id="reviewsFeedContainer">
+                <!-- Отзывы -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Раздел 6 (FAQ) -->
     <section class="faq-section">
         <h2>Вопросы и <span>Ответы</span></h2>
         <div class="chat-container">
@@ -351,15 +392,14 @@
         </div>
     </section>
 
-    <!-- ИНТЕРАКТИВНЫЙ БАННЕР LICENSE / COOKIE -->
+    <!-- ИСПРАВЛЕННЫЙ БАННЕР COOKIE -->
     <div class="cookie-banner" id="cookiePrivacyBanner">
         <div class="cookie-title">⚙️ ЛИЦЕНЗИОННОЕ СОГЛАШЕНИЕ</div>
         <div class="cookie-text">
-            Система X-Tehnik использует файлы Cookie для оптимизации вашего FPS, сохранения предметов в инвентаре услуг и защиты сессии. Продолжая работу, вы принимаете условия контракта.
+            Система X-Tehnik использует файлы Cookie для технического обеспечения работоспособности, сохранения данных инвентаря услуг и защиты сессии. Продолжая работу, вы принимаете условия контракта.
         </div>
         <button class="cookie-btn" id="acceptCookieBtn">Принять контракт</button>
     </div>
-
     <script>
         // ИНТЕРАКТИВНЫЙ 3D ЗАДНИЙ ФОН
         const canvas = document.getElementById('bg-canvas');
@@ -372,63 +412,89 @@
             height = canvas.height = window.innerHeight;
         });
 
-        const points = [];
-        const maxPoints = 55;
+        const points = []; const maxPoints = 55;
         for (let i = 0; i < maxPoints; i++) {
-            points.push({
-                x: Math.random() * width,
-                y: Math.random() * height,
-                vx: (Math.random() - 0.5) * 0.4,
-                vy: (Math.random() - 0.5) * 0.4,
-                radius: Math.random() * 2 + 1
-            });
+            points.push({ x: Math.random() * width, y: Math.random() * height, vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4, radius: Math.random() * 2 + 1 });
         }
 
         function drawMatrix() {
-            ctx.clearRect(0, 0, width, height);
-            ctx.fillStyle = 'rgba(250, 204, 21, 0.25)';
-            ctx.strokeStyle = 'rgba(250, 204, 21, 0.04)';
-
+            ctx.clearRect(0, 0, width, height); ctx.fillStyle = 'rgba(250, 204, 21, 0.25)'; ctx.strokeStyle = 'rgba(250, 204, 21, 0.04)';
             for (let i = 0; i < maxPoints; i++) {
-                const p = points[i];
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fill();
-
+                const p = points[i]; ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2); ctx.fill();
                 p.x += p.vx; p.y += p.vy;
-                if (p.x < 0 || p.x > width) p.vx *= -1;
-                if (p.y < 0 || p.y > height) p.vy *= -1;
-
+                if (p.x < 0 || p.x > width) p.vx *= -1; if (p.y < 0 || p.y > height) p.vy *= -1;
                 for (let j = i + 1; j < maxPoints; j++) {
-                    const p2 = points[j];
-                    const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-                    if (dist < 160) {
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.stroke();
-                    }
+                    const p2 = points[j]; const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    if (dist < 160) { ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke(); }
                 }
             }
             requestAnimationFrame(drawMatrix);
         }
         drawMatrix();
 
-        // ЛОГИКА COOKIE БАННЕРА (Появляется через 2 секунды после захода)
+        // ЛОГИКА COOKIE БАННЕРА
         const cookieBanner = document.getElementById('cookiePrivacyBanner');
         const acceptCookieBtn = document.getElementById('acceptCookieBtn');
+        setTimeout(() => { if (!localStorage.getItem('x_teh_license_accepted')) cookieBanner.classList.add('show'); }, 2000);
+        acceptCookieBtn.addEventListener('click', () => { localStorage.setItem('x_teh_license_accepted', 'true'); cookieBanner.classList.remove('show'); });
 
-        setTimeout(() => {
-            // Если контракт еще не принимали — плавно выкатываем его снизу
-            if (!localStorage.getItem('x_tehnik_license_accepted')) {
-                cookieBanner.classList.add('show');
-            }
-        }, 2000);
+        // ЛОГИКА ОТЗЫВОВ И ОЦЕНОК
+        const stars = document.querySelectorAll('.star-opt');
+        let currentRating = 5;
 
-        acceptCookieBtn.addEventListener('click', () => {
-            localStorage.setItem('x_tehnik_license_accepted', 'true');
-            cookieBanner.classList.remove('show');
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                currentRating = parseInt(star.getAttribute('data-val'));
+                stars.forEach(s => {
+                    if (parseInt(s.getAttribute('data-val')) <= currentRating) s.classList.add('active');
+                    else s.classList.remove('active');
+                });
+            });
         });
+
+        const feedContainer = document.getElementById('reviewsFeedContainer');
+        const submitReviewBtn = document.getElementById('submitReviewBtn');
+
+        const defaultReviews = [
+            { name: "Sanya_Kupino", rating: 5, text: "Разбил экран на редмике, пацаны за полчаса все поменяли, выезд на дом бесплатный, респект!" },
+            { name: "DotaPlayer228", rating: 5, text: "Сбросили пароль на планшете и обновили прошу, теперь все летает. Советую!" }
+        ];
+
+        function loadReviews() {
+            let stored = localStorage.getItem('x_tehnik_user_reviews');
+            let reviewsList = stored ? JSON.parse(stored) : defaultReviews;
+            feedContainer.innerHTML = '';
+            
+            reviewsList.forEach(r => {
+                const item = document.createElement('div');
+                item.className = 'review-item-card';
+                item.innerHTML = `
+                    <div class="review-item-header">
+                        <span class="review-item-user">👤 ${r.name}</span>
+                        <span class="review-item-stars">${"★".repeat(r.rating)}${"☆".repeat(5-r.rating)}</span>
+                    </div>
+                    <div class="review-item-body">${r.text}</div>
+                `;
+                feedContainer.appendChild(item);
+            });
+        }
+
+        submitReviewBtn.addEventListener('click', () => {
+            const nameInput = document.getElementById('reviewerName').value.trim();
+            const textInput = document.getElementById('reviewerText').value.trim();
+            if (!nameInput || !textInput) { alert("Заполните никнейм и текст отзыва!"); return; }
+
+            let stored = localStorage.getItem('x_tehnik_user_reviews');
+            let reviewsList = stored ? JSON.parse(stored) : [...defaultReviews];
+            reviewsList.unshift({ name: nameInput, rating: currentRating, text: textInput });
+            localStorage.setItem('x_tehnik_user_reviews', JSON.stringify(reviewsList));
+
+            document.getElementById('reviewerName').value = '';
+            document.getElementById('reviewerText').value = '';
+            loadReviews();
+        });
+
+        loadReviews();
 
         // ПОПАП ГОРОДА
         const cityBtn = document.getElementById('cityBtn');
@@ -437,7 +503,7 @@
         cityBtn.addEventListener('click', () => modal.classList.add('active'));
         closeModal.addEventListener('click', () => modal.classList.remove('active'));
 
-        // ЗВУКИ
+        // ЗВУКИ И КНОПКА РЕМОНТ
         const spinAudio = new Audio('https://mixkit.co'); 
         const winAudio = new Audio('https://mixkit.co');   
         spinAudio.volume = 0.4; winAudio.volume = 0.5;
@@ -456,7 +522,6 @@
             run();
         }
 
-        // КНОПКА РЕМОНТ
         const btn = document.getElementById('launch-btn');
         const axis = document.getElementById('arrow-axis');
         const radar = document.getElementById('main-radar');
@@ -464,9 +529,7 @@
         const rightCard = document.getElementById('right-card');
 
         btn.addEventListener('click', () => {
-            btn.disabled = true;
-            startRealTicks();
-
+            btn.disabled = true; startRealTicks();
             const randomYellowDegrees = Math.floor(Math.random() * 270);
             const totalDegrees = 1440 + randomYellowDegrees;
             axis.style.transform = `rotate(${totalDegrees}deg)`;
@@ -475,47 +538,28 @@
                 winAudio.play();
                 radar.style.borderColor = '#facc15';
                 radar.style.boxShadow = '0 0 60px rgba(250, 204, 21, 0.6), inset 0 0 25px rgba(0, 0, 0, 0.8)';
-                pointer.style.borderTopColor = '#22c55e';
-                pointer.style.filter = 'drop-shadow(0 0 15px #22c55e)';
-                btn.style.color = '#facc15';
-                btn.style.textShadow = '0 0 15px rgba(250, 204, 21, 0.8)';
+                pointer.style.borderTopColor = '#22c55e'; pointer.style.filter = 'drop-shadow(0 0 15px #22c55e)';
+                btn.style.color = '#facc15'; btn.style.textShadow = '0 0 15px rgba(250, 204, 21, 0.8)';
                 btn.innerText = 'УСПЕШНО';
-                rightCard.style.borderColor = '#facc15';
-                rightCard.style.boxShadow = '0 0 50px rgba(250, 204, 21, 0.4), 0 40px 80px rgba(0,0,0,0.7)';
+                rightCard.style.borderColor = '#facc15'; rightCard.style.boxShadow = '0 0 50px rgba(250, 204, 21, 0.4), 0 40px 80px rgba(0,0,0,0.7)';
 
-                // Сброс КД
                 setTimeout(() => {
-                    btn.disabled = false;
-                    btn.innerText = 'РЕМОНТ';
-                    btn.style.color = '#fff';
-                    btn.style.textShadow = 'none';
-                    axis.style.transform = 'rotate(0deg)';
-                    
-                    radar.style.borderColor = 'rgba(250, 204, 21, 0.3)';
-                    radar.style.boxShadow = '0 0 50px rgba(250, 204, 21, 0.15), inset 0 0 25px rgba(0, 0, 0, 0.8)';
-                    pointer.style.borderTopColor = '#facc15';
-                    pointer.style.filter = 'drop-shadow(0 0 10px #facc15)';
-                    rightCard.style.borderColor = 'rgba(250, 204, 21, 0.1)';
-                    rightCard.style.boxShadow = '0 40px 80px rgba(0,0,0,0.7)';
+                    btn.disabled = false; btn.innerText = 'РЕМОНТ'; btn.style.color = '#fff'; btn.style.textShadow = 'none'; axis.style.transform = 'rotate(0deg)';
+                    radar.style.borderColor = 'rgba(250, 204, 21, 0.3)'; radar.style.boxShadow = '0 0 50px rgba(250, 204, 21, 0.15), inset 0 0 25px rgba(0, 0, 0, 0.8)';
+                    pointer.style.borderTopColor = '#facc15'; pointer.style.filter = 'drop-shadow(0 0 10px #facc15)';
+                    rightCard.style.borderColor = 'rgba(250, 204, 21, 0.1)'; rightCard.style.boxShadow = '0 40px 80px rgba(0,0,0,0.7)';
                 }, 6000);
-
             }, 2200);
         });
 
-        // АВТОМАТИЧЕСКИЙ ВЫЛЕТ СТЕН ПРИ СКРОЛЛЕ
         const slideLeft = document.getElementById('slide-left');
         const slideRight = document.getElementById('slide-right');
         const scrollZone = document.getElementById('scroll-zone');
 
         window.addEventListener('scroll', () => {
             const rect = scrollZone.getBoundingClientRect();
-            if (rect.top <= window.innerHeight * 0.7) {
-                slideLeft.classList.add('active');
-                slideRight.classList.add('active');
-            } else {
-                slideLeft.classList.remove('active');
-                slideRight.classList.remove('active');
-            }
+            if (rect.top <= window.innerHeight * 0.7) { slideLeft.classList.add('active'); slideRight.classList.add('active'); }
+            else { slideLeft.classList.remove('active'); slideRight.classList.remove('active'); }
         });
     </script>
 </body>
