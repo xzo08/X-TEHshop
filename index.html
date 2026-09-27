@@ -184,7 +184,7 @@
         .rarity-covert .item-emoji { filter: saturate(1.6) drop-shadow(0 0 10px #ef4444); }
         .item-card .item-price { font-size: 1.4rem; font-weight: 900; color: #facc15; }
 
-        /* ОБНОВЛЕННЫЙ ЭКРАН ЗАЩИТЫ (БЕЗ ГАРАНТИИ И НА 2 КАРТОЧКИ) */
+        /* ЭКРАН ЗАЩИТЫ */
         .shield-section {
             width: 100vw; min-height: 70vh; background: transparent; padding: 100px 80px;
             display: flex; flex-direction: column; align-items: center;
@@ -192,19 +192,13 @@
         }
         .shield-section h2 { font-size: 3rem; font-weight: 900; text-transform: uppercase; margin-bottom: 50px; letter-spacing: 2px; }
         .shield-section h2 span { color: #facc15; }
-
         .shield-grid { display: flex; justify-content: center; gap: 40px; width: 100%; max-width: 900px; }
-        
-        .shield-card {
-            background: rgba(20, 20, 22, 0.8); border: 1px solid rgba(255,255,255,0.02); backdrop-filter: blur(10px); border-radius: 20px;
-            padding: 45px 35px; flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-        }
+        .shield-card { background: rgba(20, 20, 22, 0.8); border: 1px solid rgba(255,255,255,0.02); backdrop-filter: blur(10px); border-radius: 20px; padding: 45px 35px; flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
         .shield-icon { font-size: 3.5rem; margin-bottom: 20px; }
         .shield-card h3 { font-size: 1.4rem; font-weight: 900; text-transform: uppercase; margin-bottom: 15px; color: #fff; letter-spacing: 0.5px; }
         .shield-card p { color: #a1a1aa; font-size: 1rem; line-height: 1.6; }
 
-        /* ЧЕТВЕРТЫЙ ЭКРАН — ИНТЕРАКТИВНЫЙ FAQ */
+        /* ЭКРАН — ИНТЕРАКТИВНЫЙ FAQ */
         .faq-section {
             width: 100vw; min-height: 100vh; background: transparent; padding: 120px 80px;
             display: flex; flex-direction: column; align-items: center;
@@ -216,6 +210,26 @@
         .msg-client::before { content: 'Пользователь:'; display: block; font-size: 0.85rem; font-weight: bold; color: #71717a; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }
         .msg-master { background: rgba(28, 26, 20, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(250, 204, 21, 0.2); align-self: flex-end; border-bottom-right-radius: 4px; color: #fff; box-shadow: 0 0 25px rgba(250, 204, 21, 0.03); }
         .msg-master::before { content: '⚡ X-TEHNIK:'; display: block; font-size: 0.85rem; font-weight: 900; color: #facc15; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(250, 204, 21, 0.4); }
+
+        /* ИНТЕРАКТИВНЫЙ ИГРОВОЙ COOKIE БАННЕР СНИЗУ СЛЕВА */
+        .cookie-banner {
+            position: fixed; bottom: -250px; left: 40px; max-width: 380px;
+            background: rgba(20, 20, 22, 0.9); border: 2px solid #facc15;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(250, 204, 21, 0.15);
+            border-radius: 16px; padding: 24px; z-index: 300;
+            display: flex; flex-direction: column; gap: 15px;
+            backdrop-filter: blur(15px); transition: bottom 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .cookie-banner.show { bottom: 40px; }
+        .cookie-title { font-size: 1rem; font-weight: 900; text-transform: uppercase; color: #facc15; letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px; }
+        .cookie-text { font-size: 0.85rem; color: #d4d4d8; line-height: 1.5; }
+        .cookie-btn {
+            background: #facc15; color: #000; border: none; padding: 12px; border-radius: 8px;
+            font-size: 0.9rem; font-weight: 900; text-transform: uppercase; cursor: pointer;
+            letter-spacing: 0.5px; transition: all 0.3s; width: 100%; text-align: center;
+            box-shadow: 0 5px 15px rgba(250, 204, 21, 0.2);
+        }
+        .cookie-btn:hover { background: #fde047; transform: translateY(-2px); }
     </style>
 </head>
 <body>
@@ -280,7 +294,7 @@
         </div>
     </section>
 
-        <!-- Раздел 3 (Прайс с новым красивым дисклеймером внизу справа) -->
+    <!-- Раздел 3 (Прайс с новым дисклеймером за запчасти) -->
     <section class="price-section" style="position: relative;">
         <h2>Наш <span>Инвентарь</span> Услуг</h2>
         <div class="inventory-grid">
@@ -302,15 +316,13 @@
             <div class="item-card rarity-covert"><div class="item-title">Замена корпуса</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">🧰</span><div class="item-price">2 500 ₽</div></div></div>
         </div>
 
-        /* КРАСИВЫЙ ДИСКЛЕЙМЕР ВНИЗУ СПРАВА */
         <div style="width: 100%; max-width: 1200px; display: flex; justify-content: flex-end; margin-top: 25px;">
             <div style="max-width: 500px; text-align: right; background: rgba(250, 204, 21, 0.03); border: 1px dashed rgba(250, 204, 21, 0.2); padding: 15px 20px; border-radius: 12px; font-size: 0.85rem; color: #a1a1aa; line-height: 1.5; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
                 <span style="color: #facc15; font-weight: 900; letter-spacing: 0.5px;">⚠️ ВНИМАНИЕ:</span> Указана стоимость исключительно за выполнение ремонтных работ. Финальная цена может варьироваться в зависимости от стоимости необходимых комплектующих для вашей модели устройства.
             </div>
         </div>
     </section>
-
-    <!-- Раздел 4 (Система Защиты — ПЕРЕНЕСЕНА НА НИЗ И БЕЗ ГАРАНТИИ) -->
+    <!-- Раздел 4 -->
     <section class="shield-section">
         <h2>Система <span>Защиты</span> X-Tehnik</h2>
         <div class="shield-grid">
@@ -327,7 +339,7 @@
         </div>
     </section>
 
-    <!-- Раздел 5 (Интерактивный FAQ) -->
+    <!-- Раздел 5 -->
     <section class="faq-section">
         <h2>Вопросы и <span>Ответы</span></h2>
         <div class="chat-container">
@@ -339,8 +351,17 @@
         </div>
     </section>
 
+    <!-- ИНТЕРАКТИВНЫЙ БАННЕР LICENSE / COOKIE -->
+    <div class="cookie-banner" id="cookiePrivacyBanner">
+        <div class="cookie-title">⚙️ ЛИЦЕНЗИОННОЕ СОГЛАШЕНИЕ</div>
+        <div class="cookie-text">
+            Система X-Tehnik использует файлы Cookie для оптимизации вашего FPS, сохранения предметов в инвентаре услуг и защиты сессии. Продолжая работу, вы принимаете условия контракта.
+        </div>
+        <button class="cookie-btn" id="acceptCookieBtn">Принять контракт</button>
+    </div>
+
     <script>
-        // ИНТЕРАКТИВНЫЙ 3D/4D ЗАДНИЙ ФОН НА СКРИПТЕ ВЕСЬ В ТРЕХМЕРНОМ ПРОСТРАНСТВЕ
+        // ИНТЕРАКТИВНЫЙ 3D ЗАДНИЙ ФОН
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let width = canvas.width = window.innerWidth;
@@ -371,12 +392,10 @@
             for (let i = 0; i < maxPoints; i++) {
                 const p = points[i];
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.random() * Math.PI * 2);
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
                 ctx.fill();
 
-                p.x += p.vx;
-                p.y += p.vy;
-
+                p.x += p.vx; p.y += p.vy;
                 if (p.x < 0 || p.x > width) p.vx *= -1;
                 if (p.y < 0 || p.y > height) p.vy *= -1;
 
@@ -395,13 +414,28 @@
         }
         drawMatrix();
 
+        // ЛОГИКА COOKIE БАННЕРА (Появляется через 2 секунды после захода)
+        const cookieBanner = document.getElementById('cookiePrivacyBanner');
+        const acceptCookieBtn = document.getElementById('acceptCookieBtn');
+
+        setTimeout(() => {
+            // Если контракт еще не принимали — плавно выкатываем его снизу
+            if (!localStorage.getItem('x_tehnik_license_accepted')) {
+                cookieBanner.classList.add('show');
+            }
+        }, 2000);
+
+        acceptCookieBtn.addEventListener('click', () => {
+            localStorage.setItem('x_tehnik_license_accepted', 'true');
+            cookieBanner.classList.remove('show');
+        });
+
         // ПОПАП ГОРОДА
         const cityBtn = document.getElementById('cityBtn');
         const modal = document.getElementById('modalOverlay');
         const closeModal = document.getElementById('closeModal');
         cityBtn.addEventListener('click', () => modal.classList.add('active'));
         closeModal.addEventListener('click', () => modal.classList.remove('active'));
-        modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('active'); });
 
         // ЗВУКИ
         const spinAudio = new Audio('https://mixkit.co'); 
