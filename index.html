@@ -226,7 +226,7 @@
         </div>
     </section>
     
-    <!-- ПОМЕНЯЛ НАЗВАНИЕ НА «ЗАЯВКА В TELEGRAM» -->
+  
     <section class="scroll-section" id="scroll-zone">
         <div class="stack-block block-left" id="slide-left">
             <h2>Любая сложность</h2>
@@ -331,7 +331,6 @@
         const pts = []; const maxP = 55;
         for (let i = 0; i < maxP; i++) { pts.push({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4, r: Math.random() * 2 + 1 }); }
 
-        // ДОБАВИЛ ЖИВОЙ НЕОНОВЫЙ КОННЕКТ ЛИНИЙ И ТОЧЕК С ПОДСТРОЙКОЙ ЦВЕТА
         function draw_bg() {
             cx.clearRect(0, 0, w, h); 
             cx.fillStyle = 'rgba(250, 204, 21, 0.7)'; 
@@ -344,7 +343,7 @@
                     const p2 = pts[j]; 
                     const d = Math.hypot(p.x - p2.x, p.y - p2.y); 
                     if (d < 150) { 
-                        // ЭФФЕКТ: Яркость линии зависит от близости точек друг к другу
+                    
                         let alpha = (1 - d / 150) * 0.25;
                         cx.strokeStyle = `rgba(250, 204, 21, ${alpha})`;
                         cx.beginPath(); cx.moveTo(p.x, p.y); cx.lineTo(p2.x, p2.y); cx.stroke(); 
