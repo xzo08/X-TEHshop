@@ -339,7 +339,7 @@
                     const p2 = pts[j]; 
                     const d = Math.hypot(p.x - p2.x, p.y - p2.y); 
                     if (d < 150) { 
-                        // ПОЙМАЛИ ТУ САМУЮ СЕРЕДИНУ ПО ЯРКОСТИ ПОЛОС
+                        
                         let alpha = (1 - d / 150) * 0.45;
                         cx.strokeStyle = `rgba(250, 204, 21, ${alpha})`;
                         cx.beginPath(); cx.moveTo(p.x, p.y); cx.lineTo(p2.x, p2.y); cx.stroke(); 
