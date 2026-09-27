@@ -13,7 +13,6 @@
             overflow-x: hidden;
             position: relative;
         }
-
         #bg-canvas {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -21,7 +20,6 @@
             pointer-events: none;
             opacity: 0.6;
         }
-
         header {
             position: fixed;
             top: 0; left: 0; width: 100%;
@@ -32,7 +30,6 @@
             z-index: 100;
             background: linear-gradient(to bottom, rgba(13,13,12,1) 0%, rgba(13,13,12,0) 100%);
         }
-
         .logo {
             font-size: 1.8rem;
             font-weight: 900;
@@ -40,7 +37,6 @@
             text-transform: uppercase;
         }
         .logo span { color: #facc15; }
-
         .city-select-btn {
             color: #a1a1aa;
             font-weight: 600;
@@ -67,7 +63,6 @@
             transition: opacity 0.4s ease;
         }
         .modal-overlay.active { opacity: 1; pointer-events: auto; }
-
         .modal-card {
             background: #141413; border: 2px solid #facc15; box-shadow: 0 0 50px rgba(250, 204, 21, 0.2);
             border-radius: 24px; padding: 40px; width: 450px; text-align: center; position: relative;
@@ -79,43 +74,35 @@
         .modal-note { font-size: 0.9rem; color: #a1a1aa; margin-top: 25px; line-height: 1.4; }
         .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #71717a; }
         .close-modal:hover { color: #fff; }
-
         .screen-one {
             width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: space-between; padding: 0 80px; position: relative;
         }
-
         .panel {
             width: 28vw; height: 62vh; background: rgba(18, 18, 18, 0.4); border: 2px solid rgba(250, 204, 21, 0.1); border-radius: 24px;
             backdrop-filter: blur(20px); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 30px;
             box-shadow: 0 40px 80px rgba(0,0,0,0.7); transition: all 0.6s ease;
         }
-
         .hardware-icon { font-size: 4.8rem; margin-bottom: 25px; transition: all 0.6s ease; }
         .left-glow { filter: drop-shadow(0 0 20px rgba(239, 68, 68, 0.5)); }
         .right-glow { filter: drop-shadow(0 0 25px rgba(250, 204, 21, 0.6)); }
-
         .panel h3 { font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; font-weight: 800; }
         .panel p { color: #a1a1aa; text-align: center; font-size: 1rem; line-height: 1.6; }
         .center-area { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 35vw; position: relative; }
         .intro-text { text-align: center; margin-bottom: 30px; }
         .intro-text h1 { font-size: 2.8rem; font-weight: 900; line-height: 1.2; margin-bottom: 15px; text-transform: uppercase; }
         .intro-text p { color: #d4d4d8; font-size: 1.1rem; line-height: 1.6; }
-
         .radar-wrapper { position: relative; width: 260px; height: 260px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; }
         .pointer-axis { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 20; pointer-events: none; display: flex; justify-content: center; transition: transform 2.2s cubic-bezier(0.1, 0.8, 0.2, 1); }
         .radar-pointer { position: absolute; top: -12px; width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-top: 24px solid #facc15; filter: drop-shadow(0 0 10px #facc15); transition: border-top-color 0.4s, filter 0.4s; }
-
         .radar-box {
             width: 250px; height: 250px; border-radius: 50%; background: padding-box, conic-gradient(#facc15 0% 75%, #1c1913 75% 100%);
             border: 4px solid rgba(250, 204, 21, 0.3); display: flex; align-items: center; justify-content: center;
             box-shadow: 0 0 50px rgba(250, 204, 21, 0.15), inset 0 0 25px rgba(0, 0, 0, 0.8); position: relative; transition: all 0.6s ease;
         }
-
         .btn-repair {
             width: 190px; height: 190px; border-radius: 50%; background: #111110; border: 2px solid rgba(255, 255, 255, 0.03);
             color: #fff; font-size: 1.4rem; font-weight: 900; letter-spacing: 3px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; z-index: 5;
         }
-
         .click-prompt {
             font-size: 1.3rem; font-weight: 900; text-transform: uppercase; letter-spacing: 4px; color: #facc15;
             text-shadow: 0 0 10px rgba(250, 204, 21, 0.6); animation: pulseText 1.5s infinite ease-in-out; margin-top: 10px;
@@ -124,25 +111,19 @@
             0%, 100% { opacity: 0.4; transform: scale(0.96); }
             50% { opacity: 1; transform: scale(1.04); text-shadow: 0 0 20px rgba(250, 204, 21, 0.9); }
         }
-
         .scroll-section {
             width: 100vw; height: 100vh; display: flex; background: transparent; position: relative; overflow: hidden;
         }
-        
         .stack-block {
             width: 50%; height: 100%; padding: 0 8%; display: flex; flex-direction: column; justify-content: center;
             position: absolute; top: 0; bottom: 0; transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
-
         .block-left { background: rgba(19, 19, 18, 0.85); border-right: 2px solid rgba(250, 204, 21, 0.1); backdrop-filter: blur(10px); left: -50vw; }
         .block-right { background: rgba(28, 25, 19, 0.85); backdrop-filter: blur(10px); right: -50vw; }
-        
         .block-left.active { left: 0; }
         .block-right.active { right: 0; }
-
         .stack-block h2 { font-size: 3.5rem; font-weight: 900; margin-bottom: 25px; text-transform: uppercase; color: #facc15; }
         .stack-block p { font-size: 1.3rem; color: #e4e4e7; line-height: 1.8; }
-
         .link-btn {
             display: inline-block; align-self: flex-start; padding: 18px 45px; border-radius: 14px;
             font-size: 1.2rem; font-weight: 900; text-transform: uppercase; text-decoration: none;
@@ -150,349 +131,23 @@
             background: #facc15; color: #000; box-shadow: 0 10px 25px rgba(250, 204, 21, 0.3);
         }
         .link-btn:hover { background: #fde047; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(250, 204, 21, 0.5); }
-
         .price-section {
             width: 100vw; min-height: 100vh; padding: 120px 80px; background: transparent;
             display: flex; flex-direction: column; align-items: center;
         }
         .price-section h2 { font-size: 3rem; font-weight: 900; text-transform: uppercase; margin-bottom: 50px; letter-spacing: 2px; }
         .price-section h2 span { color: #facc15; }
-
         .inventory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; width: 100%; max-width: 1200px; }
         .item-card { background: rgba(19, 19, 20, 0.75); border: 1px solid rgba(255,255,255,0.03); backdrop-filter: blur(10px); border-radius: 16px; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; height: 230px; box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
-        
         .r-mil { border-bottom: 5px solid #3b82f6; } 
         .r-cls { border-bottom: 5px solid #d946ef; } 
         .r-cov { border-bottom: 5px solid #ef4444; } 
-
         .item-card .item-title { font-size: 1.1rem; font-weight: 800; text-transform: uppercase; color: #fff; line-height: 1.4; }
         .item-card .item-type { font-size: 0.8rem; color: #71717a; text-transform: uppercase; margin-top: 5px; letter-spacing: 0.5px; }
         .item-card .item-subtitle-small { font-size: 0.75rem; color: #a1a1aa; text-transform: none; margin-top: 3px; font-weight: normal; }
-
         .price-wrapper { display: flex; align-items: center; justify-content: flex-end; margin-top: auto; gap: 10px; }
         .price-wrapper .item-emoji { font-size: 1.6rem; }
-        
         .r-mil .item-emoji { filter: saturate(1.6) drop-shadow(0 0 8px #3b82f6); }
         .r-cls .item-emoji { filter: saturate(1.6) drop-shadow(0 0 8px #d946ef); }
         .r-cov .item-emoji { filter: saturate(1.6) drop-shadow(0 0 10px #ef4444); }
-        .item-card .item-price { font-size: 1.4rem; font-weight: 900; color: #facc15; }
-        .shield-section {
-            width: 100vw; min-height: 45vh; background: transparent; padding: 60px 80px;
-            display: flex; flex-direction: column; align-items: center;
-            border-top: 2px solid rgba(250, 204, 21, 0.05);
-        }
-        .shield-section h2 { font-size: 3rem; font-weight: 900; text-transform: uppercase; margin-bottom: 40px; letter-spacing: 2px; }
-        .shield-section h2 span { color: #facc15; }
-        .shield-grid { display: flex; justify-content: center; gap: 40px; width: 100%; max-width: 900px; }
-        .shield-card { background: rgba(20, 20, 22, 0.8); border: 1px solid rgba(255,255,255,0.02); backdrop-filter: blur(10px); border-radius: 20px; padding: 45px 35px; flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
-        .shield-icon { font-size: 3.5rem; margin-bottom: 20px; }
-        .shield-card h3 { font-size: 1.4rem; font-weight: 900; text-transform: uppercase; margin-bottom: 15px; color: #fff; letter-spacing: 0.5px; }
-        .shield-card p { color: #a1a1aa; font-size: 1rem; line-height: 1.6; }
-
-        .faq-section {
-            width: 100vw; min-height: 90vh; background: transparent; padding: 100px 80px;
-            display: flex; flex-direction: column; align-items: center;
-            border-top: 2px solid rgba(250, 204, 21, 0.05);
-        }
-        .chat-container { width: 100%; max-width: 900px; display: flex; flex-direction: column; gap: 25px; margin-top: 30px; }
-        .chat-msg { max-width: 75%; padding: 20px 25px; border-radius: 20px; line-height: 1.6; font-size: 1.1rem; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.4); }
-        .msg-client { background: rgba(25, 25, 27, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.03); align-self: flex-start; border-bottom-left-radius: 4px; color: #e4e4e7; }
-        .msg-client::before { content: 'Пользователь:'; display: block; font-size: 0.85rem; font-weight: bold; color: #71717a; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }
-        .msg-master { background: rgba(28, 26, 20, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(250, 204, 21, 0.2); align-self: flex-end; border-bottom-right-radius: 4px; color: #fff; box-shadow: 0 0 25px rgba(250, 204, 21, 0.03); }
-        .msg-master::before { content: '⚡ X-TEHNIK:'; display: block; font-size: 0.85rem; font-weight: 900; color: #facc15; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(250, 204, 21, 0.4); }
-
-        .reviews-bottom-section {
-            width: 100vw; min-height: 100vh; background: transparent; padding: 100px 80px;
-            display: flex; flex-direction: column; align-items: center;
-            border-top: 2px solid rgba(250, 204, 21, 0.05);
-        }
-        .reviews-bottom-section h2 { font-size: 3rem; font-weight: 900; text-transform: uppercase; margin-bottom: 50px; letter-spacing: 2px; }
-        .reviews-bottom-section h2 span { color: #facc15; }
-
-        .review-container {
-            width: 100%; max-width: 900px; background: rgba(20, 20, 22, 0.6); border: 1px solid rgba(250, 204, 21, 0.15); border-radius: 20px; padding: 35px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); backdrop-filter: blur(10px);
-        }
-        .review-form-group { display: flex; gap: 15px; margin-bottom: 20px; }
-        .review-input-name { width: 30%; background: #111110; border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; padding: 14px; color: #fff; font-size: 1rem; }
-        .review-input-text { flex: 1; background: #111110; border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; padding: 14px; color: #fff; font-size: 1rem; }
-        .review-input-name:focus, .review-input-text:focus { outline: none; border-color: #facc15; }
-        
-        .rating-stars-select { display: flex; gap: 8px; font-size: 1.6rem; cursor: pointer; align-items: center; margin-bottom: 20px; }
-        .star-opt { color: #3f3f46; transition: color 0.2s; }
-        .star-opt.active { color: #facc15; filter: drop-shadow(0 0 5px #facc15); }
-        
-        .btn-submit-review { background: #facc15; color: #000; font-weight: 900; text-transform: uppercase; border: none; padding: 14px 30px; border-radius: 10px; cursor: pointer; transition: all 0.3s; letter-spacing: 0.5px; }
-        .btn-submit-review:hover { background: #fde047; transform: translateY(-2px); }
-
-        .reviews-feed-list { display: flex; flex-direction: column; gap: 15px; max-height: 400px; overflow-y: auto; padding-right: 10px; margin-top: 25px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 25px; }
-        .review-item-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.03); padding: 20px; border-radius: 12px; display: flex; flex-direction: column; gap: 8px; }
-        .review-item-header { display: flex; justify-content: space-between; align-items: center; }
-        .review-item-user { font-weight: 800; color: #fff; font-size: 1.05rem; }
-        .review-item-stars { color: #facc15; font-size: 1rem; }
-        .review-item-body { color: #a1a1aa; font-size: 0.95rem; line-height: 1.5; }
-
-        .legal-footer {
-            width: 100vw; background: #070708; border-top: 1px solid rgba(255, 255, 255, 0.03);
-            padding: 60px 80px; font-size: 0.75rem; color: #52525b; line-height: 1.6;
-        }
-        .legal-container { width: 100%; max-width: 1200px; margin: 0 auto; }
-        .legal-text-block { margin-bottom: 25px; text-align: justify; }
-        .legal-list { list-style: none; padding-left: 0; margin-bottom: 25px; }
-        .legal-list li { margin-bottom: 6px; position: relative; padding-left: 15px; }
-        .legal-list li::before { content: "—"; position: absolute; left: 0; color: #52525b; }
-        .copyright-block { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.02); padding-top: 20px; font-weight: 500; }
-
-        .cookie-banner {
-            position: fixed; bottom: -250px; left: 40px; max-width: 380px; background: rgba(20, 20, 22, 0.9); border: 2px solid #facc15; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(250, 204, 21, 0.15); border-radius: 16px; padding: 24px; z-index: 300; display: flex; flex-direction: column; gap: 15px; backdrop-filter: blur(15px); transition: bottom 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        .cookie-banner.show { bottom: 40px; }
-        .cookie-title { font-size: 1rem; font-weight: 900; text-transform: uppercase; color: #facc15; letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px; }
-        .cookie-text { font-size: 0.85rem; color: #d4d4d8; line-height: 1.5; }
-        .cookie-btn { background: #facc15; color: #000; border: none; padding: 12px; border-radius: 8px; font-size: 0.9rem; font-weight: 900; text-transform: uppercase; cursor: pointer; letter-spacing: 0.5px; transition: all 0.3s; width: 100%; text-align: center; box-shadow: 0 5px 15px rgba(250, 204, 21, 0.2); }
-        .cookie-btn:hover { background: #fde047; transform: translateY(-2px); }
-    </style>
-</head>
-<body>
-
-    <canvas id="bg-canvas"></canvas>
-
-    <header>
-        <div class="logo">X-<span>Tehnik</span></div>
-        <div class="city-select-btn" id="cityBtn">Купино</div>
-    </header>
-
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal-card">
-            <div class="close-modal" id="closeModal">✕</div>
-            <h3>Выберите место</h3>
-            <div class="city-option available">Купино <span>🟢</span></div>
-            <div class="city-option locked">Новосибирск <span>🔒</span></div>
-            <div class="city-option locked">Омск <span>🔒</span></div>
-            <div class="modal-note">Пока мы работаем только из выше предложенных вариантов</div>
-        </div>
-    </div>
-
-    <section class="screen-one">
-        <div class="panel" id="left-card">
-            <div class="hardware-icon left-glow">📉</div>
-            <h3>Твое старое железо</h3>
-            <p>Греется, жутко лагает, выдает синий экран или намертво зависает в самый неподходящий момент?</p>
-        </div>
-
-        <div class="center-area">
-            <div class="intro-text">
-                <h1>Мы лучший выбор.</h1>
-                <p>Мы молодые, на опыте, шарим в трендах and понимаем тебя с полуслова.</p>
-            </div>
-            <div class="radar-wrapper">
-                <div class="pointer-axis" id="arrow-axis"><div class="radar-pointer" id="pointer"></div></div>
-                <div class="radar-box" id="main-radar"><button class="btn-repair" id="launch-btn">РЕМОНТ</button></div>
-            </div>
-            <div class="click-prompt">жми жми</div>
-        </div>
-
-        <div class="panel" id="right-card">
-            <div class="hardware-icon right-glow">⚡</div>
-            <h3>Заряженный монстр</h3>
-            <p>Стабильный FPS, идеальный отклик, чистая система без мусора и кастомный апгрейд лично под твои задачи.</p>
-        </div>
-    </section>
-
-    <section class="scroll-section" id="scroll-zone">
-        <div class="stack-block block-left" id="slide-left">
-            <h2>Любая сложность</h2>
-            <p>Мы работаем абсолютно со всеми видами сложностей. От быстрой замены разбитого экрана до полной работы с вашим телефоном или ПК.</p>
-            <a href="https://t.me" target="_blank" class="link-btn">Сдать в Telegram</a>
-        </div>
-        <div class="stack-block block-right" id="slide-right">
-            <h2>Всегда рядом</h2>
-            <p>Мы находимся в городе Купино. Работаем в максимально удобном для вас формате: на дому или оперативно приедем по вызову в любую точку.</p>
-            <a href="https://t.me" target="_blank" class="link-btn">Вызвать мастера</a>
-        </div>
-    </section>
-    <section class="price-section">
-        <h2>Наш <span>Инвентарь</span> Услуг</h2>
-        <div class="inventory-grid">
-            <div class="item-card r-mil"><div class="item-title">Замена разъема зарядки</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔌</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card r-mil"><div class="item-title">Замена динамика</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔊</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card r-mil"><div class="item-title">Замена микрофона</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🎙️</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card r-mil"><div class="item-title">Замена стекла камеры</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">💎</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card r-mil"><div class="item-title">Замена передней камеры</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">📸</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card r-mil"><div class="item-title">Замена кнопок громкости</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔉</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card r-mil"><div class="item-title">Замена кноп. включения</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔘</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card r-mil"><div class="item-title">Замена кнопки вибро</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔕</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card r-mil"><div class="item-title">Замена вибромотора</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">📳</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card r-mil"><div class="item-title">Сброс экранного пароля</div><div class="item-type">Arm Милитари</div><div class="price-wrapper"><span class="item-emoji">🔓</span><div class="item-price">1 000 ₽</div></div></div>
-            <div class="item-card r-cls"><div class="item-title">Замена аккумулятора</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">🔋</span><div class="item-price">1 100 ₽</div></div></div>
-            <div class="item-card r-cls"><div><div class="item-title">Обновление ПО и сброс</div><div class="item-subtitle-small">с учетом айклауда</div></div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">📲</span><div class="item-price">1 200 ₽</div></div></div>
-            <div class="item-card r-cls"><div class="item-title">Замена задней крышки</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">📱</span><div class="item-price">1 500 ₽</div></div></div>
-            <div class="item-card r-cls"><div class="item-title">Замена задней камеры</div><div class="item-type">Засекреченное</div><div class="price-wrapper"><span class="item-emoji">📷</span><div class="item-price">1 500 ₽</div></div></div>
-            <div class="item-card r-cov"><div class="item-title">Замена экрана</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">🖥️</span><div class="item-price">2 000 ₽</div></div></div>
-            <div class="item-card r-cov"><div class="item-title">Замена корпуса</div><div class="item-type">Тайное</div><div class="price-wrapper"><span class="item-emoji">🧰</span><div class="item-price">2 500 ₽</div></div></div>
-        </div>
-
-        <div style="width: 100%; max-width: 1200px; display: flex; justify-content: flex-end; margin-top: 25px;">
-            <div style="max-width: 500px; text-align: right; background: rgba(250, 204, 21, 0.03); border: 1px dashed rgba(250, 204, 21, 0.2); padding: 15px 20px; border-radius: 12px; font-size: 0.85rem; color: #a1a1aa; line-height: 1.5; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
-                <span style="color: #facc15; font-weight: 900; letter-spacing: 0.5px;">⚠️ ВНИМАНИЕ:</span> Указана стоимость исключительно за выполнение ремонтных работ. Финальная цена может варьироваться в зависимости от стоимости необходимых комплектующих для вашей модели устройства.
-            </div>
-        </div>
-    </section>
-    <section class="shield-section">
-        <h2>Система <span>Защиты</span> X-Tehnik</h2>
-        <div class="shield-grid">
-            <div class="shield-card r-mil">
-                <div class="shield-icon">🛡️</div>
-                <h3>Премиум-детали</h3>
-                <p>Мы закупаем только проверенные, надежные комплектующие класса оригинал. Никакого дешевого китая, который сдохнет через неделю.</p>
-            </div>
-            <div class="shield-card r-cov">
-                <div class="shield-icon">🚀</div>
-                <h3>Фаст-сервис</h3>
-                <p>Большинство модульных ремонтов делаются прямо при вас за 30–60 минут. Никакого затягивания сроков и ожидания девайса неделями.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="faq-section">
-        <h2>Вопросы и <span>Ответы</span></h2>
-        <div class="chat-container">
-            <div class="chat-msg msg-client">А если вы приедете делать ремонт на дому в Купино, это платно?</div>
-            <div class="chat-msg msg-master">По всему городу Купино наш выезд абсолютно бесплатный. Вы оплачиваете строго только стоимость самого ремонта и заменяемых запчастей.</div>
-            
-            <div class="chat-msg msg-client">Сколько обычно по времени занимает замена экрана на телефоне?</div>
-            <div class="chat-msg msg-master">Большинство модульных ремонтов (экраны, аккумуляторы, шлейфы) мы делаем в течение 30-60 минут прямо при вас. Успеете только кофе выпить!</div>
-        </div>
-    </section>
-    <section class="reviews-bottom-section">
-        <h2>Отзывы <span>Пользователей</span></h2>
-        <div class="review-container">
-            <div class="rating-stars-select" id="starRatingSelect">
-                <span class="star-opt active" data-val="1">★</span>
-                <span class="star-opt active" data-val="2">★</span>
-                <span class="star-opt active" data-val="3">★</span>
-                <span class="star-opt active" data-val="4">★</span>
-                <span class="star-opt active" data-val="5">★</span>
-                <span style="font-size:0.9rem; color:#71717a; margin-left:10px; font-weight:bold; text-transform:uppercase;">Ваша оценка</span>
-            </div>
-            <div class="review-form-group">
-                <input type="text" class="review-input-name" id="reviewerName" placeholder="Ваш никнейм" required>
-                <input type="text" class="review-input-text" id="reviewerText" placeholder="Напишите ваш отзыв о ремонте или сайте..." required>
-                <button class="btn-submit-review" id="submitReviewBtn">Отправить отзыв</button>
-            </div>
-            <div class="reviews-feed-list" id="reviewsFeedContainer"></div>
-        </div>
-    </section>
-
-    <footer class="legal-footer">
-        <div class="legal-container">
-            <div class="legal-text-block">
-                iPhone, Macbook, iPad — являются зарегистрированными товарными знаками Apple Inc.; Huawei, Honor, Samsung, Xiaomi, Redmi, Realme, Poco, Tecno, Infinix, Lenovo, LG, Philips, Sony, ASUS, Acer, DELL, HP, Toshiba — являются зарегистрированными товарными знаками их соответствующих правообладателей. Все торговые марки и бренды упоминаются на данном интернет-ресурсе исключительно с целью информирования потребителей об оказываемых услугах по компонентному и модульному ремонту техники. Услуги оказываются в независимых, неавторизованных сервисных центрах, не связанных прямыми дилерскими или контрактными обязательствами с официальными заводами-изготовителями указанных брендов.
-            </div>
-            <div class="legal-text-block">
-                Ознакомившись с полной текстовой информацией, прайс-листом и структурой данного сайта, вы подтверждаете свое согласие на подачу электронной заявки для проведения диагностики и ремонта вашей техники. Сервисный центр не несет юридической, материальной или технической ответственности в случаях, если после проведения технологического вскрытия, ультразвуковой чистки или пайки устройство останется в исходном неработоспособном состоянии, вызванном скрытыми внутренними дефектами, коррозией после попадания жидкости или деградацией межплатных соединений. 
-            </div>
-            <ul class="legal-list">
-                <li>Сервисный центр не является уполномоченной организацией импортера, продавца или официального изготовителя техники.</li>
-                <li>В случае невозможности проведения ремонта по техническим причинам или при одностороннем отказе клиента от проведения восстановительных работ после проведения разбора устройства, с владельца девайса взимается фиксированная плата за проведение диагностических работ и дефектовку в размере, согласованном с мастером.</li>
-                <li>Вся информация, включая базовые тарифные сетки, условия выезда и текстовые модули, носит исключительно справочно-информационный характер и ни при каких условиях не является публичной офертой, определяемой положениями Статьи 437 Гражданского кодекса РФ.</li>
-            </ul>
-            <div class="copyright-block">
-                <div>© 2026 x-tehnik-kupino.ru</div>
-                <div>Любое копирование материалов, элементов игрового дизайна и оформления структуры сайта преследуется по закону.</div>
-            </div>
-        </div>
-    </footer>
-
-    <div class="cookie-banner" id="cookiePrivacyBanner">
-        <div class="cookie-title">⚙️ ЛИЦЕНЗИОННОЕ СОГЛАШЕНИЕ</div>
-        <div class="cookie-text">
-            Система X-Tehnik использует файлы Cookie для технического обеспечения работоспособности, сохранения данных инвентаря услуг и защиты сессии. Продолжая работу, вы принимаете условия соглашения.
-        </div>
-        <button class="cookie-btn" id="acceptCookieBtn">Принять соглашение</button>
-    </div>
-    <script>
-        const cv = document.getElementById('bg-canvas');
-        const cx = cv.getContext('2d');
-        let w = cv.width = window.innerWidth;
-        let h = cv.height = window.innerHeight;
-        window.addEventListener('resize', () => { w = cv.width = window.innerWidth; h = cv.height = window.innerHeight; });
-
-        const pts = []; const maxP = 55;
-        for (let i = 0; i < maxP; i++) { pts.push({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4, r: Math.random() * 2 + 1 }); }
-
-        function draw_bg() {
-            cx.clearRect(0, 0, w, h); cx.fillStyle = 'rgba(250, 204, 21, 0.25)'; cx.strokeStyle = 'rgba(250, 204, 21, 0.04)';
-            for (let i = 0; i < maxP; i++) {
-                const p = pts[i]; cx.beginPath(); cx.arc(p.x, p.y, p.r, 0, Math.PI * 2); cx.fill();
-                p.x += p.vx; p.y += p.vy;
-                if (p.x < 0 || p.x > w) p.vx *= -1; if (p.y < 0 || p.y > h) p.vy *= -1;
-                for (let j = i + 1; j < maxP; j++) { const p2 = pts[j]; const d = Math.hypot(p.x - p2.x, p.y - p2.y); if (d < 160) { cx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke(); } }
-            }
-            requestAnimationFrame(draw_bg);
-        }
-        draw_bg();
-
-        const c_b = document.getElementById('cookiePrivacyBanner');
-        const c_ok = document.getElementById('acceptCookieBtn');
-        setTimeout(() => { if (!localStorage.getItem('xt_l_ok')) c_b.classList.add('show'); }, 2000);
-        if (c_ok) { c_ok.addEventListener('click', () => { localStorage.setItem('xt_l_ok', '1'); c_b.classList.remove('show'); }); }
-
-        const sts = document.querySelectorAll('.star-opt');
-        let r_val = 5;
-        sts.forEach(st => {
-            st.addEventListener('click', () => {
-                r_val = parseInt(st.getAttribute('data-val'));
-                sts.forEach(s => { if (parseInt(s.getAttribute('data-val')) <= r_val) s.classList.add('active'); else s.classList.remove('active'); });
-            });
-        });
-
-        const cityBtn = document.getElementById('cityBtn');
-        const modal = document.getElementById('modalOverlay');
-        const closeModal = document.getElementById('closeModal');
-        if (cityBtn) cityBtn.addEventListener('click', () => modal.classList.add('active'));
-        if (closeModal) closeModal.addEventListener('click', () => modal.classList.remove('active'));
-
-        const btn = document.getElementById('launch-btn');
-        const axis = document.getElementById('arrow-axis');
-        const radar = document.getElementById('main-radar');
-        const pointer = document.getElementById('pointer');
-        const rightCard = document.getElementById('right-card');
-
-        if (btn) {
-            btn.addEventListener('click', () => {
-                btn.disabled = true;
-                const s_a = new Audio('https://mixkit.co'); s_a.volume = 0.4; s_a.play();
-                const w_a = new Audio('https://mixkit.co'); w_a.volume = 0.5;
-                const rot = 1440 + Math.floor(Math.random() * 270);
-                axis.style.transform = `rotate(${rot}deg)`;
-
-                setTimeout(() => {
-                    w_a.play();
-                    radar.style.borderColor = '#facc15'; radar.style.boxShadow = '0 0 60px rgba(250, 204, 21, 0.6), inset 0 0 25px rgba(0, 0, 0, 0.8)';
-                    pointer.style.borderTopColor = '#22c55e'; pointer.style.filter = 'drop-shadow(0 0 15px #22c55e)';
-                    btn.style.color = '#facc15'; btn.style.textShadow = '0 0 15px rgba(250, 204, 21, 0.8)'; btn.innerText = 'УСПЕШНО';
-                    rightCard.style.borderColor = '#facc15'; rightCard.style.boxShadow = '0 0 50px rgba(250, 204, 21, 0.4), 0 40px 80px rgba(0,0,0,0.7)';
-
-                    setTimeout(() => {
-                        btn.disabled = false; btn.innerText = 'РЕМОНТ'; btn.style.color = '#fff'; btn.style.textShadow = 'none'; axis.style.transform = 'rotate(0deg)';
-                        radar.style.borderColor = 'rgba(250, 204, 21, 0.3)'; radar.style.boxShadow = '0 0 50px rgba(250, 204, 21, 0.15), inset 0 0 25px rgba(0, 0, 0, 0.8)';
-                        pointer.style.borderTopColor = '#facc15'; pointer.style.filter = 'drop-shadow(0 0 10px #facc15)';
-                        rightCard.style.borderColor = 'rgba(250, 204, 21, 0.1)'; rightCard.style.boxShadow = '0 40px 80px rgba(0,0,0,0.7)';
-                    }, 6000);
-                }, 2200);
-            });
-        }
-
-        const s_l = document.getElementById('slide-left');
-        const s_r = document.getElementById('slide-right');
-        const s_z = document.getElementById('scroll-zone');
-        if (s_z) {
-            window.addEventListener('scroll', () => {
-                const r = s_z.getBoundingClientRect();
-                if (r.top <= window.innerHeight * 0.7) { s_l.classList.add('active'); s_r.classList.add('active'); }
-                else { s_l.classList.remove('active'); s_r.classList.remove('active'); }
-            });
-        }
-    </script>
-</body>
-</html>
+.item-card .item-price { font-size: 1.4rem; font-weight: 900; color: #facc15; }.shield-section {width: 100vw; min-height: 45vh; background: transparent; padding: 60px 80px;display: flex; flex-direction: column; align-items: center;border-top: 2px solid rgba(250, 204, 21, 0.05);}.shield-section h2 { font-size: 3rem; font-weight: 900; text-transform: uppercase; margin-bottom: 40px; letter-spacing: 2px; }.shield-section h2 span { color: #facc15; }.shield-grid { display: flex; justify-content: center; gap: 40px; width: 100%; max-width: 900px; }.shield-card { background: rgba(20, 20, 22, 0.8); border: 1px solid rgba(255,255,255,0.02); backdrop-filter: blur(10px); border-radius: 20px; padding: 45px 35px; flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }.shield-icon { font-size: 3.5rem; margin-bottom: 20px; }.shield-card h3 { font-size: 1.4rem; font-weight: 900; text-transform: uppercase; margin-bottom: 15px; color: #fff; letter-spacing: 0.5px; }.shield-card p { color: #a1a1aa; font-size: 1rem; line-height: 1.6; }.faq-section {width: 100vw; min-height: 90vh; background: transparent; padding: 100px 80px;display: flex; flex-direction: column; align-items: center;border-top: 2px solid rgba(250, 204, 21, 0.05);}.chat-container { width: 100%; max-width: 900px; display: flex; flex-direction: column; gap: 25px; margin-top: 30px; }.chat-msg { max-width: 75%; padding: 20px 25px; border-radius: 20px; line-height: 1.6; font-size: 1.1rem; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.4); }.msg-client { background: rgba(25, 25, 27, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.03); align-self: flex-start; border-bottom-left-radius: 4px; color: #e4e4e7; }.msg-client::before { content: 'Пользователь:'; display: block; font-size: 0.85rem; font-weight: bold; color: #71717a; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }.msg-master { background: rgba(28, 26, 20, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(250, 204, 21, 0.2); align-self: flex-end; border-bottom-right-radius: 4px; color: #fff; box-shadow: 0 0 25px rgba(250, 204, 21, 0.03); }.msg-master::before { content: '⚡ X-TEHNIK:'; display: block; font-size: 0.85rem; font-weight: 900; color: #facc15; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(250, 204, 21, 0.4); }.reviews-bottom-section {width: 100vw; min-height: 100vh; padding: 100px 80px; background: transparent;display: flex; flex-direction: column; align-items: center;border-top: 2px solid rgba(250, 204, 21, 0.05);}.reviews-bottom-section h2 { font-size: 3rem; font-weight: 900; text-transform: uppercase; margin-bottom: 50px; letter-spacing: 2px; }.reviews-bottom-section h2 span { color: #facc15; }.review-container {width: 100%; max-width: 900px; background: rgba(20, 20, 22, 0.6); border: 1px solid rgba(250, 204, 21, 0.15); border-radius: 20px; padding: 35px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); backdrop-filter: blur(10px);}.review-form-group { display: flex; gap: 15px; margin-bottom: 20px; }.review-input-name { width: 30%; background: #111110; border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; padding: 14px; color: #fff; font-size: 1rem; }.review-input-text { flex: 1; background: #111110; border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; padding: 14px; color: #fff; font-size: 1rem; }.review-input-name:focus, .review-input-text:focus { outline: none; border-color: #facc15; }.rating-stars-select { display: flex; gap: 8px; font-size: 1.6rem; cursor: pointer; align-items: center; margin-bottom: 20px; }.star-opt { color: #3f3f46; transition: color 0.2s; }.star-opt.active { color: #facc15; filter: drop-shadow(0 0 5px #facc15); }.btn-submit-review { background: #facc15; color: #000; font-weight: 900; text-transform: uppercase; border: none; padding: 14px 30px; border-radius: 10px; cursor: pointer; transition: all 0.3s; letter-spacing: 0.5px; }.btn-submit-review:hover { background: #fde047; transform: translateY(-2px); }.reviews-feed-list { display: flex; flex-direction: column; gap: 15px; max-height: 400px; overflow-y: auto; padding-right: 10px; margin-top: 25px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 25px; }.review-item-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.03); padding: 20px; border-radius: 12px; display: flex; flex-direction: column; gap: 8px; }.review-item-header { display: flex; justify-content: space-between; align-items: center; }.review-item-user { font-weight: 800; color: #fff; font-size: 1.05rem; }.review-item-stars { color: #facc15; font-size: 1rem; }.review-item-body { color: #a1a1aa; font-size: 0.95rem; line-height: 1.5; }.legal-footer {width: 100vw; background: #070708; border-top: 1px solid rgba(255, 255, 255, 0.03);padding: 60px 80px; font-size: 0.75rem; color: #52525b; line-height: 1.6;}.legal-container { width: 100%; max-width: 1200px; margin: 0 auto; }.legal-text-block { margin-bottom: 25px; text-align: justify; }.legal-list { list-style: none; padding-left: 0; margin-bottom: 25px; }.legal-list li { margin-bottom: 6px; position: relative; padding-left: 15px; }.legal-list li::before { content: "—"; position: absolute; left: 0; color: #52525b; }.copyright-block { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.02); padding-top: 20px; font-weight: 500; }.cookie-banner {position: fixed; bottom: -250px; left: 40px; max-width: 380px; background: rgba(20, 20, 22, 0.9); border: 2px solid #facc15; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(250, 204, 21, 0.15); border-radius: 16px; padding: 24px; z-index: 300; display: flex; flex-direction: column; gap: 15px; backdrop-filter: blur(15px); transition: bottom 0.8s cubic-bezier(0.25, 1, 0.5, 1);}.cookie-banner.show { bottom: 40px; }.cookie-title { font-size: 1rem; font-weight: 900; text-transform: uppercase; color: #facc15; letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px; }.cookie-text { font-size: 0.85rem; color: #d4d4d8; line-height: 1.5; }.cookie-btn { background: #facc15; color: #000; border: none; padding: 12px; border-radius: 8px; font-size: 0.9rem; font-weight: 900; text-transform: uppercase; cursor: pointer; letter-spacing: 0.5px; transition: all 0.3s; width: 100%; text-align: center; box-shadow: 0 5px 15px rgba(250, 204, 21, 0.2); }.cookie-btn:hover { background: #fde047; transform: translateY(-2px); }X-TehnikКупино✕Выберите местоКупино 🟢Новосибирск 🔒Омск 🔒Пока мы работаем только из выше предложенных вариантов📉Твое старое железоГреется, жутко лагает, выдает синий экран или намертво зависает в самый неподходящий момент?Мы лучший выбор.Мы молодые, на опыте, шарим в трендах and понимаем тебя с полуслова.РЕМОНТжми жми⚡Заряженный монстрСтабильный FPS, идеальный отклик, чистая система без мусора и кастомный апгрейд лично под твои задачи.Любая сложностьМы работаем абсолютно со всеми видами сложностей. От быстрой замены разбитого экрана до полной работы с вашим телефоном или ПК.Сдать в TelegramВсегда рядомМы находимся в городе Купино. Работаем в максимально удобном для вас формате: на дому или оперативно приедем по вызову в любую точку.Вызвать мастераНаш Инвентарь УслугЗамена разъема зарядкиArm Милитари🔌1 000 ₽Замена динамикаArm Милитари🔊1 000 ₽Замена микрофонаArm Милитари🎙️1 000 ₽Замена стекла камерыArm Милитари💎1 000 ₽Замена передней камерыArm Милитари📸1 000 ₽Замена кнопок громкостиArm Милитари🔉1 000 ₽Замена кноп. включенияArm Милитари🔘1 000 ₽Замена кнопки виброArm Милитари🔕1 000 ₽Замена вибромотораArm Милитари📳1 000 ₽Сброс экранного пароляArm Милитари🔓1 000 ₽Замена аккумулятораЗасекреченное🔋1 100 ₽Обновление ПО и сбросс учетом айклаудаЗасекреченное📲1 200 ₽Замена задней крышкиЗасекреченное📱1 500 ₽Замена задней камерыЗасекреченное📷1 500 ₽Замена экранаТайное🖥️2 000 ₽Замена корпусаТайное🧰2 500 ₽⚠️ ВНИМАНИЕ: Указана стоимость исключительно за выполнение ремонтных работ. Финальная цена может варьироваться в зависимости от стоимости необходимых комплектующих для вашей модели устройства.Система Защиты X-Tehnik🛡️Премиум-деталиМы закупаем только проверенные, надежные комплектующие класса оригинал. Никакого дешевого китая, который сдохнет через неделю.🚀Фаст-сервисБольшинство модульных ремонтов делаются прямо при вас за 30–60 минут. Никакого затягивания сроков и ожидания девайса неделями.iPhone, Macbook, iPad — являются зарегистрированными товарными знаками Apple Inc.; Huawei, Honor, Samsung, Xiaomi, Redmi, Realme, Poco, Tecno, Infinix, Lenovo, LG, Philips, Sony, ASUS, Acer, DELL, HP, Toshiba — являются зарегистрированными товарными знаками их соответствующих правообладателей. Все торговые марки и бренды упоминаются на данном интернет-ресурсе исключительно с целью информирования потребителей об оказываемых услугах по компонентному и модульному ремонту техники. Услуги оказываются в независимых, неавторизованных сервисных центрах, не связанных прямыми дилерскими или контрактными обязательствами с официальными заводами-изготовителями указанных брендов.Ознакомившись с полной текстовой информацией, прайс-листом и структурой данного сайта, вы подтверждаете свое согласие на подачу электронной заявки для проведения диагностики и ремонта вашей техники. Сервисный центр не несет юридической, материальной или технической ответственности в случаях, если после проведения технологического вскрытия, ультразвуковой чистки или пайки устройство останется в исходном неработоспособном состоянии, вызванном скрытыми внутренними дефектами, коррозией после попадания жидкости или деградацией межплатных соединений.Сервисный центр не является уполномоченной организацией импортера, продавца или официального изготовителя техники.В случае невозможности проведения ремонта по техническим причинам или при одностороннем отказе клиента от проведения восстановительных работ после проведения разбора устройства, с владельца девайса взимается фиксированная плата за проведение диагностических работ и дефектовку в размере, согласованном с мастером.Вся информация, включая базовые тарифные сетки, условия выезда и текстовые модули, носит исключительно справочно-информационный характер и ни при каких условиях не является публичной офертой, определяемой положениями Статьи 437 Гражданского кодекса РФ.© 2026 x-tehnik-kupino.ruЛюбое копирование материалов, элементов игрового дизайна и оформления структуры сайта преследуется по закону.⚙️ ЛИЦЕНЗИОННОЕ СОГЛАШЕНИЕСистема X-Tehnik использует файлы Cookie для технического обеспечения работоспособности, сохранения данных инвентаря услуг и защиты сессии. Продолжая работу, вы принимаете условия соглашения.Принять соглашениеconst cv = document.getElementById('bg-canvas');const cx = cv.getContext('2d');let w = cv.width = window.innerWidth;let h = cv.height = window.innerHeight;window.addEventListener('resize', () => { w = cv.width = window.innerWidth; h = cv.height = window.innerHeight; });const pts = []; const maxP = 55;for (let i = 0; i < maxP; i++) { pts.push({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4, r: Math.random() * 2 + 1 }); }function draw_bg() {cx.clearRect(0, 0, w, h); cx.fillStyle = 'rgba(250, 204, 21, 0.25)'; cx.strokeStyle = 'rgba(250, 204, 21, 0.04)';for (let i = 0; i < maxP; i++) {const p = pts[i]; cx.beginPath(); cx.arc(p.x, p.y, p.r, 0, Math.PI * 2); cx.fill();p.x += p.vx; p.y += p.vy;if (p.x < 0 || p.x > w) p.vx *= -1; if (p.y < 0 || p.y > h) p.vy *= -1;for (let j = i + 1; j < maxP; j++) { const p2 = pts[j]; const d = Math.hypot(p.x - p2.x, p.y - p2.y); if (d < 160) { cx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke(); } }}requestAnimationFrame(draw_bg);}draw_bg();const c_b = document.getElementById('cookiePrivacyBanner');const c_ok = document.getElementById('acceptCookieBtn');setTimeout(() => { if (!localStorage.getItem('xt_l_ok')) c_b.classList.add('show'); }, 2000);if (c_ok) { c_ok.addEventListener('click', () => { localStorage.setItem('xt_l_ok', '1'); c_b.classList.remove('show'); }); }const cityBtn = document.getElementById('cityBtn');const modal = document.getElementById('modalOverlay');const closeModal = document.getElementById('closeModal');if (cityBtn) cityBtn.addEventListener('click', () => modal.classList.add('active'));if (closeModal) closeModal.addEventListener('click', () => modal.classList.remove('active'));const btn = document.getElementById('launch-btn');const axis = document.getElementById('arrow-axis');const radar = document.getElementById('main-radar');const pointer = document.getElementById('pointer');const rightCard = document.getElementById('right-card');if (btn) {btn.addEventListener('click', () => {btn.disabled = true;const s_a = new Audio('mixkit.co'); s_a.volume = 0.4; s_a.play();const w_a = new Audio('mixkit.co'); w_a.volume = 0.5;const rot = 1440 + Math.floor(Math.random() * 270);axis.style.transform = rotate(${rot}deg);setTimeout(() => {w_a.play();radar.style.borderColor = '#facc15'; radar.style.boxShadow = '0 0 60px rgba(250, 204, 21, 0.6), inset 0 0 25px rgba(0, 0, 0, 0.8)';pointer.style.borderTopColor = '#22c55e'; pointer.style.filter = 'drop-shadow(0 0 15px #22c55e)';btn.style.color = '#facc15'; btn.style.textShadow = '0 0 15px rgba(250, 204, 21, 0.8)'; btn.innerText = 'УСПЕШНО';rightCard.style.borderColor = '#facc15'; rightCard.style.boxShadow = '0 0 50px rgba(250, 204, 21, 0.4), 0 40px 80px rgba(0,0,0,0.7)';setTimeout(() => {btn.disabled = false; btn.innerText = 'РЕМОНТ'; btn.style.color = '#fff'; btn.style.textShadow = 'none'; axis.style.transform = 'rotate(0deg)';radar.style.borderColor = 'rgba(250, 204, 21, 0.3)'; radar.style.boxShadow = '0 0 50px rgba(250, 204, 21, 0.15), inset 0 0 25px rgba(0, 0, 0, 0.8)';pointer.style.borderTopColor = '#facc15'; pointer.style.filter = 'drop-shadow(0 0 10px #facc15)';rightCard.style.borderColor = 'rgba(250, 204, 21, 0.1)'; rightCard.style.boxShadow = '0 40px 80px rgba(0,0,0,0.7)';}, 6000);}, 2200);});}const s_l = document.getElementById('slide-left');const s_r = document.getElementById('slide-right');const s_z = document.getElementById('scroll-zone');if (s_z) {window.addEventListener('scroll', () => {const r = s_z.getBoundingClientRect();if (r.top <= window.innerHeight * 0.7) { s_l.classList.add('active'); s_r.classList.add('active'); }else { s_l.classList.remove('active'); s_r.classList.remove('active'); }});}
