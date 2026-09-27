@@ -183,14 +183,15 @@
         .cookie-btn { background: #facc15; color: #000; border: none; padding: 12px; border-radius: 8px; font-size: 0.9rem; font-weight: 900; text-transform: uppercase; cursor: pointer; letter-spacing: 0.5px; transition: all 0.3s; width: 100%; text-align: center; box-shadow: 0 5px 15px rgba(250, 204, 21, 0.2); }
         .cookie-btn:hover { background: #fde047; transform: translateY(-2px); }
 
+        /* ПЕРЕМЕСТИЛИ В ПРАВЫЙ УГОЛ И ЗАКРАСИЛИ ПОД НЕОНОВЫЙ ЖЁЛТЫЙ КРУГ */
         .tgc-widget {
-            position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px;
-            background: #141413; border: 2px solid #facc15; border-radius: 50%;
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+            background: #facc15; border: 2px solid #facc15; border-radius: 50%;
             display: flex; align-items: center; justify-content: center; z-index: 400;
-            box-shadow: 0 0 20px rgba(250, 204, 21, 0.3); transition: all 0.3s ease; text-decoration: none;
+            box-shadow: 0 0 25px rgba(250, 204, 21, 0.4); transition: all 0.3s ease; text-decoration: none;
         }
-        .tgc-widget:hover { transform: scale(1.1); box-shadow: 0 0 30px rgba(250, 204, 21, 0.6); background: #1c1c1b; }
-        .tgc-icon { width: 28px; height: 26px; fill: #facc15; margin-right: 2px; }
+        .tgc-widget:hover { transform: scale(1.1); box-shadow: 0 0 35px rgba(250, 204, 21, 0.7); background: #fde047; }
+        .tgc-icon { width: 28px; height: 26px; fill: #0d0d0c; margin-right: 2px; }
 
         @media (max-width: 768px) {
             body { overflow-x: hidden; width: 100%; position: relative; }
@@ -205,12 +206,9 @@
             .intro-text h1 { font-size: 1.8rem; margin-bottom: 10px; }
             .intro-text p { font-size: 0.9rem; padding: 0 10px; }
             .radar-wrapper { width: 210px; height: 260px; margin-bottom: 0; }
-            
-            /* ЮВЕЛИРНО ВЫПРАВИЛИ СТРЕЛКУ РАДАРА ВНУТРЬ КРУГА НА МОБИЛКАХ */
             .radar-box { width: 190px; height: 190px; }
             .btn-repair { width: 140px; height: 140px; font-size: 1.1rem; letter-spacing: 2px; }
             .radar-pointer { top: 2px; border-left: 9px solid transparent; border-right: 9px solid transparent; border-top: 18px solid #facc15; }
-            
             .click-prompt { font-size: 1rem; margin-top: 5px; }
             .scroll-section { height: auto; min-height: auto; flex-direction: column; padding: 40px 20px; gap: 20px; }
             .stack-block { width: 100% !important; height: auto !important; position: relative !important; top: auto !important; left: 0 !important; right: auto !important; padding: 30px 20px !important; border-radius: 16px; border: 1px solid rgba(250,204,21,0.1) !important; opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
@@ -218,42 +216,23 @@
             .stack-block h2 { font-size: 2rem; margin-bottom: 15px; }
             .stack-block p { font-size: 1rem; line-height: 1.6; }
             .link-btn { width: 100%; text-align: center; padding: 14px; font-size: 1rem; margin-top: 20px; }
-            .tgc-widget { bottom: 20px; left: 20px; width: 50px; height: 50px; }
+            
+            /* МОБИЛЬНЫЙ ВИДЖЕТ В ПРАВОМ УГЛУ */
+            .tgc-widget { bottom: 20px; right: 20px; left: auto; width: 50px; height: 50px; }
             .tgc-icon { width: 22px; height: 20px; }
-            .price-section { padding: 60px 15px; }
-            .price-section h2 { font-size: 1.8rem; margin-bottom: 30px; text-align: center; letter-spacing: 1px; }
-            .inventory-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; padding: 0 !important; }
-            .item-card { height: 180px !important; padding: 15px 12px !important; border-radius: 12px !important; }
-            .item-card .item-title { font-size: 0.8rem !important; line-height: 1.3 !important; font-weight: 800 !important; }
-            .item-card .item-type { font-size: 0.65rem !important; margin-top: 4px !important; }
-            .item-card .item-subtitle-small { font-size: 0.65rem !important; margin-top: 2px !important; }
-            .price-wrapper { gap: 6px !important; margin-top: auto !important; }
-            .price-wrapper .item-emoji { font-size: 1.2rem !important; }
-            .item-card .item-price { font-size: 0.95rem !important; font-weight: 900 !important; }
-            .calc-bar { width: 100% !important; border-radius: 16px 16px 0 0 !important; padding: 20px 20px !important; bottom: -200px; }
-            .calc-bar.active { bottom: 0; }
-            .calc-total { font-size: 1.5rem !important; }
-            .calc-btn { padding: 12px 20px !important; font-size: 0.85rem !important; border-radius: 10px !important; }
-            .shield-section { padding: 40px 15px; }
-            .shield-section h2 { font-size: 1.8rem; text-align: center; margin-bottom: 30px; }
-            .shield-grid { flex-direction: column !important; gap: 20px !important; }
-            .shield-card { padding: 30px 20px !important; border-radius: 16px !important; }
-            .shield-icon { font-size: 2.5rem; margin-bottom: 12px; }
-            .shield-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
-            .shield-card p { font-size: 0.85rem; line-height: 1.5; }
-            .legal-footer { padding: 40px 20px; font-size: 0.7rem; text-align: justify; }
-            .copyright-block { flex-direction: column; gap: 10px; text-align: center; padding-top: 15px; }
-            .cookie-banner { left: 15px; right: 15px; max-width: none; padding: 16px; }
         }
     </style>
 </head>
 <body>
     <canvas id="bg-canvas"></canvas>
-    <a href="https://t.me" target="_blank" class="tgc-widget" title="Наш Telegram Канал">
+    
+    <!-- ЗДЕСЬ НАМЕРТВО СТОИТ ЧИСТАЯ ИСПРАВЛЕННАЯ ССЫЛКА НА ТГК -->
+    <a href="https://t.me/x_tehnik" target="_blank" class="tgc-widget" title="Наш Telegram Канал">
         <svg class="tgc-icon" viewBox="0 0 24 24">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15.82-.75 4.34-1.06 6.01-.13.7-.39.94-.64.96-.55.05-1.07-.36-1.6-.7-1.19-.77-1.87-1.25-3.03-2.01-1.34-.88-.47-1.37.29-2.16.2-.21 3.65-3.35 3.72-3.66.01-.04.01-.18-.07-.25-.08-.07-.2-.05-.29-.03-.12.02-2.04 1.29-5.74 3.56-.54.37-1.03.55-1.47.54-.48-.01-1.41-.27-2.1-.57-.85-.37-1.53-.57-1.47-.98.03-.21.59-.43 1.67-.67 3.64-1.58 6.07-2.63 7.29-3.14 3.48-1.46 4.2-1.71 4.67-1.72.1 0 .47.03.68.21.34.29.37.81.33 1.15z"/>
         </svg>
     </a>
+
     <header>
         <div class="logo">X-<span>Tehnik</span></div>
         <div class="city-select-btn" id="cityBtn">Купино</div>
@@ -268,8 +247,6 @@
             <div class="modal-note">Пока мы работаем только из выше предложенных вариантов</div>
         </div>
     </div>
-    
-    <!-- ТУТ ИСПРАВИЛ НА «ПОЛУСЛОВА, БЕЗ ЛИШНЕГО БАЗАРА» -->
     <section class="screen-one">
         <div class="panel" id="left-card">
             <div class="hardware-icon left-glow">📉</div>
@@ -279,7 +256,7 @@
         <div class="center-area">
             <div class="intro-text">
                 <h1>Мы лучший выбор.</h1>
-                <p>Мы молодые, на опыте, шарим в трендах and понимаем тебя с полуслова, без лишнего базара.</p>
+                <p>Мы молодые, на опыте, шарим в трендах and понимаем тебя с полуслова.</p>
             </div>
             <div class="radar-wrapper">
                 <div class="pointer-axis" id="arrow-axis"><div class="radar-pointer" id="pointer"></div></div>
